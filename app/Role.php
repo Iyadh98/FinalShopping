@@ -5,6 +5,9 @@ use User;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string nom
+ */
 class Role extends Model
 {
     //
