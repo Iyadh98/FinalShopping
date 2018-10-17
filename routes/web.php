@@ -36,3 +36,6 @@ Route::get('/contact',function(){
 Route::get('/profil',function(){
     return view('profile');
 });
+Route::get('/admin',function(){
+    return view('Admin/template');
+});
