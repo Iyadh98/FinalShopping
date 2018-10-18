@@ -277,7 +277,7 @@
     </div>
 
     <!-- Menu Mobile -->
-    <div class="wrap-side-menu" >
+    <div class="wrap-side-menu">
         <nav class="side-menu">
             <ul class="main-menu">
                 <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
@@ -372,12 +372,18 @@
                     </h4>
 
                     <ul class="p-b-54">
+                        @if(count($categories) > 0)
+                        @foreach($categories as $categorie)
+
                         <li class="p-t-4">
                             <a href="#" class="s-text13 active1">
-                                Séries
+                                {{$categorie->nom}}
                             </a>
                         </li>
 
+                        @endforeach
+                        @endif
+<!--
                         <li class="p-t-4">
                             <a href="#" class="s-text13">
                                 Colliers
@@ -421,6 +427,7 @@
                                 Enfant
                             </a>
                         </li>
+                        -->
                     </ul>
 
                     <!--  -->
@@ -458,44 +465,52 @@
 
                         <ul class="flex-w">
                             <li class="m-r-10">
-                                <input class="checkbox-color-filter" id="color-filter1" type="checkbox" name="color-filter1">
+                                <input class="checkbox-color-filter" id="color-filter1" type="checkbox"
+                                       name="color-filter1">
                                 <label class="color-filter color-filter1" for="color-filter1"></label>
                             </li>
 
                             <li class="m-r-10">
-                                <input class="checkbox-color-filter" id="color-filter2" type="checkbox" name="color-filter2">
+                                <input class="checkbox-color-filter" id="color-filter2" type="checkbox"
+                                       name="color-filter2">
                                 <label class="color-filter color-filter2" for="color-filter2"></label>
                             </li>
 
                             <li class="m-r-10">
-                                <input class="checkbox-color-filter" id="color-filter3" type="checkbox" name="color-filter3">
+                                <input class="checkbox-color-filter" id="color-filter3" type="checkbox"
+                                       name="color-filter3">
                                 <label class="color-filter color-filter3" for="color-filter3"></label>
                             </li>
 
                             <li class="m-r-10">
-                                <input class="checkbox-color-filter" id="color-filter4" type="checkbox" name="color-filter4">
+                                <input class="checkbox-color-filter" id="color-filter4" type="checkbox"
+                                       name="color-filter4">
                                 <label class="color-filter color-filter4" for="color-filter4"></label>
                             </li>
 
                             <li class="m-r-10">
-                                <input class="checkbox-color-filter" id="color-filter5" type="checkbox" name="color-filter5">
+                                <input class="checkbox-color-filter" id="color-filter5" type="checkbox"
+                                       name="color-filter5">
                                 <label class="color-filter color-filter5" for="color-filter5"></label>
                             </li>
 
                             <li class="m-r-10">
-                                <input class="checkbox-color-filter" id="color-filter6" type="checkbox" name="color-filter6">
+                                <input class="checkbox-color-filter" id="color-filter6" type="checkbox"
+                                       name="color-filter6">
                                 <label class="color-filter color-filter6" for="color-filter6"></label>
                             </li>
 
                             <li class="m-r-10">
-                                <input class="checkbox-color-filter" id="color-filter7" type="checkbox" name="color-filter7">
+                                <input class="checkbox-color-filter" id="color-filter7" type="checkbox"
+                                       name="color-filter7">
                                 <label class="color-filter color-filter7" for="color-filter7"></label>
                             </li>
                         </ul>
                     </div>
 
                     <div class="search-product pos-relative bo4 of-hidden">
-                        <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
+                        <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product"
+                               placeholder="Search Products...">
 
                         <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
                             <i class="fs-12 fa fa-search" aria-hidden="true"></i>
@@ -537,10 +552,13 @@
 
                 <!-- Product -->
                 <div class="row">
+                    @if(count($produits) > 0)
+                    @foreach($produits as $produit)
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <!-- Block2 -->
+
                         <div class="block2">
-                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                 <img src="images/item-02.jpg" alt="IMG-PRODUCT">
 
                                 <div class="block2-overlay trans-0-4">
@@ -549,26 +567,23 @@
                                         <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                     </a>
 
-                                    <div class="block2-btn-addcart w-size1 trans-0-4">
-                                        <!-- Button -->
-                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                            Ajouter au panier
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
 
                             <div class="block2-txt p-t-20">
-                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                    Herschel supply co 25l
+                                <a class="block2-name dis-block s-text3 p-b-5">
+                                    {{$produit->nom}}
                                 </a>
 
                                 <span class="block2-price m-text6 p-r-5">
-										$75.00
+										{{$produit->prix}} DNT
 									</span>
                             </div>
                         </div>
                     </div>
+
+                    @endforeach
+                    @endif
 
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <!-- Block2 -->
@@ -963,7 +978,8 @@
 
             <div>
                 <p class="s-text7 w-size27">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
+                    (+1) 96 716 6879
                 </p>
 
                 <div class="flex-m p-t-30">
@@ -1116,11 +1132,12 @@
         </a>
 
         <div class="t-center s-text8 p-t-20">
-            Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o"
+                                                                                  aria-hidden="true"></i> by <a
+                href="https://colorlib.com" target="_blank">Colorlib</a>
         </div>
     </div>
 </footer>
-
 
 
 <!-- Back to top -->
@@ -1133,7 +1150,6 @@
 <!-- Container Selection -->
 <div id="dropDownSelect1"></div>
 <div id="dropDownSelect2"></div>
-
 
 
 <!--===============================================================================================-->
@@ -1160,16 +1176,16 @@
 <!--===============================================================================================-->
 <script type="text/javascript" src="{{URL::asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
 <script type="text/javascript">
-    $('.block2-btn-addcart').each(function(){
+    $('.block2-btn-addcart').each(function () {
         var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function(){
+        $(this).on('click', function () {
             swal(nameProduct, "is added to cart !", "success");
         });
     });
 
-    $('.block2-btn-addwishlist').each(function(){
+    $('.block2-btn-addwishlist').each(function () {
         var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function(){
+        $(this).on('click', function () {
             swal(nameProduct, "is added to wishlist !", "success");
         });
     });
@@ -1183,7 +1199,7 @@
     var filterBar = document.getElementById('filter-bar');
 
     noUiSlider.create(filterBar, {
-        start: [ 50, 200 ],
+        start: [50, 200],
         connect: true,
         range: {
             'min': 50,
@@ -1196,8 +1212,8 @@
         document.getElementById('value-upper')
     ];
 
-    filterBar.noUiSlider.on('update', function( values, handle ) {
-        skipValues[handle].innerHTML = Math.round(values[handle]) ;
+    filterBar.noUiSlider.on('update', function (values, handle) {
+        skipValues[handle].innerHTML = Math.round(values[handle]);
     });
 </script>
 <!--===============================================================================================-->

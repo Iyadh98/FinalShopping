@@ -21,9 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/index',function(){
     return view('index');
 });
+/*
 Route::get('/produits',function(){
     return view('product');
 });
+*/
+Route::get('/produits','ProduitController@getAllProductsAndCategories');
+
 Route::get('/panier',function(){
     return view('cart');
 });
@@ -39,6 +43,7 @@ Route::get('/profil',function(){
 Route::get('/admin',function(){
     return view('admin/index');
 });
+Route::get('/admin/clients','UserController@getAll');
 Route::get('/admin/commandes',function(){
     return view('admin/datacomm');
 });

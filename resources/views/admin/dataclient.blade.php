@@ -258,12 +258,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @if(count($users)>0)
+                                    @foreach($users as $user)
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>$320,800</td>
+                                    <td>{{$user->nom}}</td>
+                                    <td>{{$user->prenom}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->adresse}}</td>
                                 </tr>
+
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>
