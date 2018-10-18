@@ -36,3 +36,18 @@ Route::get('/contact',function(){
 Route::get('/profil',function(){
     return view('profile');
 });
+Route::get('/admin',function(){
+    return view('admin/index');
+});
+Route::get('/admin/commandes',function(){
+    return view('admin/datacomm');
+});
+Route::get('/admin/ajouter_produit',function(){
+    return view('admin/ajoutprod');
+});
+Route::get('/admin/modifier_produit',function(){
+    return view('admin/modifprod');
+});
+Route::get('/admin/supprimer_produit',function(){
+    return view('admin/supprimerprod');
+});
