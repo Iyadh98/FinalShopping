@@ -171,6 +171,7 @@
                             </a>
                         </div>
                     </div>
+                    <a href="{{url('/index')}}">Preview page</a>
                 </div>
             </div>
 
@@ -308,6 +309,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#bootstrap-data-table-export').DataTable();
+
     } );
 </script>
 

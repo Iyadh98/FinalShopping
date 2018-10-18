@@ -170,6 +170,7 @@
                             </a>
                         </div>
                     </div>
+                    <a href="{{url('/index')}}">Preview page</a>
                 </div>
             </div>
 
