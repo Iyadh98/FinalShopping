@@ -74,3 +74,4 @@ Route::get('/admin/supprimer_categorie',function(){
 Route::get('/admin/modifier_categorie',function(){
     return view('admin/modifiercat');
 });
+Route::post('/admin/ajouter_categorie','CategorieController@addPost');

@@ -24,7 +24,7 @@
                         <strong>Ajouter une nouvelle categorie</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="{{ action('ProduitController@addPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{ action('CategorieController@addPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row form-group">
                             </div>
