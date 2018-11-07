@@ -18,8 +18,8 @@
 @section('content')
 @endsection
 @section('scripts')
-    <script src="{{URL::asset('assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
-    <script src="{{URL::asset('assets/js/popper.min.js')}}"></script>
-    <script src="{{URL::asset('assets/js/plugins.js')}}"></script>
-    <script src="{{URL::asset('assets/js/main.js')}}"></script>
+<script src="{{URL::asset('assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/popper.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/plugins.js')}}"></script>
+<script src="{{URL::asset('assets/js/main.js')}}"></script>
 @endsection

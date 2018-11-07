@@ -6,31 +6,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin</title>
-    <meta name="description" content="Admin">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="images/logo12.png">
-
-    <link rel="stylesheet" href="{{URL::asset('assets/css/normalize.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/css/cs-skin-elastic.css')}}">
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="{{URL::asset('assets/scss/style.css')}}">
-    <link href="{{URL::asset('assets/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+@yield('css_content')
 
 </head>
 <body>
-
-
 <!-- Left Panel -->
 
 <aside id="left-panel" class="left-panel">
@@ -61,7 +44,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_produit')}}">Ajouter produit</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/modifier_produit')}}">Modifier produits</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/supprimer-produit')}}">Supprimer produits</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/supprimer_produit')}}">Supprimer produits</a></li>
 
                     </ul>
                 </li>
@@ -70,7 +53,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_categorie')}}">Ajouter categorie</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/modifier_categorie')}}">Modifier categorie</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/supprimer-categorie')}}">Supprimer categorie</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/supprimer_categorie')}}">Supprimer categorie</a></li>
 
                     </ul>
                 </li>
@@ -187,7 +170,6 @@
             </div>
 
             <div class="col-sm-5">
-
                 <div class="user-area dropdown float-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
@@ -242,7 +224,9 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <li class="active">Dashboard</li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Forms</a></li>
+                        <li class="active">Basic</li>
                     </ol>
                 </div>
             </div>
@@ -250,92 +234,21 @@
     </div>
 
     <div class="content mt-3">
+        <div class="animated fadeIn">
 
-        <div class="col-sm-12">
-            <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
+        @yield('content')
+
+        </div><!-- .animated -->
+    </div><!-- .content -->
 
 
-        <div class="col-xl-3 col-lg-6">
-            <section class="card">
-                <div class="twt-feed blue-bg">
-                    <div class="corner-ribon black-ribon">
-                        <i class="fa fa-twitter"></i>
-                    </div>
-                    <div class="fa fa-twitter wtt-mark"></div>
-
-                    <div class="media">
-                        <a href="#">
-                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
-                        </a>
-                        <div class="media-body">
-                            <h2 class="text-white display-6">Admin Name</h2>
-                            <p class="text-light">Admin position</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-
-        <div class="col-xl-3 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Total Profit</div>
-                            <div class="stat-digit">1,012</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-xl-3 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">New Customer</div>
-                            <div class="stat-digit">961</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Active Projects</div>
-                            <div class="stat-digit">770</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- .content -->
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
 
-<script src="{{URL::asset('assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-<script src="{{URL::asset('assets/js/plugins.js')}}"></script>
-<script src="{{URL::asset('assets/js/main.js')}}"></script>
-<script src="{{URL::asset('assets/js/dashboard.js')}}"></script>
-<script src="{{URL::asset('assets/js/widgets.js')}}"></script>
+
+@yield('scripts')
+
 
 </body>
 </html>

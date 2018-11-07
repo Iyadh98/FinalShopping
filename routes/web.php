@@ -65,3 +65,12 @@ Route::get('/admin/modifier_produit',function(){
 Route::get('/admin/supprimer_produit',function(){
     return view('admin/supprimerprod');
 });
+Route::get('/admin/ajouter_categorie',function(){
+    return view('admin/ajoutcat');
+});
+Route::get('/admin/supprimer_categorie',function(){
+    return view('admin/supprimercat');
+});
+Route::get('/admin/modifier_categorie',function(){
+    return view('admin/modifiercat');
+});
