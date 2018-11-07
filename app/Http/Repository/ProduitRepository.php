@@ -23,8 +23,8 @@ class ProduitRepository
         $produit->description = $request->input('description');
         $produit->prix = $request->input('prix');
         $produit->points = $request->input('points');
-        $produit->categorie_id = $request->input('categorie_id');
-        $produit->type_produit_id = $request->input('type_produit_id');
+        $produit->categorie_id = $request->input('categorie');
+        $produit->type_produit_id = $request->input('type');
         /*
         $produit->image_produit_id = $request->input('image_produit_id');
 */
@@ -36,6 +36,12 @@ class ProduitRepository
     {
         return Produit::all();
     }
+
+    public function getAllWithCategoriesTypes()
+    {
+        return Produit::with(['categorie','type'])->get();
+    }
+
 
     public function getById($produitId)
     {
