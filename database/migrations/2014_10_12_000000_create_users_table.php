@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->String('telephone');
             $table->String('adresse');
             $table->String('code_postal');
-            $table->integer('score')->nullable();
+            $table->integer('score')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

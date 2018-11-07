@@ -86,10 +86,16 @@
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
             color: rgb(0, 0, 0);
         }
+        th{
+            font-size:2em !important;
+        }
+        td{
+            font-size: 2em !important;
+        }
     </style>
 
 </head>
-<body class="animsition">
+<table class="animsition">
 
 <!-- Header -->
 <header class="header1">
@@ -346,9 +352,36 @@
             </div>
         </div>
     </div>
-    <div class="container">
+</header>
+<h1 align="center">Bienvenue {{Auth::user()->prenom}}! </h1>
+    <div align="center">
+        <p align="center" id="point" ">Votre score est: {{Auth::user()->score}}</p>
+        <h2>Commandes effectuées:</h2>
+    </div><tr class="table-active">...</tr>
 
-
+    <table class="table" style="width:100% !important;">
+        <thead>
+        <tr>
+            <th>Commande ID</th>
+            <th>Date commande</th>
+            <th>Montant</th>
+            <th>Etat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--    IF ETAT==1 (en cours) tr class="warning"
+                IF ETAT==2 (prete)    tr class="success"
+                IF ETAT==3 (livree)   tr class="info"
+                IF ETAT==0 (annulee)  tr class="danger"
+        -->
+        <tr class="success">
+            <td>Default</td>
+            <td>Defaultson</td>
+            <td>def@somemail.com</td>
+            <td>Etat</td>
+        </tr>
+        </tbody>
+    </table>
 
 
     <!--===============================================================================================-->
@@ -365,6 +398,11 @@
             minimumResultsForSearch: 20,
             dropdownParent: $('#dropDownSelect1')
         });
+        function adddisp(){
+            if(document.getElementById("nombre").style.display=="none")
+            document.getElementById("nombre").style.display="inline";
+            else document.getElementById("nombre").style.display="none";
+        }
     </script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{URL::asset('vendor/slick/slick.min.js')}}"></script>

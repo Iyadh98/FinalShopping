@@ -81,6 +81,12 @@
                         <li>
                             <a href="{{url('/contact')}}">Contactez-nous</a>
                         </li>
+                        @if(Auth::user() && Auth::user()->isAdministrator())
+                            <li>
+                                <a href="{{url('/admin')}}">Dashboard</a>
+                            </li>
+
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -105,10 +111,14 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('/profil') }}">
+                                    {{ __('Consulter profil') }}
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Deconnexion') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
