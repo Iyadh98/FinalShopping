@@ -6,8 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>Admin</title>
+    <meta name="description" content="Admin">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
@@ -19,18 +19,18 @@
     <link rel="stylesheet" href="{{URL::asset('assets/css/themify-icons.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="{{URL::asset('assets/scss/style.css')}}">
 
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
-
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
 <body>
 <!-- Left Panel -->
+
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -82,9 +82,7 @@
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
-</aside>
-
-<!-- /#left-panel -->
+</aside><!-- /#left-panel -->
 
 <!-- Left Panel -->
 
@@ -232,8 +230,8 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Forms</a></li>
-                        <li class="active">Basic</li>
+                        <li><a href="#">Table</a></li>
+                        <li class="active">Data table</li>
                     </ol>
                 </div>
             </div>
@@ -242,118 +240,113 @@
 
     <div class="content mt-3">
         <div class="animated fadeIn">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>Ajouter un nouveau produit</strong>
-                    </div>
-                    <div class="card-body card-block">
-                        <form action="{{ action('ProduitController@addPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            {{ csrf_field() }}
-                            <div class="row form-group">
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nom du produit</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="nom" name="nom"  class="form-control"></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Description</label></div>
-                                <div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" class="form-control"></textarea></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Prix</label></div>
-                                <div class="col-12 col-md-9"><input type="number" id="prix" name="prix" class="form-control"></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="test-input" class=" form-control-label">Points</label></div>
-                                <div class="col-12 col-md-9"><input type="number" id="points" name="points" class="form-control"><small class="help-block form-text">Score attribué lors de l'achat du produit</small></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="test-input" class=" form-control-label">Catégorie</label></div>
-                                <div class="col-12 col-md-9">
-                                    <select name="categorie" id="select_categorie">
-                                        <option value="0" selected ="selected" disabled>Choisir une catégorie</option>
-                                        @if(count($categories) > 0)
-                                        @foreach($categories as $key => $categorie)
-                                        <option value="{{$categorie->categorie_id}}">
-                                            {{$categorie->nom}}
-                                        </option>
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                    <div class="col col-md-3"><label for="test-input" class=" form-control-label">Type</label></div>
-                                <div class="col-12 col-md-9">
-                                    <select name="type" id="select_type">
-                                        <option value="0" selected ="selected" disabled>Choisir un type</option>
-                                        @if(count($types) > 0)
-                                        @foreach($types as $key => $type)
-                                        <option value="{{$type->type_produit_id}}">
-                                            {{$type->nom}}
-                                        </option>
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
+            <div class="row">
 
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="file-input" class=" form-control-label">télécharger la photo du produit</label></div>
-                                <div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file" accept="image/*" onchange="loadFile(event)">
-                                    <small class="help-block form-text">Veuillez redimensionner à 720x960</small>
-                                    <img id="output" style="width:250px; height:350px;"/>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> Submit
-                                </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Reset
-                                </button>
-                            </div>
-                        </form>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Liste des produits</strong>
+                        </div>
+                        <div class="card-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Description</th>
+                                    <th>Prix</th>
+                                    <th>Points</th>
+                                    <th>Catégorie</th>
+                                    <th>Type</th>
+                                    <th>Opérations</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(count($produits) > 0)
+                                @foreach($produits as $key => $produit)
+                                <tr>
+                                    <td>{{$produit->nom}}</td>
+                                    <td>{{$produit->description}}</td>
+                                    <td>{{$produit->prix}}</td>
+                                    <td>{{$produit->points}}</td>
+                                    <td>{{$produit->categorie->nom}}</td>
+                                    <td>{{$produit->type->nom}}</td>
+                                    <td>
+                                        <button href="admin/ajouter_produit/{{$produit->produit_id}}/edit" class="btn btn-success btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Modifier
+                                        </button>
+                                        <button  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal($key)">
+                                            <i class="fa fa-ban"></i> Supprimer
+                                        </button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-
                 </div>
 
 
-            </div><!-- .animated -->
-        </div><!-- .content -->
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
 
 
-    </div><!-- /#right-panel -->
+</div><!-- /#right-panel -->
 
-    <!-- Right Panel -->
+<!-- Right Panel -->
+
+<!-- Delete Modal -->
+<!--
+<div class="modal fade" id="deleteModal($key)" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel($key)" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Are you Sure?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Voulez vous vraiment supprimer le produit "{{$produits[$key]->nom}}" ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Fermer</button>
+                {!!Form::open(['action' => ['ProduitController@destroy', $produits[$key]->produit_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class' => 'btn btn-raised btn-danger'])}}
+                {!!Form::close()!!}
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<script src="{{URL::asset('assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/popper.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/plugins.js')}}"></script>
+<script src="{{URL::asset('assets/js/main.js')}}"></script>
 
 
-    <script src="{{URL::asset('assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
-    <script src="{{URL::asset('assets/js/popper.min.js')}}"></script>
-    <script src="{{URL::asset('assets/js/plugins.js')}}"></script>
-    <script src="{{URL::asset('assets/js/main.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <script type="text/javascript">
-        var loadFile = function(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('output');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        };
-    </script>
-    <script>
-        jQuery(document).ready(function(){
-            jQuery('#select_categorie').select2({ width: '100%' });
-        });
-    </script>
-    <script>
-        jQuery(document).ready(function(){
-            jQuery('#select_type').select2({ width: '100%' });
-        });
-    </script>
+<script src="{{URL::asset('assets/js/lib/data-table/datatables.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/jszip.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/pdfmake.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/vfs_fonts.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/buttons.html5.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/buttons.print.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/lib/data-table/datatables-init.js')}}"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#bootstrap-data-table-export').DataTable();
+    } );
+</script>
 
 
 </body>

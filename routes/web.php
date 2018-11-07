@@ -47,9 +47,18 @@ Route::get('/admin/clients','UserController@getAll');
 Route::get('/admin/commandes',function(){
     return view('admin/datacomm');
 });
-Route::get('/admin/ajouter_produit',function(){
-    return view('admin/ajoutprod');
-});
+
+Route::get('/admin/ajouter_produit','ProduitController@addGet');
+Route::post('/admin/ajouter_produit','ProduitController@addPost');
+
+Route::get('/admin/lister_produit','ProduitController@getAllProducts');
+
+Route::get('/admin/edit_produit/{produitId}','ProduitController@addGet');
+
+
+
+
+
 Route::get('/admin/modifier_produit',function(){
     return view('admin/modifprod');
 });
