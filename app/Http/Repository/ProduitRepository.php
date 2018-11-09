@@ -25,10 +25,14 @@ class ProduitRepository
         $produit->points = $request->input('points');
         $produit->categorie_id = $request->input('categorie');
         $produit->type_produit_id = $request->input('type');
-        /*
-        $produit->image_produit_id = $request->input('image_produit_id');
-*/
+        $imageName = $produit->nom .rand(). '.' .
+            $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(
+            base_path() . '/public/images/produits', $imageName
+        );
+        $produit->image=$imageName;
         $produit->save();
+
         return $produit;
     }
 

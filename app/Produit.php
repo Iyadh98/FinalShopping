@@ -16,9 +16,8 @@ class Produit extends Model
         'prix',
         'points',
         'categorie_id',
-        'type_produit_id'
-        /*,
-        'image_produit_id'*/
+        'type_produit_id',
+        'image'
     ];
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];

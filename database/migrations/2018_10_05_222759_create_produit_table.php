@@ -20,7 +20,7 @@ class CreateProduitTable extends Migration
             $table->String('description');
             $table->Integer('prix');
             $table->Integer('points');
-
+            $table->String('image');
             $table->integer('categorie_id')->unsigned();
             $table->foreign('categorie_id')
                 ->references('categorie_id')
@@ -34,14 +34,9 @@ class CreateProduitTable extends Migration
                 ->on('Type_Produit')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
-/*
-            $table->integer('image_produit_id')->unsigned();
-            $table->foreign('image_produit_id')
-                ->references('image_produit_id')
-                ->on('Image_Produit')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-*/
+
+
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -76,7 +76,7 @@
 
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="file-input" class=" form-control-label">télécharger la photo du produit</label></div>
-                                <div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file" accept="image/*" onchange="loadFile(event)">
+                                <div class="col-12 col-md-9"><input type="file" id="file-input" name="image" class="form-control-file" accept="image/*" onchange="loadFile(event)">
                                     <small class="help-block form-text">Veuillez redimensionner à 720x960</small>
                                     <img id="output" style="width:250px; height:350px;"/>
                                 </div>

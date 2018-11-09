@@ -65,37 +65,14 @@
 
 
             </div>
-            <!-- Delete Modal -->
-            <!--
-<div class="modal fade" id="deleteModal($key)" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel($key)" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Are you Sure?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Voulez vous vraiment supprimer le produit "{{$produits[$key]->nom}}" ?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-raised btn-secondary" data-dismiss="modal">Fermer</button>
-                {!!Form::open(['action' => ['ProduitController@destroy', $produits[$key]->produit_id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-            {{Form::hidden('_method', 'DELETE')}}
-            {{Form::submit('Delete', ['class' => 'btn btn-raised btn-danger'])}}
-            {!!Form::close()!!}
-                    </div>
-                </div>
-            </div>
-        </div>
--->
+
+
 @endsection
 
 <!-- Right Panel -->
 
 
-@section('scripts)
+@section('scripts')
 <script src="{{URL::asset('assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/popper.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/plugins.js')}}"></script>
