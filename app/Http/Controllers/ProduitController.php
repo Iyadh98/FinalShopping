@@ -14,7 +14,8 @@ use App\Http\Repository\ProduitRepository;
 use App\Http\Repository\TypeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
+use App\Produit;
+use Lenius\Basket\Basket;
 class ProduitController extends Controller
 {
     protected $produitRepository;
@@ -38,25 +39,26 @@ class ProduitController extends Controller
         return redirect('admin');
     }
 
-    public function addGet(){
-        $categories=$this->categorieRepository->getAll();
-        $types=$this->typeRepository->getAll();
+    public function addGet()
+    {
+        $categories = $this->categorieRepository->getAll();
+        $types = $this->typeRepository->getAll();
         Log::info($types);
-        return view('admin/ajoutprod')->with('categories',$categories)->with('types',$types);
+        return view('admin/ajoutprod')->with('categories', $categories)->with('types', $types);
     }
 
     public function getAllProductsAndCategories()
     {
         $produits = $this->produitRepository->getAll();
         $categories = $this->categorieRepository->getAll();
-        return view('product')->with('produits',$produits)->with('categories',$categories);
+        return view('product')->with('produits', $produits)->with('categories', $categories);
     }
 
     public function getAllProducts()
     {
         $produits = $this->produitRepository->getAllWithCategoriesTypes();
         Log::info($produits);
-        return view('admin/listeprod')->with('produits',$produits);
+        return view('admin/listeprod')->with('produits', $produits);
     }
 
     public function getById($produitId)
@@ -93,5 +95,27 @@ class ProduitController extends Controller
         return redirect('/admin/liste_produit')->with('success', 'Post Removed');
 
 
+    }
+    public function addCart($produit_id,$nom_produit,$prix_produit){
+        Log::info("Test0");
+        \Lenius\Basket\Facades\Basket::insert(array(
+            'id'       => $produit_id,
+            'name'     => $nom_produit,
+            'price'    => $prix_produit,
+            'quantity' => 1,
+            'tax'      => 0,
+            'weight' => 0
+        ));
+    return redirect('/produits');
+    }
+    public function destroyCart(){
+        \Lenius\Basket\Facades\Basket::destroy();
+        return redirect('/produits');
+    }
+    public function updateCart(Request $request){
+        foreach (\Lenius\Basket\Facades\Basket::contents() as $item) {
+            $item->quantity = $request->input('numprod');
+        }
+        return redirect('/panier');
     }
 }

@@ -74,4 +74,8 @@ Route::get('/admin/supprimer_categorie',function(){
 Route::get('/admin/modifier_categorie',function(){
     return view('admin/modifiercat');
 });
-Route::post('/admin/ajouter_categorie','CategorieController@addPost');
+Route::get('/produits/{id}/{nom}/{prix}', 'ProduitController@addCart');
+Route::get('/produits/supp','ProduitController@destroyCart');
+Route::get('/panier/aa','ProduitController@updateCart');
+
+

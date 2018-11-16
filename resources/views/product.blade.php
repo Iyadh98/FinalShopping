@@ -194,12 +194,24 @@
                                         <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                     </a>
 
+
+                                    <div class="block2-overlay trans-0-4">
+                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                        </a>
+
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
                                             <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Ajouter au panier
-                                            </button>
+
+                                            <a href="{{action('ProduitController@addCart', ['id'=>$produit->produit_id,'nom'=>$produit->nom, 'prix'=>$produit->prix])}}"><button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                    Ajouter au panier
+                                                </button></a>
                                         </div>
+                                    </div>
+
+
+
                                 </div>
                             </div>
 
@@ -217,9 +229,9 @@
 
                     @endforeach
                     @endif
-
                  </div>
-
+                <a href="{{action('ProduitController@destroyCart')}}" class="btn btn-warning">Edit</a>
+                {{        Log::info("Test1")}}
                 <!-- Pagination -->
                 <div class="pagination flex-m flex-w p-t-26">
                     <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cf0cbed343c8f67f98783816d74cdcc",
+    "content-hash": "adeedeb93ed5a6a72892e003c28b47c8",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -365,6 +365,58 @@
                 "trusted proxy"
             ],
             "time": "2018-02-07T20:20:57+00:00"
+        },
+        {
+            "name": "freshbitsweb/laravel-cart-manager",
+            "version": "v1.0.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/freshbitsweb/laravel-cart-manager.git",
+                "reference": "2cb8a682772062db845ac4b01561902944f4b47f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/freshbitsweb/laravel-cart-manager/zipball/2cb8a682772062db845ac4b01561902944f4b47f",
+                "reference": "2cb8a682772062db845ac4b01561902944f4b47f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.5.*|5.6.*|5.7.*",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "3.7.*",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Freshbitsweb\\LaravelCartManager\\CartManagerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Freshbitsweb\\LaravelCartManager\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gaurav Makhecha",
+                    "email": "info@freshbits.in"
+                }
+            ],
+            "description": "Managing the cart of your Laravel application is a breeze",
+            "time": "2018-09-08T13:39:33+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -742,44 +794,33 @@
             "time": "2018-08-22T07:45:22+00:00"
         },
         {
-            "name": "melihovv/laravel-shopping-cart",
-            "version": "5.7.1",
+            "name": "lenius/basket",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/melihovv/laravel-shopping-cart.git",
-                "reference": "e51c103ad9936909a3e152646d2bed5dc41fd01a"
+                "url": "https://github.com/Lenius/basket.git",
+                "reference": "50add30989324ecd97d1ebd8571b501629b16b97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/melihovv/laravel-shopping-cart/zipball/e51c103ad9936909a3e152646d2bed5dc41fd01a",
-                "reference": "e51c103ad9936909a3e152646d2bed5dc41fd01a",
+                "url": "https://api.github.com/repos/Lenius/basket/zipball/50add30989324ecd97d1ebd8571b501629b16b97",
+                "reference": "50add30989324ecd97d1ebd8571b501629b16b97",
                 "shasum": ""
             },
             "require": {
-                "illuminate/container": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/redis": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0"
+                "php": ">=7.0.0"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
-                "phpmd/phpmd": "^2.6",
-                "phpunit/phpunit": "~6.0|~7.0",
-                "predis/predis": "^1.1",
-                "sebastian/phpcpd": "^3.0",
-                "squizlabs/php_codesniffer": "^2.7"
+                "php": "~7.1",
+                "php-coveralls/php-coveralls": "2.1.*",
+                "phpstan/phpstan": "^0.10.0@dev",
+                "phpunit/phpunit": "~6.0",
+                "squizlabs/php_codesniffer": "3.*"
             },
             "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Melihovv\\ShoppingCart\\ServiceProvider"
-                    ]
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Melihovv\\ShoppingCart\\": "src/ShoppingCart"
+                    "Lenius\\Basket\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -788,17 +829,73 @@
             ],
             "authors": [
                 {
-                    "name": "Alexander Melihov",
-                    "email": "amelihovv@ya.ru"
+                    "name": "Carsten Jonstrup",
+                    "email": "info@lenius.dk"
                 }
             ],
-            "description": "Shopping cart package for laravel",
+            "description": "Shopping basket package",
+            "homepage": "https://github.com/lenius/basket",
             "keywords": [
-                "cart",
-                "laravel",
-                "shopping cart"
+                "e-commerce",
+                "shopping"
             ],
-            "time": "2018-09-20T20:36:32+00:00"
+            "time": "2018-10-27T16:24:54+00:00"
+        },
+        {
+            "name": "lenius/laravel-basket",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Lenius/laravel-basket.git",
+                "reference": "8876b5ab60f9975cbfb3588973b10534647d1151"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Lenius/laravel-basket/zipball/8876b5ab60f9975cbfb3588973b10534647d1151",
+                "reference": "8876b5ab60f9975cbfb3588973b10534647d1151",
+                "shasum": ""
+            },
+            "require": {
+                "lenius/basket": "~2.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lenius\\Basket\\BasketServiceProvider"
+                    ],
+                    "aliases": {
+                        "Basket": "Lenius\\Basket\\Facades\\Basket"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lenius\\Basket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Jonstrup",
+                    "email": "info@lenius.dk"
+                }
+            ],
+            "description": "Shopping basket package for Laravel 5",
+            "homepage": "https://github.com/Lenius/laravel-basket",
+            "keywords": [
+                "Laravel Basket",
+                "e-commerce",
+                "framework",
+                "laravel",
+                "laravel-basket",
+                "lenius"
+            ],
+            "time": "2018-09-09T20:44:35+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2647,6 +2744,187 @@
             "time": "2018-07-12T10:23:15+00:00"
         },
         {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.3-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2018-04-22T15:46:56+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-12-20T10:07:11+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.0",
             "source": {
@@ -2693,6 +2971,65 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "melihovv/laravel-shopping-cart",
+            "version": "5.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/melihovv/laravel-shopping-cart.git",
+                "reference": "e51c103ad9936909a3e152646d2bed5dc41fd01a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/melihovv/laravel-shopping-cart/zipball/e51c103ad9936909a3e152646d2bed5dc41fd01a",
+                "reference": "e51c103ad9936909a3e152646d2bed5dc41fd01a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/redis": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+                "phpmd/phpmd": "^2.6",
+                "phpunit/phpunit": "~6.0|~7.0",
+                "predis/predis": "^1.1",
+                "sebastian/phpcpd": "^3.0",
+                "squizlabs/php_codesniffer": "^2.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Melihovv\\ShoppingCart\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Melihovv\\ShoppingCart\\": "src/ShoppingCart"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Melihov",
+                    "email": "amelihovv@ya.ru"
+                }
+            ],
+            "description": "Shopping cart package for laravel",
+            "keywords": [
+                "cart",
+                "laravel",
+                "shopping cart"
+            ],
+            "time": "2018-09-20T20:36:32+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -2758,6 +3095,172 @@
                 "testing"
             ],
             "time": "2018-10-02T21:52:37+00:00"
+        },
+        {
+            "name": "moltin/cart",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moltin/cart.git",
+                "reference": "e9a1f1adfbbc50f8545ec691aec2c4f6a9cd425c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moltin/cart/zipball/e9a1f1adfbbc50f8545ec691aec2c4f6a9cd425c",
+                "reference": "e9a1f1adfbbc50f8545ec691aec2c4f6a9cd425c",
+                "shasum": ""
+            },
+            "require": {
+                "moltin/currency": "1.1.0",
+                "moltin/tax": "dev-master",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Moltin": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Moltin Ltd",
+                    "email": "support@molt.in"
+                }
+            ],
+            "description": "Shopping cart package",
+            "time": "2017-06-11T22:00:52+00:00"
+        },
+        {
+            "name": "moltin/currency",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moltin/currency.git",
+                "reference": "5c6892e0daa02d09453e1cd16297ae2f1397b79e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moltin/currency/zipball/5c6892e0daa02d09453e1cd16297ae2f1397b79e",
+                "reference": "5c6892e0daa02d09453e1cd16297ae2f1397b79e",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.2",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Moltin": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Moltin Ltd",
+                    "email": "support@molt.in",
+                    "homepage": "http://molt.in",
+                    "role": "Vendor"
+                }
+            ],
+            "description": "Currency conversion and formatting",
+            "time": "2017-03-18T14:46:16+00:00"
+        },
+        {
+            "name": "moltin/laravel-cart",
+            "version": "v5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moltin/laravel-cart.git",
+                "reference": "ed6240a8b13be3e3cc3aca1245978ad240ecf5fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moltin/laravel-cart/zipball/ed6240a8b13be3e3cc3aca1245978ad240ecf5fb",
+                "reference": "ed6240a8b13be3e3cc3aca1245978ad240ecf5fb",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.0",
+                "moltin/cart": "dev-master",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Moltin": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Moltin Ltd",
+                    "email": "support@molt.in"
+                }
+            ],
+            "description": "Shopping cart package",
+            "time": "2015-10-19T21:13:17+00:00"
+        },
+        {
+            "name": "moltin/tax",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moltin/tax.git",
+                "reference": "07de430eb0737045dae4c0b1afbd1e5e8d2e4cc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moltin/tax/zipball/07de430eb0737045dae4c0b1afbd1e5e8d2e4cc8",
+                "reference": "07de430eb0737045dae4c0b1afbd1e5e8d2e4cc8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Moltin": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Moltin Ltd",
+                    "email": "support@molt.in"
+                }
+            ],
+            "description": "Tax calculation",
+            "time": "2015-02-06T22:15:42+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3522,6 +4025,56 @@
                 "xunit"
             ],
             "time": "2018-10-05T04:05:24+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
