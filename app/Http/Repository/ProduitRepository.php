@@ -57,15 +57,15 @@ class ProduitRepository
     }
 
 
-    public function edit($produit,  Request $request)
+    public function edit(Request $request)
     {
+        $produit = $this->getById($request->input('id'));
         $produit->nom = $request->input('nom');
         $produit->description = $request->input('description');
         $produit->prix = $request->input('prix');
         $produit->points = $request->input('points');
-        $produit->categorie_id = $request->input('categorie_id');
-        $produit->type_produit_id = $request->input('type_produit_id');
-        $produit->image_produit_id = $request->input('image_produit_id');
+        $produit->categorie_id = $request->input('categorie');
+        $produit->type_produit_id = $request->input('type');
         $produit->update();
 
         $produit = $this->getById($produit->produit_id);

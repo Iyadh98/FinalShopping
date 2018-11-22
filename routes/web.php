@@ -53,12 +53,15 @@ Route::post('/admin/ajouter_produit','ProduitController@addPost');
 
 Route::get('/admin/lister_produit','ProduitController@getAllProducts');
 
-Route::get('/admin/edit_produit/{produitId}','ProduitController@addGet');
+Route::get('/admin/edit_produit/{produitId}','ProduitController@editGet');
+Route::post('/admin/edit_produit','ProduitController@editPost');
+
+Route::delete('/admin/delete_produit/{produitId}','ProduitController@delete');
 
 
 
 
-
+/*
 Route::get('/admin/modifier_produit',function(){
     return view('admin/modifprod');
 });
@@ -74,4 +77,9 @@ Route::get('/admin/supprimer_categorie',function(){
 Route::get('/admin/modifier_categorie',function(){
     return view('admin/modifiercat');
 });
+*/
+
 Route::post('/admin/ajouter_categorie','CategorieController@addPost');
+Route::get('/admin/lister_categorie','CategorieController@getAllCategories');
+Route::get('/admin/edit_categorie/{categorieId}','CategorieController@editGet');
+Route::post('/admin/edit_categorie','CategorieController@editPost');
