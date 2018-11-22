@@ -39,7 +39,7 @@
                             <th class="column-4 p-l-70">Quantity</th>
                             <th class="column-5">Total</th>
                         </tr>
-                        <form method="post" action="{{action('ProduitController@updateCart')}}">
+
                 @foreach(Basket::contents() as $produit)
 
                         <tr class="table-row">
@@ -66,7 +66,7 @@
                             <td class="column-5">{{$produit->price*$produit->quantity}}</td>
                         </tr>
 
-            @endforeach
+                 @endforeach
                     </table>
                 </div>
             </div>
@@ -91,7 +91,7 @@
 
                 </div>
             </div>
-            </form>
+
             <!-- Total -->
             <div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
                 <h5 class="m-text20 p-b-24">

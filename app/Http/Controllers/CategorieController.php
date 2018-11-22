@@ -22,6 +22,7 @@ class CategorieController extends Controller
     }
     public function addPost(Request $request)
     {
+        Log::info("Holaa");
         Log::info($request);
         $categorie = $this->categorieRepository->add($request);
         Log::info($categorie);

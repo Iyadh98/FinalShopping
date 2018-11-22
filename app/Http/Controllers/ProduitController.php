@@ -13,6 +13,7 @@ use App\Http\Repository\CategorieRepository;
 use App\Http\Repository\ProduitRepository;
 use App\Http\Repository\TypeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use App\Produit;
 use Lenius\Basket\Basket;
@@ -97,12 +98,12 @@ class ProduitController extends Controller
 
     }
     public function addCart($produit_id,$nom_produit,$prix_produit){
-        Log::info("Test0");
+        Log::info("TestWHAAAT");
         \Lenius\Basket\Facades\Basket::insert(array(
             'id'       => $produit_id,
             'name'     => $nom_produit,
             'price'    => $prix_produit,
-            'quantity' => 1,
+            'quantity' => Input::get('quant'),
             'tax'      => 0,
             'weight' => 0
         ));

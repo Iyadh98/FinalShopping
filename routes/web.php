@@ -59,6 +59,8 @@ Route::get('/admin/edit_produit/{produitId}','ProduitController@addGet');
 
 
 
+
+
 Route::get('/admin/modifier_produit',function(){
     return view('admin/modifprod');
 });
@@ -68,6 +70,7 @@ Route::get('/admin/supprimer_produit',function(){
 Route::get('/admin/ajouter_categorie',function(){
     return view('admin/ajoutcat');
 });
+Route::post('/admin/ajouter_categorie','CategorieController@addPost');
 Route::get('/admin/supprimer_categorie',function(){
     return view('admin/supprimercat');
 });
@@ -78,4 +81,9 @@ Route::get('/produits/{id}/{nom}/{prix}', 'ProduitController@addCart');
 Route::get('/produits/supp','ProduitController@destroyCart');
 Route::get('/panier/aa','ProduitController@updateCart');
 
+
+Route::get('/checkout','CommandeController@addGet');
+Route::post('/checkout','CommandeController@addPost');
+
+Route::get('/profil','CommandeController@getAll');
 
