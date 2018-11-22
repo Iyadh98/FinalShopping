@@ -38,8 +38,9 @@ class CategorieRepository
         $categorie->delete();
     }
 
-    public function edit($categorie,  Request $request)
+    public function edit(Request $request)
     {
+        $categorie = $this->getById($request->input('id'));
         $categorie->nom = $request->input('nom');
 
         $categorie->update();

@@ -29,4 +29,34 @@ class CategorieController extends Controller
         return redirect('admin');
     }
 
+    public function getAllCategories()
+    {
+        $categories = $this->categorieRepository->getAll();
+        Log::info($categories);
+        return view('admin/listecat')->with('categories',$categories);
+    }
+
+
+    public function editGet($categorieId)
+    {
+        if (!$categorie=$this->categorieRepository->getById($categorieId)) {
+            return response()->json(['error' => 'categorie not found'], 404);
+        }
+        return view('admin/editcat')->with('categorie',$categorie);
+}
+
+    public function editPost(Request $request)
+    {
+        $categorie = $this->categorieRepository->edit($request);
+        Log::info($categorie);
+        return redirect('admin');
+    }
+
+    public function delete($categorieId){
+        if (!$categorie=$this->categorieRepository->getById($categorieId)) {
+            return response()->json(['error' => 'categorie not found'], 404);
+        }
+        $this->categorieRepository->delete($categorie);
+        return redirect('admin');
+    }
 }

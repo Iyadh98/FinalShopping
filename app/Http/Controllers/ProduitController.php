@@ -15,7 +15,6 @@ use App\Http\Repository\TypeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
-use App\Produit;
 use Lenius\Basket\Basket;
 class ProduitController extends Controller
 {
@@ -71,29 +70,44 @@ class ProduitController extends Controller
     }
 
     public function delete($produitId)
-    {
+    {            Log::info("delete produit");
+
         if (!$produit = $this->produitRepository->getById($produitId)) {
-            return response()->json(['error' => 'produit not found'], 404);
+            return redirect('/admin/liste-produits')->with('error', 'produit indisponible');
         }
+        Log::info($produit);
         $this->produitRepository->delete($produit);
     }
 
-    public function edit($produitId, Request $request)
+
+    public function editGet($produitId)
     {
+        $categories=$this->categorieRepository->getAll();
+        $types=$this->typeRepository->getAll();
+
         if (!$produit = $this->produitRepository->getById($produitId)) {
             return response()->json(['error' => 'produit not found'], 404);
         }
-        if (!$produit = $this->produitRepository->edit($produit, $request))
-            return response()->json(['error' => 'can\'t edit'], 401);
-        return ($produit);
+
+        return view('admin/editprod')->with('produit',$produit)->with('categories',$categories)->with('types',$types);
+    }
+
+    public function editPost(Request $request)
+    {
+        $produit = $this->produitRepository->edit($request);
+        Log::info($produit);
+        return redirect('admin');
     }
 
     public function destroy($produit_id)
     {
-        $produit = Produit::find($produit_id);
 
-        $produit->delete();
-        return redirect('/admin/liste_produit')->with('success', 'Post Removed');
+        if (!$produit = $this->produitRepository->getById($produit_id)) {
+            return response()->json(['error' => 'product not found'], 404);
+        }
+        $this->produitRepository->delete($produit);
+
+        return redirect('/admin/liste_produit')->with('success', 'Produit supprimé');
 
 
     }
