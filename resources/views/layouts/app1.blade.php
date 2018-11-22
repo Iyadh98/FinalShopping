@@ -42,18 +42,16 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Produits</a>
                     <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_produit')}}">Lister produits</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_produit')}}">Ajouter produit</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/modifier_produit')}}">Modifier produits</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/supprimer_produit')}}">Supprimer produits</a></li>
 
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
                     <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_categorie')}}">Lister categories</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_categorie')}}">Ajouter categorie</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/modifier_categorie')}}">Modifier categorie</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/supprimer_categorie')}}">Supprimer categorie</a></li>
 
                     </ul>
                 </li>

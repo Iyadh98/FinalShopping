@@ -1,11 +1,11 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
+use Freshbitsweb\LaravelCartManager\Traits\Cartable;
 
 class Produit extends Model
-{
+{   use Cartable;
     protected $table = 'Produit';
     protected $primaryKey = 'produit_id';
     public $timestamps = true;

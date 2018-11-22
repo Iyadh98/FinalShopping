@@ -80,7 +80,7 @@
                                 <div class="col col-md-3"><label for="file-input" class=" form-control-label">télécharger la photo du produit</label></div>
                                 <div class="col-12 col-md-9"><input type="file" id="file-input" name="image" class="form-control-file" accept="image/*" onchange="loadFile(event)">
                                     <small class="help-block form-text">Veuillez redimensionner à 720x960</small>
-                                    <img id="output" style="width:250px; height:350px;" src="{{$produit->image}}"/>
+                                    <img id="output" style="width:250px; height:350px;" src="{{asset('images/produits/'.$produit->image)}}"/>
                                 </div>
                             </div>
 
@@ -105,6 +105,7 @@
     <script src="{{URL::asset('assets/js/plugins.js')}}"></script>
     <script src="{{URL::asset('assets/js/main.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
     <script type="text/javascript">
         var loadFile = function(event) {
             var reader = new FileReader();

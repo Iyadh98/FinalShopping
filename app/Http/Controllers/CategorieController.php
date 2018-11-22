@@ -35,12 +35,12 @@ class CategorieController extends Controller
         return view('admin/listecat')->with('categories',$categories);
     }
 
+
     public function editGet($categorieId)
     {
         if (!$categorie=$this->categorieRepository->getById($categorieId)) {
             return response()->json(['error' => 'categorie not found'], 404);
         }
-
         return view('admin/editcat')->with('categorie',$categorie);
 }
 
@@ -48,6 +48,14 @@ class CategorieController extends Controller
     {
         $categorie = $this->categorieRepository->edit($request);
         Log::info($categorie);
+        return redirect('admin');
+    }
+
+    public function delete($categorieId){
+        if (!$categorie=$this->categorieRepository->getById($categorieId)) {
+            return response()->json(['error' => 'categorie not found'], 404);
+        }
+        $this->categorieRepository->delete($categorie);
         return redirect('admin');
     }
 }

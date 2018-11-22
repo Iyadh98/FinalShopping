@@ -49,15 +49,12 @@
                         <td>{{$produit->categorie->nom}}</td>
                         <td>{{$produit->type->nom}}</td>
                         <td>
-                            <button href="localhost:8000/admin/edit_produit/{{$produit->produit_id}}"
+                            <button
                                     class="btn btn-success btn-sm">
                                 <i class="fa fa-dot-circle-o"></i> Modifier
                             </button>
 
-                            <a class="btn btn-danger waves-effect waves-light remove-record"
-                               data-url="{!! URL::route('post-delete', $produit->produit_id) !!}">
-                                Delete
-                            </a>
+
                         </td>
 
                     </tr>

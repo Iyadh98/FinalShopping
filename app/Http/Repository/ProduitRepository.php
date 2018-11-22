@@ -36,6 +36,30 @@ class ProduitRepository
         return $produit;
     }
 
+    public function edit(Request $request)
+    {
+        $produit = $this->getById($request->input('id'));
+        $produit->nom = $request->input('nom');
+        $produit->description = $request->input('description');
+        $produit->prix = $request->input('prix');
+        $produit->points = $request->input('points');
+        $produit->categorie_id = $request->input('categorie');
+        $produit->type_produit_id = $request->input('type');
+        if ($request->file('image')){
+            $imageName = $produit->nom .rand(). '.' .
+                $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(
+                base_path() . '/public/images/produits', $imageName
+            );
+            $produit->image=$imageName;
+        }
+
+        $produit->update();
+
+        $produit = $this->getById($produit->produit_id);
+        return $produit;
+    }
+
     public function getAll()
     {
         return Produit::all();
@@ -57,20 +81,7 @@ class ProduitRepository
     }
 
 
-    public function edit(Request $request)
-    {
-        $produit = $this->getById($request->input('id'));
-        $produit->nom = $request->input('nom');
-        $produit->description = $request->input('description');
-        $produit->prix = $request->input('prix');
-        $produit->points = $request->input('points');
-        $produit->categorie_id = $request->input('categorie');
-        $produit->type_produit_id = $request->input('type');
-        $produit->update();
 
-        $produit = $this->getById($produit->produit_id);
-        return $produit;
-    }
 
     public function getProduitsByCategorie($categorieId){
         return null;
