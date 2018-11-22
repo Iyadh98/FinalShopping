@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title')
     Profile
 @endsection
@@ -119,12 +119,26 @@
                 IF ETAT==3 (livree)   tr class="info"
                 IF ETAT==0 (annulee)  tr class="danger"
         -->
-        <tr class="success">
-            <td>Default</td>
-            <td>Defaultson</td>
-            <td>def@somemail.com</td>
-            <td>Etat</td>
+        @if(count($commande) > 0)
+            @foreach($commande as $commandes)
+                @if(Auth::user()->id==$commandes->users_id)
+                    @if($commandes->etat==1)
+            <tr class="warning">
+                    @elseif($commandes->etat==2)
+            <tr class="success">
+                    @elseif($commandes->etat==3)
+            <tr class="info">
+                    @elseif($commandes->etat==0)
+            <tr class="danger">
+                    @endif
+            <td>$commandes->commande_id</td>
+            <td>$commandes->date</td>
+            <td>$commandes->montant</td>
+            <td>$commandes->etat</td>
         </tr>
+            @endif
+            @endforeach
+            @endif
         </tbody>
     </table>
 @endsection

@@ -18,9 +18,10 @@ class CommandeRepository
     public function add(Request $request)
 {
     $commande = new Commande();
-    $commande->date = $request->input('date');
+    $commande->date = "23";
     $commande->montant = $request->input('montant');
-    $commande->client_id = $request->input('client_id');
+    $commande->adresse=$request->input('adresse');
+    $commande->users_id = $request->input('users_id');
     $commande->etat = 1;
 
     $commande->save();

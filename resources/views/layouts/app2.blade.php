@@ -34,7 +34,7 @@
 
         <div class="wrap_header">
             <!-- Logo -->
-            <a href="index.html" class="logo">
+            <a href="{{ url('/index') }}" class="logo">
                 <img src="images/icons/logo21.png" alt="IMG-LOGO">
             </a>
 
@@ -85,7 +85,7 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+{{Auth::user()->prenom}} {{ Auth::user()->nom }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -150,7 +150,13 @@
 
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
-                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                <a @auth
+                                   href="{{url('/checkout')}}"
+                                   @endauth
+                                   @guest
+                                   href="{{url('/login')}}"
+                                   @endguest
+                                   class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                     Check Out
                                 </a>
                             </div>
@@ -164,7 +170,7 @@
     <!-- Header Mobile -->
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
-        <a href="index.html" class="logo-mobile">
+        <a href="{{ url('/index') }}" class="logo-mobile">
             <img src="images/icons/logo21.png" alt="IMG-LOGO">
         </a>
 
@@ -270,7 +276,7 @@
                         <div class="header-cart-buttons">
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
-                                <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                <a href="{{ url('/panier') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                     View Cart
                                 </a>
                             </div>

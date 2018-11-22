@@ -14,7 +14,8 @@ class Commande extends Model
         'date',
         'montant',
         'etat',
-        'user_id'
+        'adresse',
+        'users_id'
     ];
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
@@ -24,10 +25,7 @@ class Commande extends Model
         return $this->hasMany('App\Produit_Commande');
     }
 
-    public function user()
-    {
-        return $this->hasOne('App\User','id','user_id');
-    }
+
 
 
 

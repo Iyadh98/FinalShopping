@@ -68,4 +68,8 @@ class User extends Authenticatable
     public function isAdministrator() {
         return $this->roles()->where('nom', 'admin')->exists();
     }
+    public function commande()
+    {
+        return $this->hasMany('App\Commande');
+    }
 }
