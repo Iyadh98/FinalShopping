@@ -44,9 +44,7 @@ Route::get('/admin',function(){
     return view('admin/index');
 });
 Route::get('/admin/clients','UserController@getAll');
-Route::get('/admin/commandes',function(){
-    return view('admin/datacomm');
-});
+
 
 Route::get('/admin/ajouter_produit','ProduitController@addGet');
 Route::post('/admin/ajouter_produit','ProduitController@addPost');
@@ -92,4 +90,6 @@ Route::delete('/admin/delete_categorie/{categorieId}','CategorieController@delet
 Route::get('/produits/{id}/{nom}/{prix}', 'ProduitController@addCart');
 Route::get('/produits/supp','ProduitController@destroyCart');
 Route::get('/panier/aa','ProduitController@updateCart');
+
+
 

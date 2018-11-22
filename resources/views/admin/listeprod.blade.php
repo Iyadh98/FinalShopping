@@ -49,12 +49,11 @@
                         <td>{{$produit->categorie->nom}}</td>
                         <td>{{$produit->type->nom}}</td>
                         <td>
-                            <button
-                                    class="btn btn-success btn-sm">
+                            <a href="{{action('ProduitController@editGet', ['produitId'=>$produit->produit_id])}}">
+                            <button class="btn btn-success btn-sm">
                                 <i class="fa fa-dot-circle-o"></i> Modifier
                             </button>
-
-
+                            </a>
                         </td>
 
                     </tr>

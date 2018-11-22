@@ -37,9 +37,11 @@
                                 <tr>
                                     <td width="65%">{{$categorie->nom}}</td>
                                     <td>
-                                        <button href="admin/edit_categorie/{{$categorie->categorie_id}}" class="btn btn-success btn-sm">
-                                            <i class="fa fa-dot-circle-o"></i> Modifier
-                                        </button>
+                                        <a href="{{action('CategorieController@editGet', ['produitId'=>$categorie->categorie_id])}}">
+                                            <button class="btn btn-success btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Modifier
+                                            </button>
+                                        </a>
                                         <button  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal($categorie->categorie_id)">
                                             <i class="fa fa-ban"></i> Supprimer
                                         </button>
