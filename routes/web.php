@@ -44,9 +44,7 @@ Route::get('/admin',function(){
     return view('admin/index');
 });
 Route::get('/admin/clients','UserController@getAll');
-Route::get('/admin/commandes',function(){
-    return view('admin/datacomm');
-});
+
 
 Route::get('/admin/ajouter_produit','ProduitController@addGet');
 Route::post('/admin/ajouter_produit','ProduitController@addPost');
@@ -102,6 +100,7 @@ Route::post('/checkout','CommandeController@addPost');
 Route::post('/profil/{id}','UserController@edit');
 
 Route::get('/profil','CommandeController@getAll');
+
 
 Route::get ( '/search', 'ProduitController@search');
 
