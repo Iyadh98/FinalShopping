@@ -94,12 +94,17 @@ Route::delete('/admin/delete_categorie/{categorieId}','CategorieController@delet
 
 Route::get('/produits/{id}/{nom}/{prix}', 'ProduitController@addCart');
 Route::get('/produits/supp','ProduitController@destroyCart');
-Route::get('/panier/aa','ProduitController@updateCart');
+Route::post('/panier','ProduitController@updateCart');
 
 
 Route::get('/checkout','CommandeController@addGet');
 Route::post('/checkout','CommandeController@addPost');
+Route::post('/profil/{id}','UserController@edit');
 
 Route::get('/profil','CommandeController@getAll');
+
+Route::get ( '/search', 'ProduitController@search');
+
+
 
 

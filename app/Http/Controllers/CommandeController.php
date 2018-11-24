@@ -36,7 +36,7 @@ class CommandeController
     public function getAll()
     {
         $commande = $this->commandeRepository->getAll();
-        return view('/profil')->with('commande',$commande);
+        return view('profile')->with('commande',$commande);
     }
 
 }

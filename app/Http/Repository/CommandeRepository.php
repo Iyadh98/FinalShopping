@@ -30,8 +30,7 @@ class CommandeRepository
 
     public function getAll()
     {
-        return Commande::with(['produitCommande'])
-            ->get();
+        return Commande::all();
     }
 
     public function getById($commandeId)

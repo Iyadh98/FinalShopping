@@ -173,7 +173,7 @@
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
-                    <input type="submit" value="Continue to checkout" class="btn">
+                    <a href="{{action('ProduitController@destroyCart')}}"><input type="submit" value="Continue to checkout" class="btn"></a>
                 </form>
             </div>
         </div>
