@@ -23,6 +23,7 @@ class CommandeController
 
     public function addPost(Request $request)
     {
+        Log::info("request checkout");
         Log::info($request);
         $commande = $this->commandeRepository->add($request);
         Log::info($commande);
@@ -37,6 +38,13 @@ class CommandeController
     {
         $commande = $this->commandeRepository->getAll();
         return view('/profil')->with('commande',$commande);
+    }
+
+    public function getAllCommandesWithUsers()
+    {
+        $commandes = $this->commandeRepository->getAllWithUsers();
+        Log::info($commandes);
+        return view('/admin/listecom')->with('commandes', $commandes);
     }
 
 }

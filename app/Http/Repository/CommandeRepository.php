@@ -10,6 +10,7 @@ namespace App\Http\Repository;
 
 
 use App\Commande;
+use App\Produit_Commande;
 use Illuminate\Http\Request;
 
 class CommandeRepository
@@ -18,19 +19,34 @@ class CommandeRepository
     public function add(Request $request)
 {
     $commande = new Commande();
-    $commande->date = "23";
+    $commande->date = $request->input('date');
     $commande->montant = $request->input('montant');
     $commande->adresse=$request->input('adresse');
     $commande->users_id = $request->input('users_id');
     $commande->etat = 1;
 
     $commande->save();
+
+    $produits = $request->input('produits');
+    foreach($produits as $prodQuant){
+        $produitCommande = new Produit_Commande();
+        $produitCommande->commande_id = $commande->commande_id;
+        $produitCommande->produit_id = $prodQuant[0];
+        $produitCommande->quantite = $prodQuant[1];
+        $produitCommande->save();
+    }
+
     return $commande;
 }
 
     public function getAll()
     {
-        return Commande::with(['produitCommande'])
+        return Commande::all();
+    }
+
+    public function getAllWithUsers()
+    {
+        return Commande::with(['user'])
             ->get();
     }
 

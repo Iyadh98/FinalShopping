@@ -98,5 +98,8 @@ Route::get('/panier/aa','ProduitController@updateCart');
 Route::get('/checkout','CommandeController@addGet');
 Route::post('/checkout','CommandeController@addPost');
 
+/*
 Route::get('/profil','CommandeController@getAll');
+*/
 
+Route::get('/admin/lister_commandes','CommandeController@getAllCommandesWithUsers');

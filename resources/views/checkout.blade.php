@@ -135,19 +135,48 @@
     <div class="row">
         <div class="col-75">
             <div class="container">
+                <div>
+                    <h3>Vos informations personnelles</h3>
+                    <table>
+                        <tr>
+                            <td>Nom et prénom</td>
+                            <td>{{Auth::user()->prenom}} {{Auth::user()->nom}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{Auth::user()->email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Numéro de téléphone</td>
+                            <td>{{Auth::user()->telephone}}</td>
+                        </tr>
+                        <tr>
+                            <td>Adresse</td>
+                            <input type="text" name="adresse" value="{{Auth::user()->adresse}}">
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <h3>Votre commande</h3>
+                    <table>
+                        @if (
+                    </table>
+                </div>
+
                 <form method="post" action="{{ action('CommandeController@addPost') }}">
                     @csrf
                     <div class="row">
                         <div class="col-50">
                             <h3>Billing Address</h3>
-                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <label for="fname"><i class="fa fa-user"></i> Nom et prénom</label>
                             <input type="text" id="fname" name="firstname" value="{{Auth::user()->prenom}} {{Auth::user()->nom}}" readonly>
-                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <label for="email"><i class="fa fa-envelope" readonly></i> Email</label>
                             <input type="text" id="email" name="email" value="{{Auth::user()->email}}">
-                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label>
                             <input type="text" id="adr" name="adresse" value="{{Auth::user()->adresse}}">
-                            <label for="city"><i class="fa fa-institution"></i> City</label>
-                            <input type="text" id="city" name="city" placeholder="New York">
+                            <label for="city"><i class="fa fa-institution"></i> Ville</label>
+                            <input type="text" id="city" name="city" >
                             <label for="montant"><i class="fa fa-institution"></i>Montant</label>
                             <input type="text" id="cit" name="montant" value="{{Basket::total(false)}}" readonly>
 
@@ -165,6 +194,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <input type="hidden" name="panier" value="{{Basket::contents()}}" >
 
 
 

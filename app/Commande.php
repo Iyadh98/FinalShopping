@@ -25,6 +25,11 @@ class Commande extends Model
         return $this->hasMany('App\Produit_Commande');
     }
 
+    public function user()
+    {
+        return $this->hasOne('App\User','id','users_id');
+    }
+
 
 
 
