@@ -1,8 +1,9 @@
-@extends('layouts.app2')
+@extends('layouts.app4')
 @section('title')
     Profile
 @endsection
 @section('css_content')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{URL::asset('images/icons/favicon.png')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/themify/themify-icons.css')}}">
@@ -91,57 +92,209 @@
         td{
             font-size: 2em !important;
         }
+        input{
+
+        }
     </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @endsection
 
 
 
 
 @section('content')
-<h1 align="center">Bienvenue {{Auth::user()->prenom}}! </h1>
-    <div align="center">
-        <p align="center" id="point" >Votre score est: {{Auth::user()->score}}</p>
-        <h2>Commandes effectuées:</h2>
-    </div><tr class="table-active">...</tr>
 
-    <table class="table" style="width:100% !important;">
-        <thead>
-        <tr>
-            <th>Commande ID</th>
-            <th>Date commande</th>
-            <th>Montant</th>
-            <th>Etat</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!--    IF ETAT==1 (en cours) tr class="warning"
-                IF ETAT==2 (prete)    tr class="success"
-                IF ETAT==3 (livree)   tr class="info"
-                IF ETAT==0 (annulee)  tr class="danger"
-        -->
-        @if(count($commande) > 0)
-            @foreach($commande as $commandes)
-                @if(Auth::user()->id==$commandes->users_id)
-                    @if($commandes->etat==1)
-            <tr class="warning">
-                    @elseif($commandes->etat==2)
-            <tr class="success">
-                    @elseif($commandes->etat==3)
-            <tr class="info">
-                    @elseif($commandes->etat==0)
-            <tr class="danger">
-                    @endif
-            <td>$commandes->commande_id</td>
-            <td>$commandes->date</td>
-            <td>$commandes->montant</td>
-            <td>$commandes->etat</td>
-        </tr>
-            @endif
-            @endforeach
-            @endif
-        </tbody>
-    </table>
-@endsection
+
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="list-group ">
+                <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
+                <a id="profil" href="#" class="list-group-item list-group-item-action">Mon profil</a>
+                <a  id="modifier" href="#" class="list-group-item list-group-item-action">Modifier profil</a>
+                <a id="commande" href="#" class="list-group-item list-group-item-action">Commandes effectuées</a>
+
+
+            </div>
+        </div>
+        <div class="col-md-9" id="iModifier">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Modifier profil</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="{{ action('UserController@edit',['id'=>Auth::user()->id])}}" method="post">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="nom" class="col-4 col-form-label">Nom</label>
+                                    <div class="col-8">
+                                        <input id="name" name="nom"  class="form-control here" type="text" value="{{Auth::user()->nom}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="prenom" class="col-4 col-form-label">Prenom</label>
+                                    <div class="col-8">
+                                        <input id="lastname" name="prenom" class="form-control here" type="text" value="{{Auth::user()->prenom}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Email</label>
+                                    <div class="col-8">
+                                        <input id="email" name="email"  class="form-control here" type="text" value="{{Auth::user()->email}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="telephone" class="col-4 col-form-label">Telephone</label>
+                                    <div class="col-8">
+                                        <input id="lastname" name="telephone" class="form-control here" type="text" value="{{Auth::user()->telephone}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="adresse" class="col-4 col-form-label">Adresse</label>
+                                    <div class="col-8">
+                                        <input id="lastna" name="adresse" class="form-control here" type="text" value="{{Auth::user()->adresse}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="code_postal" class="col-4 col-form-label">Code postal</label>
+                                    <div class="col-8">
+                                        <input id="last" name="code_postal" class="form-control here" type="text" value="{{Auth::user()->code_postal}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+                    <div class="col-md-9" id="iProfil">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Mon profil</h4>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+
+
+
+                                        <h1 align="center">Bienvenue {{Auth::user()->prenom}}! </h1>
+                                        <div align="center">
+                                            <p align="center" id="point" >Votre score est: {{Auth::user()->score}}</p>
+                                            <h2>Commandes effectuées:</h2>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                                        <div class="col-md-9" id="iCommande">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h4>Commandes effectuées</h4>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+
+                                                                <h2>Commandes effectuées:</h2>
+                                                            </div><tr class="table-active">...</tr>
+
+                                                            <table class="table" style="width:100% !important;">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Commande ID</th>
+                                                                    <th>Date commande</th>
+                                                                    <th>Montant</th>
+                                                                    <th>Etat</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <!--    IF ETAT==1 (en cours) tr class="warning"
+                                                                        IF ETAT==2 (prete)    tr class="success"
+                                                                        IF ETAT==3 (livree)   tr class="info"
+                                                                        IF ETAT==0 (annulee)  tr class="danger"
+                                                                -->
+                                                                @if(count($commande)>0)
+                                                                    @foreach($commande as $commandes)
+                                                                        @if($commandes->users_id==Auth::user()->id)
+                                                                            <tr class="warning">
+                                                                                <td>{{$commandes->commande_id}}</td>
+                                                                                <td>{{$commandes->date}}</td>
+                                                                                <td>{{$commandes->montant}}</td>
+                                                                                <td>{{$commandes->etat}}</td>
+                                                                            </tr>
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endif
+
+
+                                                                </tbody>
+                                                            </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                @endsection
 
 
 
@@ -180,4 +333,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
     <script src="{{URL::asset('js/main.js')}}"></script>
+
+        <script>
+            $("#iCommande").hide();
+            $("#iModifier").hide();
+        $("#profil").click(function(){
+            $("#iProfil").show();
+            $("#iCommande").hide();
+            $("#iModifier").hide();
+        });
+        $("#commande").click(function(){
+            $("#iProfil").hide();
+            $("#iCommande").show();
+            $("#iModifier").hide();
+        });
+        $("#modifier").click(function(){
+            $("#iProfil").hide();
+            $("#iCommande").hide();
+            $("#iModifier").show();
+        })
+        </script>
 @endsection

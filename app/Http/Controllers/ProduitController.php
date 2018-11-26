@@ -13,6 +13,7 @@ use App\Http\Repository\CategorieRepository;
 use App\Http\Repository\ProduitRepository;
 use App\Http\Repository\TypeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Lenius\Basket\Basket;
@@ -123,14 +124,31 @@ class ProduitController extends Controller
         ));
     return redirect('/produits');
     }
+
     public function destroyCart(){
         \Lenius\Basket\Facades\Basket::destroy();
         return redirect('/produits');
     }
+
     public function updateCart(Request $request){
-        foreach (\Lenius\Basket\Facades\Basket::contents() as $item) {
-            $item->quantity = $request->input('numprod');
-        }
+            $i=0;
+            $prod=Input::get('numprod');
+            foreach(\Lenius\Basket\Facades\Basket::contents() as $item){
+                $item->quantity = $prod[$i];
+                $i=$i+1;
+            }
+
         return redirect('/panier');
     }
+
+    public function search(){
+        $q = Input::get ( 'search' );
+        $categories = $this->categorieRepository->getAll();
+        $user = \App\Produit::where ( 'nom', 'LIKE', '%' . $q . '%' )->get ();
+        if (count ( $user ) > 0)
+            return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
+        else
+            return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('categories', $categories)->withDetails ( $user );
+    }
+
 }

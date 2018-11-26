@@ -16,56 +16,57 @@ use Illuminate\Http\Request;
 class CommandeRepository
 {
 
-    public function add(Request $request)
+    public function add($date,$montant, $adresse, $userId, $produits)
 {
     $commande = new Commande();
-    $commande->date = $request->input('date');
-    $commande->montant = $request->input('montant');
-    $commande->adresse=$request->input('adresse');
-    $commande->users_id = $request->input('users_id');
+    $commande->date = $date;
+    $commande->montant = $montant;
+    $commande->adresse= $adresse;
+    $commande->users_id = $userId;
     $commande->etat = 1;
 
     $commande->save();
 
-    $produits = $request->input('produits');
-    foreach($produits as $prodQuant){
-        $produitCommande = new Produit_Commande();
-        $produitCommande->commande_id = $commande->commande_id;
-        $produitCommande->produit_id = $prodQuant[0];
-        $produitCommande->quantite = $prodQuant[1];
-        $produitCommande->save();
+        foreach($produits as $produit){
+            $produitCommande = new Produit_Commande();
+            $produitCommande->commande_id = $commande->commande_id;
+            $produitCommande->produit_id = $produit->id;
+            $produitCommande->quantite = $produit->quantity;
+            $produitCommande->save();
+
+        }
+
+        return $commande;
     }
 
-    return $commande;
-}
+        public function getAll()
+        {
+            return Commande::all();
 
-    public function getAll()
-    {
-        return Commande::all();
-    }
+        }
 
-    public function getAllWithUsers()
-    {
-        return Commande::with(['user'])
-            ->get();
-    }
+        public function getAllWithUsers()
+        {
+            return Commande::with(['user'])
+                ->get();
+        }
 
-    public function getById($commandeId)
-    {
-        return Commande::find($commandeId);
-    }
+        public function getById($commandeId)
+        {
+            return Commande::find($commandeId);
+        }
 
-    public function delete($commande){
-        $commande->delete();
-    }
+        public function delete($commande){
+            $commande->delete();
+        }
 
-/*
- * etat enCours: 1;
- * etat Prete: 2;
- * etat Livree: 3
- * etat Annulee: 0
- *
- */
+    /*
+     * etat enCours: 1;
+     * etat Prete: 2;
+     * etat Livree: 3
+     * etat Annulee: 0
+     *
+     */
 
     public function changerEtatEnCours($commande)
     {

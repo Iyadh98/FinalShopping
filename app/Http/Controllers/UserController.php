@@ -57,6 +57,6 @@ class UserController extends Controller
         }
         if (!$user = $this->userRepository->edit($user, $request))
             return response()->json(['error' => 'can\'t edit'], 401);
-        return ($user);
+        return redirect('/profil');
     }
 }
