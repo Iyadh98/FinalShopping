@@ -104,8 +104,11 @@ Route::get('/profil','CommandeController@getAll');
 */
 
 
-Route::get('/admin/lister_commandes','CommandeController@getAllCommandesWithUsers');
-
+Route::get('/admin/lister_commandes','CommandeController@getCommandesEncoursPreteWithUsers');
+Route::get('/admin/lister_commandes_annulees','CommandeController@getCommandesAnnuleesWithUsers');
+Route::get('/admin/lister_commandes_livrees','CommandeController@getCommandesLivreesWithUsers');
+Route::get('/admin/changerEtatPrete/{commandeId}','CommandeController@changerEtatPrete');
+Route::get('/admin/changerEtatLivree/{commandeId}','CommandeController@changerEtatLivree');
 
 Route::get ( '/search', 'ProduitController@search');
 

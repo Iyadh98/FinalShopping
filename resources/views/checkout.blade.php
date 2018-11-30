@@ -153,6 +153,10 @@
                             <td><label for="adresse"><i class="fa fa-address-card-o"></i> Adresse</label></td>
                             <td><input type="text" name="adresse" value="{{Auth::user()->adresse}}"></td>
                         </tr>
+                        <tr>
+                            <td><label for="codePostal"><i class="fa fa-address-card-o"></i> Code postal</label></td>
+                            <td><input type="text" name="codePostal" value="{{Auth::user()->code_postal}}"></td>
+                        </tr>
                     </table>
             </div>
 

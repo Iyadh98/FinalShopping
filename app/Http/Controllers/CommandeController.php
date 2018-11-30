@@ -32,6 +32,7 @@ class CommandeController
             date("Y-m-d"),
             Basket::total(false),
             $request->input('adresse'),
+            $request->input('codePostal'),
             Auth::user()->id,
             Basket::contents());
         Log::info("basket1");
@@ -61,4 +62,40 @@ class CommandeController
         return view('/admin/listecom')->with('commandes', $commandes);
     }
 
+    public function getCommandesEncoursPreteWithUsers()
+    {
+        $commandes = $this->commandeRepository->getCommandesEncoursPreteWithUsers();
+        Log::info($commandes);
+        return view('/admin/listecom')->with('commandes', $commandes);
+    }
+
+    public function getCommandesAnnuleesWithUsers()
+    {
+        $commandes = $this->commandeRepository->getCommandesAnnuleesWithUsers();
+        Log::info($commandes);
+        return view('/admin/listecomAnn')->with('commandes', $commandes);
+    }
+
+    public function getCommandesLivreesWithUsers()
+    {
+        $commandes = $this->commandeRepository->getCommandesLivreesWithUsers();
+        Log::info($commandes);
+        return view('/admin/listecomLiv')->with('commandes', $commandes);
+    }
+
+    public function changerEtatPrete($commandeId)
+    {
+        if($commande = $this->commandeRepository->getById($commandeId)){
+            $this->commandeRepository->changerEtatPrete($commande);
+        }
+        return redirect('/admin/lister_commandes');
+    }
+
+    public function changerEtatLivree($commandeId)
+    {
+        if($commande = $this->commandeRepository->getById($commandeId)){
+            $this->commandeRepository->changerEtatLivree($commande);
+        }
+        return redirect('/admin/lister_commandes');
+    }
 }

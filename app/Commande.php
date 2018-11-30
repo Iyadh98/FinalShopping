@@ -15,6 +15,7 @@ class Commande extends Model
         'montant',
         'etat',
         'adresse',
+        'code_postal',
         'users_id'
     ];
 
@@ -22,7 +23,7 @@ class Commande extends Model
 
     public function produitCommande()
     {
-        return $this->hasMany('App\Produit_Commande');
+        return $this->hasMany('App\Produit_Commande','produit_commande_id');
     }
 
     public function user()

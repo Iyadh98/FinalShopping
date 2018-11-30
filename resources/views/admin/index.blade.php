@@ -1,8 +1,12 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +41,8 @@
     <nav class="navbar navbar-expand-sm navbar-default">
 
         <div class="navbar-header">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="#"><img src="images/logo22.png" alt="Logo" style="margin-right:50px;"></a>
@@ -54,26 +59,39 @@
                     <a href="{{url('/admin/clients')}}" class="dropdown-toggle"> <i class="menu-icon fa fa-laptop"></i>Clients</a>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="{{url('/admin/lister_commandes')}}" class="dropdown-toggle" > <i class="menu-icon fa fa-table"></i>Commandes</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Commandes</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_commandes')}}">Lister commandes</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_commandes_livrees')}}">Lister commandes livrées</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_commandes_annulees')}}">Lister commandes annulées</a></li>
+                    </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Produits</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Produits</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_produit')}}">Lister produits</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_produit')}}">Ajouter produit</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_produit')}}">Lister
+                                produits</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_produit')}}">Ajouter
+                                produit</a></li>
 
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_categorie')}}">Lister categories</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_categorie')}}">Ajouter categorie</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_categorie')}}">Lister
+                                categories</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_categorie')}}">Ajouter
+                                categorie</a></li>
 
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
                         <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
@@ -81,7 +99,8 @@
                 </li>
                 <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
                         <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
@@ -110,13 +129,15 @@
                     <button class="search-trigger"><i class="fa fa-search"></i></button>
                     <div class="form-inline">
                         <form class="search-form">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..."
+                                   aria-label="Search">
                             <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                         </form>
                     </div>
 
                     <div class="dropdown for-notification">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell"></i>
                             <span class="count bg-danger">5</span>
                         </button>
@@ -187,14 +208,16 @@
             <div class="col-sm-5">
 
                 <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
                         <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                     </a>
 
                     <div class="user-menu dropdown-menu">
                         <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span
+                                class="count">13</span></a>
 
                         <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
@@ -203,10 +226,11 @@
                 </div>
 
                 <div class="language-select dropdown" id="language-select">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true"
+                       aria-expanded="true">
                         <i class="flag-icon flag-icon-us"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="language" >
+                    <div class="dropdown-menu" aria-labelledby="language">
                         <div class="dropdown-item">
                             <span class="flag-icon flag-icon-fr"></span>
                         </div>
@@ -251,7 +275,8 @@
 
         <div class="col-sm-12">
             <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
+                <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert
+                message.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -269,7 +294,8 @@
 
                     <div class="media">
                         <a href="#">
-                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
+                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt=""
+                                 src="images/admin.jpg">
                         </a>
                         <div class="media-body">
                             <h2 class="text-white display-6">Admin Name</h2>

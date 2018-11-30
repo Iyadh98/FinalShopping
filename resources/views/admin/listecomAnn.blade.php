@@ -21,7 +21,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Liste des commandes</strong>
+                <strong class="card-title">Liste des commandes annulées</strong>
             </div>
             <div class="card-body">
 
@@ -32,10 +32,6 @@
                         <th>Client</th>
                         <th>Montant</th>
                         <th>Date de commande</th>
-                        <th>Adresse</th>
-                        <th>Code postal</th>
-                        <th>Etat</th>
-                        <th>Opérations</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,24 +41,6 @@
                         <td>{{$commande->user->nom}} {{$commande->user->prenom}}</td>
                         <td>{{$commande->montant}}</td>
                         <td>{{$commande->date}}</td>
-                        <td>{{$commande->adresse}}</td>
-                        <td>{{$commande->code_postal}}</td>
-                        <td>{{$commande->etat}}</td>
-                        <td>
-                            @if ($commande->etat == 1)
-                            <a href="{{action('CommandeController@changerEtatPrete',$commande->commande_id)}}">
-                            <button class="btn btn-success btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Prête
-                            </button>
-                            </a>
-                            @elseif ($commande->etat == 2)
-                            <a href="{{action('CommandeController@changerEtatLivree',$commande->commande_id)}}">
-                            <button class="btn btn-success btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Livrée
-                            </button>
-                            </a>
-                            @endif
-                        </td>
 
                     </tr>
                     @endforeach

@@ -16,12 +16,13 @@ use Illuminate\Http\Request;
 class CommandeRepository
 {
 
-    public function add($date,$montant, $adresse, $userId, $produits)
+    public function add($date,$montant, $adresse,$codePostal, $userId, $produits)
 {
     $commande = new Commande();
     $commande->date = $date;
     $commande->montant = $montant;
     $commande->adresse= $adresse;
+    $commande->code_postal= $codePostal;
     $commande->users_id = $userId;
     $commande->etat = 1;
 
@@ -35,7 +36,6 @@ class CommandeRepository
             $produitCommande->save();
 
         }
-
         return $commande;
     }
 
@@ -44,6 +44,28 @@ class CommandeRepository
             return Commande::all();
 
         }
+
+    public function getCommandesEncoursPreteWithUsers()
+    {
+        return Commande::where('etat','=',1)
+            ->orWhere('etat','=',2)
+            ->with(['user','produitCommande'])
+            ->get();
+    }
+
+    public function getCommandesAnnuleesWithUsers()
+    {
+        return Commande::where('etat','=',0)
+            ->with(['user','produitCommande'])
+            ->get();
+    }
+
+    public function getCommandesLivreesWithUsers()
+    {
+        return Commande::where('etat','=',3)
+            ->with(['user','produitCommande'])
+            ->get();
+    }
 
         public function getAllWithUsers()
         {

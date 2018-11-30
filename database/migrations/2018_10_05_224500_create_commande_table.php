@@ -20,6 +20,7 @@ class CreateCommandeTable extends Migration
             $table->Integer('montant');
             $table->Integer('etat');
             $table->String('adresse');
+            $table->String('code_postal');
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')
                 ->references('id')
