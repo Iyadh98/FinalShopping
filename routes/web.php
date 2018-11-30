@@ -104,6 +104,12 @@ Route::get('/profil','CommandeController@getAll');
 
 Route::get ( '/search', 'ProduitController@search');
 
+Route::get('/admin/imagesIndex',function(){
+    return view('admin/imagesIndex');
+});
 
-
-
+//Route::post('/admin/imagesIndex','ImagesController@add');
+Route::get('/index','ImagesController@getAll');
+Route::get('/admin/imagesIndex/{image}','ImagesController@editGet');
+Route::post('/admin/imagesIndex','ImagesController@editPost');
+Route::get('/produits','ImagesController@getAllProd');

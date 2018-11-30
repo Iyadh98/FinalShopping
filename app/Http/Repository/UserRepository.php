@@ -60,4 +60,8 @@ class UserRepository
         $user = $this->getById($user->id);
         return $user;
     }
+    public function calculScore(){
+
+    }
+
 }

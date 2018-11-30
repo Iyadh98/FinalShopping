@@ -12,30 +12,11 @@
 <header class="header1">
     <!-- Header desktop -->
     <div class="container-menu-header">
-        <div class="topbar">
-            <div class="topbar-social">
-                <a href="#" class="topbar-social-item fa fa-facebook"></a>
-                <a href="#" class="topbar-social-item fa fa-instagram"></a>
-                <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-            </div>
-
-            <span class="topbar-child1">
-					Livraison gratuite à partir de 20TND
-				</span>
-
-            <div class="topbar-child2">
-					<span class="topbar-email">
-						barbouchemed@gmail.com
-					</span>
-
-
-            </div>
-        </div>
 
         <div class="wrap_header">
             <!-- Logo -->
             <a href="{{ url('/index') }}" class="logo">
-                <img src="images/icons/logo21.png" alt="IMG-LOGO">
+                <img src="images/icons/naturelogo.png" alt="IMG-LOGO">
             </a>
 
             <!-- Menu -->
@@ -171,7 +152,7 @@
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
         <a href="{{ url('/index') }}" class="logo-mobile">
-            <img src="images/icons/logo21.png" alt="IMG-LOGO">
+            <img src="images/icons/naturelogo.png" alt="IMG-LOGO">
         </a>
 
         <!-- Button show menu -->

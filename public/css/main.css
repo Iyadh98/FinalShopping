@@ -507,7 +507,7 @@ iframe {
 ///////////////////////////////////////////////////////////
 */
 .header1 {
-  height: 125px;
+  height: 80px;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -530,7 +530,7 @@ iframe {
   -moz-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
   -webkit-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
   -o-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
-  -ms-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2); 
+  -ms-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
 }
 
 /*[ Top bar ]
@@ -608,7 +608,7 @@ iframe {
   flex-wrap: wrap;
   width: 100%;
   height: 80px;
-  background-color: white;
+  background-color: #CAFFB9;
   justify-content: center;
   align-items: center;
   position: relative;

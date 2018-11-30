@@ -143,11 +143,40 @@ class ProduitController extends Controller
     public function search(){
         $q = Input::get ( 'search' );
         $categories = $this->categorieRepository->getAll();
+
         $user = \App\Produit::where ( 'nom', 'LIKE', '%' . $q . '%' )->get ();
         if (count ( $user ) > 0)
             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
         else
             return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('categories', $categories)->withDetails ( $user );
     }
+
+
+    /* public function searchCategorie(){
+         $q = Input::get ( 'cat' );
+         if(Input::has('cat')[0]){
+             $produits = $this->produitRepository->getAll();
+             $categories = $this->categorieRepository->getAll();
+             Log::info("YAAAT");
+             return view('product')->with('produits', $produits)->with('categories', $categories);
+         }
+         else{
+             $i=0;
+             foreach($q as $query){
+                 if($query[$i])
+                     break;
+                 $i=$i+1;
+             }
+             Log::info($i);
+         }
+
+          $categories = $this->categorieRepository->getAll();
+
+          $user = \App\Produit::where ( 'categorie_id', 'LIKE', '%' . $q . '%' )->get ();
+          if (count ( $user ) > 0)
+              return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
+          else
+              return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('categories', $categories)->withDetails ( $user );
+    }*/
 
 }

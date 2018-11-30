@@ -33,16 +33,17 @@
 
 @section('content')
     <!-- Title Page -->
+    @foreach($images as $image)
     <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m"
-             style="background-image: url(images/heading-pages-02.jpg);">
+             style="background-image: url({{asset('images/produits/'.$image->image1)}});">
         <h2 class="l-text2 t-center">
-            Women
+            Produits
         </h2>
         <p class="m-text13 t-center">
-            New Arrivals Women Collection 2018
+            {{$image->descImage7}}
         </p>
     </section>
-
+@endforeach
 
     <!-- Content page -->
     <section class="bgwhite p-t-55 p-b-65">
@@ -75,48 +76,23 @@
                             Filtres
                         </h4>
 
-                        <div class="search-product pos-relative bo4 of-hidden">
-                            <form method="get" action="/search" role="search">
-                            <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search"
-                                   placeholder="Search Products...">
 
-                            <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                                Search
-                            </button>
-                            </form>
-                        </div>
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
-                        <div class="flex-w">
-                            <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select class="selection-2" name="sorting">
-                                    <option>Default Sorting</option>
-                                    <option>Popularité</option>
-                                    <option>Prix: du plus bas au plus haut</option>
-                                    <option>Prix: du plus haut au plus bas</option>
-                                </select>
-                            </div>
+                        <div class="search-product pos-relative bo4 of-hidden">
+                            <form method="get" action="/search" role="search">
+                                <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search"
+                                       placeholder="Search Products...">
 
-                            <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select class="selection-2" name="sorting">
-                                    <option>Price</option>
-                                    <option>$0.00 - $50.00</option>
-                                    <option>$50.00 - $100.00</option>
-                                    <option>$100.00 - $150.00</option>
-                                    <option>$150.00 - $200.00</option>
-                                    <option>$200.00+</option>
-
-                                </select>
-                            </div>
+                                <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                    <img src="images/search.png" alt="ICON" height="25" width="25">
+                                </button>
+                            </form>
                         </div>
-
-                        <span class="s-text8 p-t-5 p-b-5">
-							Showing 1–12 of 16 results
-						</span>
                     </div>
 
                     <!-- Product -->
@@ -145,7 +121,7 @@
                                                            aria-hidden="true"></i>
                                                     </a>
 
-                                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                    <div class="block2-btn-addcart w-size2 trans-0-4">
                                                         <!-- Button -->
 
                                                         <button type="button"
