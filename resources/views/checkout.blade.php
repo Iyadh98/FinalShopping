@@ -1,6 +1,6 @@
 @extends('layouts.app2')
 @section('title')
-    About
+    Checkout
 @endsection
 @section('css_content')
     <link rel="icon" type="image/png" href="{{URL::asset('images/icons/favicon.png')}}"/>
@@ -130,56 +130,77 @@
 
 @section('content')
     <!-- Title Page -->
-    <h2 align="center">Responsive Checkout Form</h2>
-    <p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
-    <div class="row">
+<form method="post" action="{{ action('CommandeController@addPost') }}">
+    @csrf
+     <div class="row">
         <div class="col-75">
-            <div class="container">
-                <form method="post" action="{{ action('CommandeController@addPost') }}">
-                    @csrf
-                    <div class="row">
-                        <div class="col-50">
-                            <h3>Billing Address</h3>
-                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                            <input type="text" id="fname" name="firstname" value="{{Auth::user()->prenom}} {{Auth::user()->nom}}" readonly>
-                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                            <input type="text" id="email" name="email" value="{{Auth::user()->email}}">
-                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                            <input type="text" id="adr" name="adresse" value="{{Auth::user()->adresse}}">
-                            <label for="city"><i class="fa fa-institution"></i> City</label>
-                            <input type="text" id="city" name="city" placeholder="New York">
-                            <label for="montant"><i class="fa fa-institution"></i>Montant</label>
-                            <input type="text" id="cit" name="montant" value="{{Basket::total(false)}}" readonly>
-
-                            <label for="idc"><i class="fa fa-institution"></i>ID</label>
-                            <input type="text" id="c" name="users_id" value="{{Auth::user()->id}}" readonly>
-
-                            <div class="row">
-                                <div class="col-50">
-                                    <label for="state">State</label>
-                                    <input type="text" id="state" name="state" placeholder="NY">
-                                </div>
-                                <div class="col-50">
-                                    <label for="zip">Zip</label>
-                                    <input type="text" id="zip" name="zip" placeholder="10001">
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
-                    <label>
-                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                    </label>
-                    <a href="{{action('ProduitController@destroyCart')}}"><input type="submit" value="Continue to checkout" class="btn"></a>
-                </form>
+            <div class="container" style="background-color:white">
+                    <h3 class="m-text20 p-b-24">Vos informations personnelles</h3>
+                    <table class="table">
+                        <tr>
+                            <td><i class="fa fa-user"></i> Nom et prénom</td>
+                            <td>{{Auth::user()->prenom}} {{Auth::user()->nom}}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-envelope"></i> Email</td>
+                            <td>{{Auth::user()->email}}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-phone"></i> Numéro de téléphone</td>
+                            <td>{{Auth::user()->telephone}}</td>
+                        </tr>
+                        <tr>
+                            <td><label for="adresse"><i class="fa fa-address-card-o"></i> Adresse</label></td>
+                            <td><input type="text" name="adresse" value="{{Auth::user()->adresse}}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="codePostal"><i class="fa fa-address-card-o"></i> Code postal</label></td>
+                            <td><input type="text" name="codePostal" value="{{Auth::user()->code_postal}}"></td>
+                        </tr>
+                    </table>
             </div>
+
+
+                <div class="container" style="background-color:white">
+                    <h3 class="m-text20 p-b-24">Votre commande</h3>
+                    <table class="table-shopping-cart">
+                        <tr class="table-head">
+                            <th class="column-1"></th>
+                            <th class="column-2">Product</th>
+                            <th class="column-3">Price</th>
+                            <th class="column-4">Quantity</th>
+                            <th class="column-5">Total</th>
+                        </tr>
+                        @foreach(Basket::contents() as $produit)
+                        <tr class="table-row">
+                            <td class="column-1">
+                                <div class="cart-img-product b-rad-2 o-f-hidden">
+                                    <img src="images/item-10.jpg" alt="IMG-PRODUCT">
+                                </div>
+                            </td>
+                            <td class="column-2">{{$produit->name}}</td>
+                            <td class="column-3">{{$produit->price}}</td>
+                            <td class="column-4">{{$produit->quantity}}</td>
+                            <td class="column-5">{{$produit->price*$produit->quantity}}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+
+                    <div class="flex-w flex-sb-m p-b-12">
+					<span class="s-text18 w-size19 w-full-sm">
+						Subtotal:
+					</span>
+
+                        <span class="m-text21 w-size20 w-full-sm">
+						{{Basket::total(false)}}
+					</span>
+                    </div>
+
+                </div>
+                    <input type="submit" value="Continue to checkout" class="btn">
         </div>
-
-    </div>
-
+     </div>
+                </form>
 @endsection
 
 

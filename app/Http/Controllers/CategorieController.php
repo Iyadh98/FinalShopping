@@ -37,6 +37,8 @@ class CategorieController extends Controller
     }
 
 
+
+
     public function editGet($categorieId)
     {
         if (!$categorie=$this->categorieRepository->getById($categorieId)) {

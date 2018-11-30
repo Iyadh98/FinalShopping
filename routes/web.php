@@ -99,7 +99,10 @@ Route::get('/checkout','CommandeController@addGet');
 Route::post('/checkout','CommandeController@addPost');
 Route::post('/profil/{id}','UserController@edit');
 
+/*
 Route::get('/profil','CommandeController@getAll');
+*/
+
 
 
 Route::get ( '/search', 'ProduitController@search');
@@ -113,3 +116,12 @@ Route::get('/index','ImagesController@getAll');
 Route::get('/admin/imagesIndex/{image}','ImagesController@editGet');
 Route::post('/admin/imagesIndex','ImagesController@editPost');
 Route::get('/produits','ImagesController@getAllProd');
+
+Route::get('/admin/lister_commandes','CommandeController@getCommandesEncoursPreteWithUsers');
+Route::get('/admin/lister_commandes_annulees','CommandeController@getCommandesAnnuleesWithUsers');
+Route::get('/admin/lister_commandes_livrees','CommandeController@getCommandesLivreesWithUsers');
+Route::get('/admin/changerEtatPrete/{commandeId}','CommandeController@changerEtatPrete');
+Route::get('/admin/changerEtatLivree/{commandeId}','CommandeController@changerEtatLivree');
+
+Route::get ( '/search', 'ProduitController@search');
+

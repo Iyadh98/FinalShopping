@@ -29,6 +29,8 @@ class CategorieRepository
         return Categorie::all();
     }
 
+
+
     public function getById($categorieId)
     {
         return Categorie::find($categorieId);

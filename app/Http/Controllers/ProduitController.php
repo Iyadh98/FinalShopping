@@ -124,22 +124,23 @@ class ProduitController extends Controller
         ));
     return redirect('/produits');
     }
+
     public function destroyCart(){
         \Lenius\Basket\Facades\Basket::destroy();
         return redirect('/produits');
     }
+
     public function updateCart(Request $request){
             $i=0;
             $prod=Input::get('numprod');
             foreach(\Lenius\Basket\Facades\Basket::contents() as $item){
-
                 $item->quantity = $prod[$i];
                 $i=$i+1;
-
             }
 
         return redirect('/panier');
     }
+
     public function search(){
         $q = Input::get ( 'search' );
         $categories = $this->categorieRepository->getAll();
