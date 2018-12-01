@@ -47,19 +47,24 @@
                         <td>{{$commande->date}}</td>
                         <td>{{$commande->adresse}}</td>
                         <td>{{$commande->code_postal}}</td>
-                        <td>{{$commande->etat}}</td>
+                        <td>@if($commande->etat==1)
+                            Commande en cours
+                            @elseif ($commande->etat==2)
+                            Commande prête
+                            @endif
+                        </td>
                         <td>
                             @if ($commande->etat == 1)
                             <a href="{{action('CommandeController@changerEtatPrete',$commande->commande_id)}}">
-                            <button class="btn btn-success btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Prête
-                            </button>
+                                <button class="btn btn-success btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Prête
+                                </button>
                             </a>
                             @elseif ($commande->etat == 2)
                             <a href="{{action('CommandeController@changerEtatLivree',$commande->commande_id)}}">
-                            <button class="btn btn-success btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Livrée
-                            </button>
+                                <button class="btn btn-success btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Livrée
+                                </button>
                             </a>
                             @endif
                         </td>
@@ -111,24 +116,24 @@
 
 <script type="text/javascript">
 
-$(document).ready(function(){
+    $(document).ready(function () {
 // For A Delete Record Popup
-$('.remove-record').click(function() {
-var id = $(this).attr('data-id');
-var url = $(this).attr('data-url');
+        $('.remove-record').click(function () {
+            var id = $(this).attr('data-id');
+            var url = $(this).attr('data-url');
 
-$(".remove-record-model").attr("action",url);
-$('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
-$('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
-});
+            $(".remove-record-model").attr("action", url);
+            $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+            $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="' + id + '">');
+        });
 
-$('.remove-data-from-delete-form').click(function() {
-$('body').find('.remove-record-model').find( "input" ).remove();
-});
-$('.modal').click(function() {
+        $('.remove-data-from-delete-form').click(function () {
+            $('body').find('.remove-record-model').find("input").remove();
+        });
+        $('.modal').click(function () {
 // $('body').find('.remove-record-model').find( "input" ).remove();
-});
-});
+        });
+    });
 </script>
 
 @endsection

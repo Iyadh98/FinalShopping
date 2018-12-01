@@ -99,9 +99,9 @@ Route::get('/checkout','CommandeController@addGet');
 Route::post('/checkout','CommandeController@addPost');
 Route::post('/profil/{id}','UserController@edit');
 
-/*
+
 Route::get('/profil','CommandeController@getAll');
-*/
+
 
 
 

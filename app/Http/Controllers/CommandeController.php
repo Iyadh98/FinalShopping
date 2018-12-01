@@ -51,8 +51,8 @@ class CommandeController
 
     public function getAll()
     {
-        $commande = $this->commandeRepository->getAll();
-        return view('profile')->with('commande', $commande);
+        $commandes = $this->commandeRepository->getAll();
+        return view('profile')->with('commandes', $commandes);
     }
 
     public function getAllCommandesWithUsers()

@@ -27,6 +27,7 @@ class CommandeRepository
     $commande->etat = 1;
 
     $commande->save();
+    $points = 0;
 
         foreach($produits as $produit){
             $produitCommande = new Produit_Commande();
