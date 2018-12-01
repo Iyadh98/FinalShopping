@@ -213,8 +213,6 @@
 
                             @endforeach
 
-                        @else
-                            {{$message}}
                         @endif
                     </div>
                     <a href="{{action('ProduitController@destroyCart')}}" class="btn btn-warning">Edit</a>

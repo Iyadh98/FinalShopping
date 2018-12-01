@@ -59,7 +59,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="{{url('/produits')}}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Aller au magasin
                         </a>
                     </div>
@@ -78,7 +78,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="{{url('/produits')}}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Aller au magasin
                         </a>
                     </div>
@@ -97,7 +97,7 @@
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
 
-                    <img src="{{asset('images/produits/'.$image->image1)}}" alt="IMG-BENNER">
+                    <img src="{{asset('images/produits/'.$image->image1)}}"  style="width:370px; height:478.94px;" alt="IMG-BENNER">
 
 
                     <div class="block1-wrapbtn w-size2">
@@ -110,7 +110,7 @@
 
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{asset('images/produits/'.$image->image2)}}" alt="IMG-BENNER">
+                    <img src="{{asset('images/produits/'.$image->image2)}}" style="width:370px; height:339.16px;" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -124,7 +124,7 @@
             <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{asset('images/produits/'.$image->image3)}}" alt="IMG-BENNER">
+                    <img src="{{asset('images/produits/'.$image->image3)}}" style="width:370px; height:339.16px;" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -136,7 +136,7 @@
 
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{asset('images/produits/'.$image->image4)}}" alt="IMG-BENNER">
+                    <img src="{{asset('images/produits/'.$image->image4)}}" style="width:370px; height:478.94px;" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -150,7 +150,7 @@
             <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{asset('images/produits/'.$image->image5)}}" alt="IMG-BENNER">
+                    <img src="{{asset('images/produits/'.$image->image5)}}" style="width:370px; height:478.94px;" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -163,7 +163,7 @@
                 <!-- block2 -->
                 @guest
                 <div class="block2 wrap-pic-w pos-relative m-b-30">
-                    <img src="{{asset('images/produits/'.$image->image6)}}" alt="IMG">
+                    <img src="{{asset('images/produits/'.$image->image6)}}" style="width:370px; height:338.84px;" alt="IMG">
 
                     <div class="block2-content sizefull ab-t-l flex-col-c-m">
                         <h4 class="m-text4 t-center w-size3 p-b-8">
@@ -185,7 +185,7 @@
                 @endguest
                 @auth
                     <div class="block2 wrap-pic-w pos-relative m-b-30">
-                        <img src="{{asset('images/produits/'.$image->image6)}}" alt="IMG">
+                        <img src="{{asset('images/produits/'.$image->image6)}}" style="width:370px; height:338.84px;" alt="IMG">
 
                         <div class="block2-content sizefull ab-t-l flex-col-c-m">
                             <h4 class="m-text4 t-center w-size3 p-b-8">
@@ -217,7 +217,7 @@
         <div class="row">
             <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
                 <div class="hov-img-zoom pos-relative">
-                    <img src="{{asset('images/produits/'.$image->image11)}}" alt="IMG-BANNER">
+                    <img src="{{asset('images/produits/'.$image->image11)}}" style="width:570px; height:426.7px;" alt="IMG-BANNER">
 
                     <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
                         {{$image->descImage11}}
@@ -231,7 +231,7 @@
 
             <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
                 <div class="bgwhite hov-img-zoom pos-relative p-b-20per-ssm">
-                    <img src="{{asset('images/produits/'.$image->image12)}}" alt="IMG-BANNER">
+                    <img src="{{asset('images/produits/'.$image->image12)}}" style="width:570px; height:426.7px;" alt="IMG-BANNER">
 
                     <div class="ab-t-l sizefull flex-col-c-b p-l-15 p-r-15 p-b-20">
                         <div class="t-center">
@@ -267,7 +267,7 @@
     <div class="flex-w">
         <!-- Block4 -->
         <div class="block4 wrap-pic-w">
-            <img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+            <img src="{{asset('images/produits/'.$image->image13)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
             <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -277,7 +277,7 @@
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
-                        Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                      {{$image->descImage13}}
                     </p>
 
                     <span class="s-text9">
@@ -289,7 +289,7 @@
 
         <!-- Block4 -->
         <div class="block4 wrap-pic-w">
-            <img src="images/gallery-07.jpg" alt="IMG-INSTAGRAM">
+            <img src="{{asset('images/produits/'.$image->image14)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
             <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -299,7 +299,7 @@
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
-                        Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        {{$image->descImage14}}
                     </p>
 
                     <span class="s-text9">
@@ -311,7 +311,7 @@
 
         <!-- Block4 -->
         <div class="block4 wrap-pic-w">
-            <img src="images/gallery-09.jpg" alt="IMG-INSTAGRAM">
+            <img src="{{asset('images/produits/'.$image->image15)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
             <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -321,7 +321,7 @@
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
-                        Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                       {{$image->descImage15}}
                     </p>
 
                     <span class="s-text9">
@@ -333,7 +333,7 @@
 
         <!-- Block4 -->
         <div class="block4 wrap-pic-w">
-            <img src="images/gallery-13.jpg" alt="IMG-INSTAGRAM">
+            <img src="{{asset('images/produits/'.$image->image16)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
             <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -343,7 +343,7 @@
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
-                        Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                      {{$image->descImage16}}
                     </p>
 
                     <span class="s-text9">
@@ -355,7 +355,7 @@
 
         <!-- Block4 -->
         <div class="block4 wrap-pic-w">
-            <img src="images/gallery-15.jpg" alt="IMG-INSTAGRAM">
+            <img src="{{asset('images/produits/'.$image->image17)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
             <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
@@ -365,7 +365,7 @@
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
-                        Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                         {{$image->descImage17}}
                     </p>
 
                     <span class="s-text9">

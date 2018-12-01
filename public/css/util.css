@@ -2346,7 +2346,7 @@
 /*[ Background ]
 -----------------------------------------------------------
 */
-.bgwhite {background-color: white;}
+.bgwhite {background-color: #EEF5DF;}
 .bgblack {background-color: black;}
 
 
@@ -2355,7 +2355,7 @@
 -----------------------------------------------------------
 */
 .wrap-pic-w img {width: 100%;}
-.wrap-pic-max-w img {max-width: 100%;}
+/.wrap-pic-max-w img {max-width: 100%;}
 
 /* ------------------------------------ */
 .wrap-pic-h img {height: 100%;}

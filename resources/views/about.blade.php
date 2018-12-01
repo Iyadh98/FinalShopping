@@ -24,9 +24,9 @@ About
 
 @section('content')
 <!-- Title Page -->
-<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/heading-pages-06.jpg);">
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/icons/1.png);">
     <h2 class="l-text2 t-center">
-        About
+        <!--About-->
     </h2>
 </section>
 
@@ -34,30 +34,44 @@ About
 <section class="bgwhite p-t-66 p-b-38">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 p-b-30">
-                <div class="hov-img-zoom">
-                    <img src="images/banner-14.jpg" alt="IMG-ABOUT">
-                </div>
-            </div>
-
             <div class="col-md-8 p-b-30">
-                <h3 class="m-text26 p-t-15 p-b-16">
-                    Our story
-                </h3>
 
                 <p class="p-b-28">
-                    Phasellus egestas nisi nisi, lobortis ultricies risus semper nec. Vestibulum pharetra ac ante ut pellentesque. Curabitur fringilla dolor quis lorem accumsan, vitae molestie urna dapibus. Pellentesque porta est ac neque bibendum viverra. Vivamus lobortis magna ut interdum laoreet. Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac ligula. Vivamus tristique vulputate ultricies. Sed vitae ultrices orci.
+                    <h2 align="center">Nature Bio</h2>
+                    Boutique de produits Naturels, Bio et Artisanaux EXCLUSIVEMENT EN LIGNE. Et vous propose des produits de qualité, labellisés.
+
+                    Naturebio.com.tn est aujourd'hui le spécialiste en Tunisie dans la vente en ligne de produits naturels, biologiques et artisanaux avec plusieurs références.
+                    Les produits Bio sélectionnés par Naturebio.com.tn sont des produits issus de l’agriculture biologique en Tunisie. Le Bio est donc un retour à la tradition, à une agriculture et à un élevage qui respectent l’équilibre de la terre et qui utilisent les ressources qu’elle nous donne sans la polluer ni l’épuiser.
+                    Notre objectif est d'aider les personnes qui veulent vivre autrement à accéder à ce type de produits, où qu’ils soient, partout en Tunisie. Nos produits sont à votre disposition 24h/24 sur notre site et livrés par la Poste ou par tierce personne (transporteur, livreur, etc.).
+                <h2>NATUREBIO, C'EST UNE EQUIPE!</h2>
+                Naturebio.com.tn, c’est une équipe motivée et dynamique. Son défit, est de faire de Naturebio.com.tn  la référence en produits naturels et Bio en Tunisie! Naturebio.com.tn  a comme ambition de vous fournir une grande diversité de produits en vous assurant un service de qualité et d’écoute.
+                NOS ENGAGEMENTS AU QUOTIDIEN:
+                <br>
+                <b>Choix varié</b>
+                <br>
+                •	Des produits pour toute la famille
+                <br>
+                •	Des produits qui conviennent à différents moments de la journée
+                <br>
+                •	Des produits certifiés Bio
+                <br>
+                •	Des produits de qualité, sélectionnés auprès de professionnels sérieux qui aiment leur métier
+                <br>
+                <b>Hyper service</b>
+                <br>
+                •	Préparation et expédition express de  toute commande passée avant 11 heures est expédiée le jour même (du lundi au vendredi, sous réserve de validation du paiement)!
+                <br>
+                •	Pas de  montant minimum d’achat!
+                <br>
+                Venez découvrir le goût, les saveurs et l’authenticité des produits que nous avons sélectionnés pour vous. N’attendez plus, visitez www.Naturebio.com.tn . Faites vos courses et faites-vous livrer vos produits dans le bureau de poste le plus proche de vous, essayez-les tranquillement, en famille, et dites-nous ce que vous en pensez.!
+                <h2>SERVICE CLIENT</h2>
+                Du lundi au vendredi de 07h à 20h
+                <br>
+                Téléphone : 58
+                <br>
+                Email : clients@naturebio.com
+
                 </p>
-
-                <div class="bo13 p-l-29 m-l-9 p-b-10">
-                    <p class="p-b-11">
-                        Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
-                    </p>
-
-                    <span class="s-text7">
-							- Steve Job’s
-						</span>
-                </div>
             </div>
         </div>
     </div>

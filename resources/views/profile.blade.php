@@ -227,7 +227,7 @@
                                                         <div class="col-md-12">
 
                                                                 <h2>Commandes effectuées:</h2>
-                                                            </div><tr class="table-active">...</tr>
+                                                            </div>
 
                                                             <table class="table" style="width:100% !important;">
                                                                 <thead>

@@ -97,11 +97,12 @@ Route::post('/panier','ProduitController@updateCart');
 
 Route::get('/checkout','CommandeController@addGet');
 Route::post('/checkout','CommandeController@addPost');
+Route::get('/checkout','ProduitController@getAllProductsCheckout');
 Route::post('/profil/{id}','UserController@edit');
 
-/*
+
 Route::get('/profil','CommandeController@getAll');
-*/
+
 
 
 
@@ -124,4 +125,5 @@ Route::get('/admin/changerEtatPrete/{commandeId}','CommandeController@changerEta
 Route::get('/admin/changerEtatLivree/{commandeId}','CommandeController@changerEtatLivree');
 
 Route::get ( '/search', 'ProduitController@search');
+Route::get('/ss','ProduitController@searchCategorie');
 

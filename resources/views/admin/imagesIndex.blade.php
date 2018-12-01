@@ -30,7 +30,7 @@
             <div class="col-12 col-md-9"><input type="text" id="id" name="id"  class="form-control" value="{{$image->id_table}}" style="visibility: hidden"></div>
             <div class="row form-group">
                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Description 1:</label></div>
-                <div class="col-12 col-md-9"><input type="text"  name="{{$image->Desc1image1Caroussel}}" value="{{$image->Desc1image1Caroussel}}"  class="form-control"></div>
+                <div class="col-12 col-md-9"><input type="text"  name="Desc1image1Caroussel" value="{{$image->Desc1image1Caroussel}}"  class="form-control"></div>
             </div>
             <div class="row form-group">
                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Description 2</label></div>
