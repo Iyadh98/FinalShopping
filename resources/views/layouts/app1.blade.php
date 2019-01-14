@@ -23,8 +23,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="#"><img src="images/logo22.png" alt="Logo" style="margin-right:50px;"></a>
-            <a class="navbar-brand hidden" href="./"><img src="images/logo12.png" alt="Logo"></a>
+            <a class="navbar-brand" href="#"><img src="../images/icons/naturelogo.png" alt="Logo" style="margin-right:50px;"></a>
+            <a class="navbar-brand hidden" href="./"><img src="../images/icons/naturelogo.png" alt="Logo"></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -60,6 +60,9 @@
                         <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_categorie')}}">Ajouter categorie</a></li>
 
                     </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="{{url('/admin/imagesIndex/1')}}" class="dropdown-toggle"> <i class="menu-icon fa fa-laptop"></i>Modifier page d'accueil</a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>

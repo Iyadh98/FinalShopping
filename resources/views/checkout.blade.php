@@ -175,7 +175,7 @@
                         <tr class="table-row">
                             <td class="column-1">
                                 <div class="cart-img-product b-rad-2 o-f-hidden">
-                                    <img src="images/item-10.jpg" alt="IMG-PRODUCT">
+                                    <img src="{{asset('/images/produits/'.$produits->find($produit->id)->image)}}" alt="IMG-PRODUCT">
                                 </div>
                             </td>
                             <td class="column-2">{{$produit->name}}</td>

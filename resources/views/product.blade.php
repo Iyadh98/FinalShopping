@@ -57,17 +57,18 @@
                         </h4>
 
                         <ul class="p-b-54">
+                            <form method="get" action="{{action('ProduitController@searchCategorie')}}">
                             @if(count($categories) > 0)
                                 @foreach($categories as $categorie)
-
                                     <li class="p-t-4">
-                                        <a href="#" class="s-text13 active1">
-                                            {{$categorie->nom}}
-                                        </a>
+                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$categorie->nom}}">
+
+
                                     </li>
 
                                 @endforeach
                             @endif
+                            </form>
 
                         </ul>
 
@@ -105,7 +106,7 @@
                                     <div class="block2">
                                         <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                             <img src="{{asset('images/produits/'.$produit->image)}}" alt="IMG-PRODUCT"
-                                                 style="width:250px; height:350px;">
+                                                 style="width:269.98px; height:359.97px;">
 
                                             <div class="block2-overlay trans-0-4">
                                                 <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">

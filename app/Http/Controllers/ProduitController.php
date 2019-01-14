@@ -9,7 +9,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Categorie;
 use App\Http\Repository\CategorieRepository;
+use App\Http\Repository\ImagesRepository;
 use App\Http\Repository\ProduitRepository;
 use App\Http\Repository\TypeRepository;
 use Illuminate\Http\Request;
@@ -22,14 +24,15 @@ class ProduitController extends Controller
     protected $produitRepository;
     protected $categorieRepository;
     protected $typeRepository;
-
+    protected $imagesRepository;
     function __construct(ProduitRepository $produitRepository,
                          CategorieRepository $categorieRepository,
-                         TypeRepository $typeRepository)
+                         TypeRepository $typeRepository, ImagesRepository $imagesRepository)
     {
         $this->produitRepository = $produitRepository;
         $this->categorieRepository = $categorieRepository;
         $this->typeRepository = $typeRepository;
+        $this->imagesRepository=$imagesRepository;
     }
 
     public function addPost(Request $request)
@@ -153,15 +156,31 @@ class ProduitController extends Controller
     }
 
 
-    /* public function searchCategorie(){
+     public function searchCategorie(){
          $q = Input::get ( 'cat' );
-         if(Input::has('cat')[0]){
+
+         if(isset($q)){
+             Log::info($q);
              $produits = $this->produitRepository->getAll();
              $categories = $this->categorieRepository->getAll();
+             $images=$this->imagesRepository->getAll();
+             $ba=\App\Categorie::where('nom',$q)->get();
+             foreach($ba as $b){
+                 $i=0;
+                 foreach(json_decode($b) as $a){
+                 Log::info($a);
+                 $test=$a;
+                 $i=$i+1;
+                 if($i==1)
+                     break;
+                 }
+             }
+             $user = \App\Produit::where ( 'categorie_id', $test)->get ();
+
              Log::info("YAAAT");
-             return view('product')->with('produits', $produits)->with('categories', $categories);
+             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);;
          }
-         else{
+       /*  else{
              $i=0;
              foreach($q as $query){
                  if($query[$i])
@@ -178,6 +197,12 @@ class ProduitController extends Controller
               return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
           else
               return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('categories', $categories)->withDetails ( $user );
-    }*/
-
+    */
+       }
+    public function getAllProductsCheckout()
+    {
+        $produits = $this->produitRepository->getAllWithCategoriesTypes();
+        Log::info($produits);
+        return view('checkout')->with('produits', $produits);
+    }
 }

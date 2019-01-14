@@ -32,7 +32,7 @@ function add(Request $request){
     $request->file('image2Caroussel')->move(
         base_path() . '/public/images/produits', $imageName2
     );
-    $image->image1Caroussel=$imageName2;
+    $image->image2Caroussel=$imageName2;
     $image->Desc1image3Caroussel=$request->input('Desc1image3Caroussel');
     $image->Desc2image3Caroussel=$request->input('Desc2image3Caroussel');
     $imageName3= 'imageIndex'.rand(). '.' .
@@ -216,7 +216,7 @@ function add(Request $request){
         $request->file('image2Caroussel')->move(
             base_path() . '/public/images/produits', $imageName2
         );
-        $image->image1Caroussel=$imageName2;
+        $image->image2Caroussel=$imageName2;
         $image->Desc1image3Caroussel=$request->input('Desc1image3Caroussel');
         $image->Desc2image3Caroussel=$request->input('Desc2image3Caroussel');
         $imageName3= 'imageIndex'.rand(). '.' .

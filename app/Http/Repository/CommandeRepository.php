@@ -83,6 +83,8 @@ class CommandeRepository
             $commande->delete();
         }
 
+
+
     /*
      * etat enCours: 1;
      * etat Prete: 2;
