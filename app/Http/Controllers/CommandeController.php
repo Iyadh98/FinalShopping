@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repository\CommandeRepository;
+use App\Http\Repository\ProduitCommandeRepository;
+use App\Http\Repository\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -18,10 +20,16 @@ use Lenius\Basket\Facades\Basket;
 class CommandeController
 {
     protected $commandeRepository;
+    protected $userRepository;
+    protected $produitCommandeRepository;
 
-    function __construct(CommandeRepository $commandeRepository)
+    function __construct(CommandeRepository $commandeRepository,
+                         ProduitCommandeRepository $produitCommandeRepository,
+                         UserRepository $userRepository)
     {
         $this->commandeRepository = $commandeRepository;
+        $this->produitCommandeRepository = $produitCommandeRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function addPost(Request $request)
@@ -95,6 +103,10 @@ class CommandeController
     {
         if($commande = $this->commandeRepository->getById($commandeId)){
             $this->commandeRepository->changerEtatLivree($commande);
+            $commande2 = $this->commandeRepository->getByIdWithUserAndProduitCommande($commandeId);
+            Log::info($commande2);
+            $totalPoints= $this->commandeRepository->getTotalPoints($commande2->produitCommandes);
+            $this->userRepository->addPoints($commande2->user,$totalPoints);
         }
         return redirect('/admin/lister_commandes');
     }

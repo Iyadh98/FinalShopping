@@ -21,9 +21,9 @@ class Commande extends Model
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public function produitCommande()
+    public function produitCommandes()
     {
-        return $this->hasMany('App\Produit_Commande','produit_commande_id');
+        return $this->hasMany('App\Produit_Commande','commande_id');
     }
 
     public function user()

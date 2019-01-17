@@ -3,7 +3,8 @@
     Panier
 @endsection
 @section('css_content')
-    <link rel="icon" type="image/png" href="{{URL::asset('images/icons/favicon.png')}}"/>
+<link rel="icon" type="image/png" href="{{URL::asset('images/icons/favicon.png')}}"
+      xmlns:Basket="http://www.w3.org/1999/xhtml" />
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/themify/themify-icons.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
@@ -97,10 +98,6 @@
                     </div></a>
                 </div>
 
-                <a class="size10 trans-0-4 m-t-10 m-b-10">
-                    <!-- Button -->
-
-
                 </div>
             </div>
 
@@ -173,12 +170,17 @@
 						$39.00
 					</span>
                 </div>
-
                 <div class="size15 trans-0-4">
                     <!-- Button -->
-                    <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                        Proceed to Checkout
-                    </button>
+                    <a @auth
+                       href="{{url('/checkout')}}"
+                       @endauth
+                       @guest
+                       href="{{url('/login')}}"
+                       @endguest
+                       class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                        Check Out
+                    </a>
                 </div>
             </div>
         </div>

@@ -157,8 +157,6 @@
                                 <div class="modal fade" id="myModal{{$produit->produit_id}}" role="dialog"
                                      style="margin-top:150px;">
                                     <div class="modal-dialog">
-
-
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title"><b>{{$produit->nom}}</b></h4>
@@ -174,6 +172,8 @@
                                                             </p>
                                                             <br>
                                                             Prix: <p>{{$produit->prix}} TND</p>
+                                                            <br>
+                                                            Points: <p>{{$produit->points}}</p>
                                                             <form method="get"
                                                                   action="{{action('ProduitController@addCart', ['id'=>$produit->produit_id,'nom'=>$produit->nom, 'prix'=>$produit->prix])}}">
 

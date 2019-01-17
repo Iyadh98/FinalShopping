@@ -41,11 +41,12 @@ class UserRepository
         return User::find($userId);
     }
 
-    public function delete($user){
+    public function delete($user)
+    {
         $user->delete();
     }
 
-    public function edit($user,  Request $request)
+    public function edit($user, Request $request)
     {
         $user->nom = $request->input('nom');
         $user->prenom = $request->input('prenom');
@@ -60,8 +61,12 @@ class UserRepository
         $user = $this->getById($user->id);
         return $user;
     }
-    public function calculScore(){
 
+    public function addPoints($user, $totalPoints)
+    {
+        $user->score += $totalPoints;
+        $user->update();
+        return $user;
     }
 
 }
