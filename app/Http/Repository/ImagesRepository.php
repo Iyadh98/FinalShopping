@@ -18,12 +18,20 @@ function add(Request $request){
     $image=new Image_Produit();
     $image->Desc1image1Caroussel=$request->input('Desc1image1Caroussel');
     $image->Desc2image1Caroussel=$request->input('Desc2image1Caroussel');
-    $imageName1= 'imageIndex'.rand(). '.' .
+            if ($request->file('image1Caroussel')){
+            $imageName1='imageIndex'.rand(). '.' .
+                $request->file('image')->getClientOriginalExtension();
+            $request->file('image1Caroussel')->move(
+                base_path() . '/public/images/produits', $imageName1
+            );
+            $image->image1Caroussel=$imageName1;
+        }
+   /* $imageName1= 'imageIndex'.rand(). '.' .
         $request->file('image1Caroussel')->getClientOriginalExtension();
     $request->file('image1Caroussel')->move(
         base_path() . '/public/images/produits', $imageName1
     );
-    $image->image1Caroussel=$imageName1;
+    $image->image1Caroussel=$imageName1;*/
 
     $image->Desc1image2Caroussel=$request->input('Desc1image2Caroussel');
     $image->Desc2image2Caroussel=$request->input('Desc2image2Caroussel');

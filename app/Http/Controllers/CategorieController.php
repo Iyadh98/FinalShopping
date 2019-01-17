@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categorie;
 use App\Http\Repository\CategorieRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -54,11 +55,13 @@ class CategorieController extends Controller
         return redirect('admin');
     }
 
-    public function delete($categorieId){
-        if (!$categorie=$this->categorieRepository->getById($categorieId)) {
+    public function delete(/*$categorieId*/$id){
+       /* if (!$categorie=$this->categorieRepository->getById($categorieId)) {
             return response()->json(['error' => 'categorie not found'], 404);
         }
         $this->categorieRepository->delete($categorie);
+       */
+        Categorie::where('categorie_id', $id)->delete();
         return redirect('admin');
     }
 }

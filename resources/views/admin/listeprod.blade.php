@@ -54,6 +54,11 @@
                                 <i class="fa fa-dot-circle-o"></i> Modifier
                             </button>
                             </a>
+                            <a href="{{URL::to('/admin/deleteprod/'.$produit->produit_id) }}">
+                                <button  class="btn btn-danger btn-sm" >
+                                    <i class="fa fa-ban"></i> Supprimer
+                                </button>
+                            </a>
                         </td>
 
                     </tr>

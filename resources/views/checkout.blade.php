@@ -68,14 +68,11 @@
             border-radius: 3px;
         }
 
-        input[type=text] {
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
+/*        input[type=text] {
+            border: 2px solid red !important;
+            border-radius: 4px !important;
         }
-
+*/
         label {
             margin-bottom: 10px;
             display: block;
@@ -130,13 +127,17 @@
 
 @section('content')
     <!-- Title Page -->
+    <br>
+
 <form method="post" action="{{ action('CommandeController@addPost') }}">
     @csrf
      <div class="row">
         <div class="col-75">
-            <div class="container" style="background-color:white">
-                    <h3 class="m-text20 p-b-24">Vos informations personnelles</h3>
-                    <table class="table">
+            <div class="container" style="background-color:white; width:50%; ">
+                    <h3 class="m-text20 p-b-24" align="center">Vos informations personnelles</h3>
+                    <table class="table" width="100">
+                        <col width="70">
+                        <col width="10">
                         <tr>
                             <td><i class="fa fa-user"></i> Nom et prénom</td>
                             <td>{{Auth::user()->prenom}} {{Auth::user()->nom}}</td>
@@ -151,24 +152,31 @@
                         </tr>
                         <tr>
                             <td><label for="adresse"><i class="fa fa-address-card-o"></i> Adresse</label></td>
-                            <td><input type="text" name="adresse" value="{{Auth::user()->adresse}}"></td>
+                            <td><input type="text" name="adresse"  placeholder="Veuillez indiquer l'adresse de la livraison" style="width:100%;" required></td>
                         </tr>
                         <tr>
                             <td><label for="codePostal"><i class="fa fa-address-card-o"></i> Code postal</label></td>
-                            <td><input type="text" name="codePostal" value="{{Auth::user()->code_postal}}"></td>
+                            <td><input type="text" name="codePostal" placeholder="Veuillez indiquer votre code postal" required style="width:100%;"></td>
                         </tr>
                     </table>
             </div>
+                <br>
 
 
-                <div class="container" style="background-color:white">
-                    <h3 class="m-text20 p-b-24">Votre commande</h3>
-                    <table class="table-shopping-cart">
+
+                <div class="container" style="background-color:white;">
+                    <h3 class="m-text20 p-b-24" align="center">Votre commande</h3>
+                    <table class="table-shopping-cart" >
+                        <col width="10">
+                        <col width="10">
+                        <col width="10">
+                        <col width="10">
+                        <col width="10">
                         <tr class="table-head">
                             <th class="column-1"></th>
-                            <th class="column-2">Product</th>
-                            <th class="column-3">Price</th>
-                            <th class="column-4">Quantity</th>
+                            <th class="column-2">Produit</th>
+                            <th class="column-3">Prix</th>
+                            <th class="column-4">Quantité</th>
                             <th class="column-5">Total</th>
                         </tr>
                         @foreach(Basket::contents() as $produit)
@@ -196,8 +204,9 @@
 					</span>
                     </div>
 
-                </div>
-                    <input type="submit" value="Continue to checkout" class="btn">
+                </br>
+                    <input type="submit" value="Continue to checkout" class="btn" style="background-color:#243E36 !important;">
+            </div>
         </div>
      </div>
                 </form>
