@@ -42,9 +42,11 @@
                                                 <i class="fa fa-dot-circle-o"></i> Modifier
                                             </button>
                                         </a>
-                                        <button  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal($categorie->categorie_id)">
+                                        <a href="{{URL::to('/admin/deletecat/'.$categorie->categorie_id) }}">
+                                        <button  class="btn btn-danger btn-sm" >
                                             <i class="fa fa-ban"></i> Supprimer
                                         </button>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach

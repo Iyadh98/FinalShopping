@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Categorie;
+use App\Produit;
 use App\Http\Repository\CategorieRepository;
 use App\Http\Repository\ImagesRepository;
 use App\Http\Repository\ProduitRepository;
@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Lenius\Basket\Basket;
+use Illuminate\Support\Facades\Mail;
 class ProduitController extends Controller
 {
     protected $produitRepository;
@@ -74,13 +75,14 @@ class ProduitController extends Controller
     }
 
     public function delete($produitId)
-    {            Log::info("delete produit");
+    {       /*     Log::info("delete produit");
 
         if (!$produit = $this->produitRepository->getById($produitId)) {
             return redirect('/admin/liste-produits')->with('error', 'produit indisponible');
         }
-        Log::info($produit);
-        $this->produitRepository->delete($produit);
+        Log::info($produit);*/
+        Produit::where('produit_id', $produitId)->delete();
+        return redirect('admin');
     }
 
 
@@ -204,5 +206,11 @@ class ProduitController extends Controller
         $produits = $this->produitRepository->getAllWithCategoriesTypes();
         Log::info($produits);
         return view('checkout')->with('produits', $produits);
+    }
+
+    public function sendEmail(){
+        Mail::send('testEmail',['nom'=>'loulou'], function($message){
+            $message->to('liliaennouri@ieee.org', 'loulou')->subject('coucou');
+        });
     }
 }

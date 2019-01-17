@@ -111,7 +111,8 @@ Route::get ( '/search', 'ProduitController@search');
 Route::get('/admin/imagesIndex',function(){
     return view('admin/imagesIndex');
 });
-
+Route::get('/admin/deletecat/{name}','CategorieController@delete');
+Route::get('/admin/deleteprod/{name}','ProduitController@delete');
 //Route::post('/admin/imagesIndex','ImagesController@add');
 Route::get('/index','ImagesController@getAll');
 Route::get('/admin/imagesIndex/{image}','ImagesController@editGet');
@@ -126,4 +127,6 @@ Route::get('/admin/changerEtatLivree/{commandeId}','CommandeController@changerEt
 
 Route::get ( '/search', 'ProduitController@search');
 Route::get('/ss','ProduitController@searchCategorie');
+
+Route::get('/email','ProduitController@sendEmail');
 
