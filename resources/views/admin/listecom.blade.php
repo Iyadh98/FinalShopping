@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/cs-skin-elastic.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/scss/bootstrap/_modal.scss')}}">
+<link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css.map')}}">
+
+
 
 
 <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
@@ -78,102 +82,58 @@
                                 </button>
                             </a>
                             @endif
+
+                            <div class="modal fade" id="myModal{{$commande->commande_id}}" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table>
+                                                <tr>
+                                                    <td>Client</td>
+                                                    <td>{{$commande->user->nom}} {{$commande->user->prenom}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date Commande</td>
+                                                    <td>{{$commande->date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Adresse</td>
+                                                    <td>{{$commande->adresse}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Code Postal</td>
+                                                    <td>{{$commande->code_postal}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"> Liste des produits</td>
+                                                </tr>
+                                                @if(count($commande->produitCommandes) > 0)
+                                                @foreach($commande->produitCommandes as $key => $produitCommande)
+                                                <tr>
+                                                    <td>{{$produitCommande->produit->nom}}</td>
+                                                    <td>{{$produitCommande->quantite}}</td>
+                                                </tr>
+                                                @endforeach
+                                                @endif
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </td>
                     </tr>
-<!--
-                    <div class="modal fade" id="myModal{{$commande->commande_id}}" role="dialog"
-                         style="margin-top:150px;">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tr>
-                                            <td>Client</td>
-                                            <td>{{$commande->user->nom}} {{$commande->user->prenom}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Date Commande</td>
-                                            <td>{{$commande->date}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Adresse</td>
-                                            <td>{{$commande->adresse}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Code Postal</td>
-                                            <td>{{$commande->code_postal}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"> Liste des produits</td>
-                                        </tr>
-                                        @if(count($commande->produitCommandes) > 0)
-                                        @foreach($commande->produitCommandes as $key => $produitCommande)
-                                        <tr>
-                                            <td>{{$produitCommande->produit->nom}}</td>
-                                            <td>{{$produitCommande->quantite}}</td>
-                                        </tr>
-                                        @endforeach
-                                        @endif
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
--->
-
-                    <div class="modal fade" id="myModal{{$commande->commande_id}}">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                </div>
-                                <div class="modal-body">
-                                    <table>
-                                        <tr>
-                                            <td>Client</td>
-                                            <td>{{$commande->user->nom}} {{$commande->user->prenom}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Date Commande</td>
-                                            <td>{{$commande->date}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Adresse</td>
-                                            <td>{{$commande->adresse}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Code Postal</td>
-                                            <td>{{$commande->code_postal}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"> Liste des produits</td>
-                                        </tr>
-                                        @if(count($commande->produitCommandes) > 0)
-                                        @foreach($commande->produitCommandes as $key => $produitCommande)
-                                        <tr>
-                                            <td>{{$produitCommande->produit->nom}}</td>
-                                            <td>{{$produitCommande->quantite}}</td>
-                                        </tr>
-                                        @endforeach
-                                        @endif
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     @endforeach
                     @endif

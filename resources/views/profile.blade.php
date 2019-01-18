@@ -262,7 +262,14 @@ Profile
                                 <td>{{$commande->commande_id}}</td>
                                 <td>{{$commande->date}}</td>
                                 <td>{{$commande->montant}}</td>
-                                <td>@if($commande->etat==1)
+                                <td>
+                                    <button type="button"
+                                            class="btn btn-success btn-sm"
+                                            data-toggle="modal"
+                                            data-target="#myModal{{$commande->commande_id}}">
+                                        <i class="fa fa-dot-circle-o"></i> Détails
+                                    </button>
+                                    @if($commande->etat==1)
                                     Commande en cours
                                     @elseif ($commande->etat==2)
                                     Commande prête
@@ -271,8 +278,62 @@ Profile
                                     @else
                                     Commande annulée
                                     @endif
+
+                                    <div class="modal fade" id="myModal{{$commande->commande_id}}" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <table>
+                                                        <tr>
+                                                            <td>Client</td>
+                                                            <td>{{$commande->user->nom}} {{$commande->user->prenom}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Date Commande</td>
+                                                            <td>{{$commande->date}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Adresse</td>
+                                                            <td>{{$commande->adresse}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Code Postal</td>
+                                                            <td>{{$commande->code_postal}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2"> Liste des produits</td>
+                                                        </tr>
+                                                        @if(count($commande->produitCommandes) > 0)
+                                                        @foreach($commande->produitCommandes as $key => $produitCommande)
+                                                        <tr>
+                                                            <td>{{$produitCommande->produit->nom}}</td>
+                                                            <td>{{$produitCommande->quantite}}</td>
+                                                        </tr>
+                                                        @endforeach
+                                                        @endif
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
                                 </td>
+
                             </tr>
+
+
                             @endif
                             @endforeach
                             @endif
