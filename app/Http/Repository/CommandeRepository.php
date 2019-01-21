@@ -10,6 +10,7 @@ namespace App\Http\Repository;
 
 
 use App\Commande;
+use App\Produit;
 use App\Produit_Commande;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,7 @@ class CommandeRepository
     $commande->etat = 1;
 
     $commande->save();
+    $points = 0;
 
         foreach($produits as $produit){
             $produitCommande = new Produit_Commande();
@@ -49,21 +51,21 @@ class CommandeRepository
     {
         return Commande::where('etat','=',1)
             ->orWhere('etat','=',2)
-            ->with(['user','produitCommande'])
+            ->with(['user','produitCommandes'])
             ->get();
     }
 
     public function getCommandesAnnuleesWithUsers()
     {
         return Commande::where('etat','=',0)
-            ->with(['user','produitCommande'])
+            ->with(['user','produitCommandes'])
             ->get();
     }
 
     public function getCommandesLivreesWithUsers()
     {
         return Commande::where('etat','=',3)
-            ->with(['user','produitCommande'])
+            ->with(['user','produitCommandes'])
             ->get();
     }
 
@@ -78,9 +80,18 @@ class CommandeRepository
             return Commande::find($commandeId);
         }
 
+
+        public function getByIdWithUser($commandeId){
+        return Commande::where('commande_id','=',$commandeId)
+            ->with(['user'])
+            ->first();
+        }
+
         public function delete($commande){
             $commande->delete();
         }
+
+
 
     /*
      * etat enCours: 1;
@@ -103,7 +114,6 @@ class CommandeRepository
     {
         $commande->etat = 2;
         $commande->update();
-
         $commande = $this->getById($commande->commande_id);
         return $commande;
     }
@@ -125,4 +135,21 @@ class CommandeRepository
         $commande = $this->getById($commande->commande_id);
         return $commande;
     }
+
+    public function getTotalPoints($produitsCommandes)
+    {
+        $total =0;
+        foreach ($produitsCommandes as $produitCommande){
+            $total += ($produitCommande->produit->points * $produitCommande->quantite);
+        }
+        return $total;
+    }
+
+    public function getByIdWithUserAndProduitCommande($commandeId)
+    {
+        return Commande::where('commande_id','=',$commandeId)
+            ->with(['user','produitCommandes.produit'])
+            ->first();
+    }
+
 }

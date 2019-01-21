@@ -10,6 +10,15 @@
 <link rel="stylesheet" href="{{URL::asset('assets/css/flag-icon.min.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/cs-skin-elastic.css')}}">
 <link rel="stylesheet" href="{{URL::asset('assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{URL::asset('assets/scss/bootstrap/_modal.scss')}}">
+<link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css.map')}}">
+
+
+
+
+<link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
 <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
 <link rel="stylesheet" href="{{URL::asset('assets/scss/style.css')}}">
 
@@ -47,24 +56,85 @@
                         <td>{{$commande->date}}</td>
                         <td>{{$commande->adresse}}</td>
                         <td>{{$commande->code_postal}}</td>
-                        <td>{{$commande->etat}}</td>
+                        <td>@if($commande->etat==1)
+                            Commande en cours
+                            @elseif ($commande->etat==2)
+                            Commande prête
+                            @endif
+                        </td>
                         <td>
+                            <button type="button"
+                                    class="btn btn-success btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#myModal{{$commande->commande_id}}">
+                                <i class="fa fa-dot-circle-o"></i> Détails
+                            </button>
                             @if ($commande->etat == 1)
                             <a href="{{action('CommandeController@changerEtatPrete',$commande->commande_id)}}">
-                            <button class="btn btn-success btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Prête
-                            </button>
+                                <button class="btn btn-success btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Prête
+                                </button>
                             </a>
                             @elseif ($commande->etat == 2)
                             <a href="{{action('CommandeController@changerEtatLivree',$commande->commande_id)}}">
-                            <button class="btn btn-success btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Livrée
-                            </button>
+                                <button class="btn btn-success btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Livrée
+                                </button>
                             </a>
                             @endif
-                        </td>
 
+                            <div class="modal fade" id="myModal{{$commande->commande_id}}" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table>
+                                                <tr>
+                                                    <td>Client</td>
+                                                    <td>{{$commande->user->nom}} {{$commande->user->prenom}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date Commande</td>
+                                                    <td>{{$commande->date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Adresse</td>
+                                                    <td>{{$commande->adresse}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Code Postal</td>
+                                                    <td>{{$commande->code_postal}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"> Liste des produits</td>
+                                                </tr>
+                                                @if(count($commande->produitCommandes) > 0)
+                                                @foreach($commande->produitCommandes as $key => $produitCommande)
+                                                <tr>
+                                                    <td>{{$produitCommande->produit->nom}}</td>
+                                                    <td>{{$produitCommande->quantite}}</td>
+                                                </tr>
+                                                @endforeach
+                                                @endif
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
+
+
                     @endforeach
                     @endif
                     </tbody>
@@ -89,6 +159,7 @@
 <script src="{{URL::asset('assets/js/main.js')}}"></script>
 
 
+
 <script src="{{URL::asset('assets/js/lib/data-table/datatables.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
@@ -111,24 +182,25 @@
 
 <script type="text/javascript">
 
-$(document).ready(function(){
+    $(document).ready(function () {
 // For A Delete Record Popup
-$('.remove-record').click(function() {
-var id = $(this).attr('data-id');
-var url = $(this).attr('data-url');
+        $('.remove-record').click(function () {
+            var id = $(this).attr('data-id');
+            var url = $(this).attr('data-url');
 
-$(".remove-record-model").attr("action",url);
-$('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
-$('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
-});
+            $(".remove-record-model").attr("action", url);
+            $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+            $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="' + id + '">');
+        });
 
-$('.remove-data-from-delete-form').click(function() {
-$('body').find('.remove-record-model').find( "input" ).remove();
-});
-$('.modal').click(function() {
+        $('.remove-data-from-delete-form').click(function () {
+            $('body').find('.remove-record-model').find("input").remove();
+        });
+        /*
+        $('.modal').click(function () {
 // $('body').find('.remove-record-model').find( "input" ).remove();
-});
-});
+        });*/
+    });
 </script>
 
 @endsection

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:Basket="http://www.w3.org/1999/xhtml">
 <head>
     <title>@yield('title')</title>
     <meta charset="UTF-8">
@@ -118,6 +118,7 @@
                             Total: {{Basket::total(false)}} TND
                         </div>
 
+
                         <div class="header-cart-buttons">
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
@@ -128,13 +129,18 @@
 
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
-                                <a @auth
+                                <a @if ( Basket::totalItems() == 0)
+                                   href="#"
+                                   class="flex-c-m size1 bg5 bo-rad-20 hov1 s-text2 trans-0-4"
+                                   @else
+                                    @auth
                                    href="{{url('/checkout')}}"
                                    @endauth
                                    @guest
                                    href="{{url('/login')}}"
                                    @endguest
-                                   class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                   class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4"
+                                   @endif>
                                     Check Out
                                 </a>
                             </div>

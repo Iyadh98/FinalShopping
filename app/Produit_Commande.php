@@ -25,6 +25,6 @@ class Produit_Commande extends Model
 
     public function commande()
     {
-        return $this->hasOne('App\Commande','commande_id','commande_id');
+        return $this->belongsTo('App\Commande','commande_id','commande_id');
     }
 }

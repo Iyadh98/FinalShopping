@@ -26,6 +26,8 @@ class ProduitController extends Controller
     protected $categorieRepository;
     protected $typeRepository;
     protected $imagesRepository;
+
+
     function __construct(ProduitRepository $produitRepository,
                          CategorieRepository $categorieRepository,
                          TypeRepository $typeRepository, ImagesRepository $imagesRepository)
@@ -36,6 +38,10 @@ class ProduitController extends Controller
         $this->imagesRepository=$imagesRepository;
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function addPost(Request $request)
     {
         Log::info($request);
@@ -176,6 +182,7 @@ class ProduitController extends Controller
              $ba=\App\Categorie::where('nom',$q)->get();
              foreach($ba as $b){
                  $i=0;
+                 Log::info($b);
                  foreach(json_decode($b) as $a){
                  Log::info($a);
                  $test=$a;
