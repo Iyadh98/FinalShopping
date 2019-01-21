@@ -133,5 +133,5 @@ Route::get('/admin/changerEtatLivree/{commandeId}','CommandeController@changerEt
 Route::get ( '/search', 'ProduitController@search');
 Route::get('/ss','ProduitController@searchCategorie');
 
-Route::get('/email','ProduitController@sendEmail');
+Route::get('/email','ProduitController@mail');
 

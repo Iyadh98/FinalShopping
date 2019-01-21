@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Lenius\Basket\Basket;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
+
 class ProduitController extends Controller
 {
     protected $produitRepository;
@@ -222,9 +224,9 @@ class ProduitController extends Controller
         return view('checkout')->with('produits', $produits);
     }
 
-    public function sendEmail(){
-        Mail::send('testEmail',['nom'=>'loulou'], function($message){
-            $message->to('liliaennouri@ieee.org', 'loulou')->subject('coucou');
-        });
+    public function mail(){
+        $name='Iyadh';
+        Mail::to('iyadhkhalfallah@ieee.org')->send(new SendMailable($name));
+        return 'Email was sent';
     }
 }

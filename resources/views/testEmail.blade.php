@@ -1,1 +1,1 @@
-Ceci est un test {{$nom}}
+Ceci est un test {{$name}}

@@ -15,7 +15,7 @@ return [
     |            "sparkpost", "log", "array"
     |
     */
-
+//PHP ARTISAN CONFIG:CACHE
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('iyadhkhalfallah98@gmail.com'),
+    'username' => env('MAIL_USERNAME'),
 
-    'password' => env('23068498'),
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
