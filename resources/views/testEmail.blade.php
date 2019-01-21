@@ -1,1 +1,1 @@
-Ceci est un test {{$name}}
+Merci, {{$name}}, Votre commande est passée

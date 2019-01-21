@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Lenius\Basket\Facades\Basket;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
 
 
 class CommandeController
@@ -48,6 +50,8 @@ class CommandeController
         Log::info("basket2");
         Log::info(Basket::contents(true));
         Basket::destroy();
+        $name='Iyadh';
+        Mail::to('iyadhkhalfallah@ieee.org')->send(new SendMailable($name));
         return redirect('/index');
     }
 
