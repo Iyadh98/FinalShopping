@@ -59,6 +59,9 @@
                     <a href="{{url('/admin/clients')}}" class="dropdown-toggle"> <i class="menu-icon fa fa-laptop"></i>Clients</a>
                 </li>
                 <li class="menu-item-has-children dropdown">
+                    <a href="{{url('/admin/lister_messages')}}" class="dropdown-toggle"> <i class="menu-icon fa fa-laptop"></i>Messages Clients</a>
+                </li>
+                <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Commandes</a>
                     <ul class="sub-menu children dropdown-menu">

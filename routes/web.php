@@ -75,6 +75,7 @@ Route::get('/admin/ajouter_categorie',function(){
     return view('admin/ajoutcat');
 });
 Route::post('/admin/ajouter_categorie','CategorieController@addPost');
+Route::post('/contact','MessageController@addPost');
 Route::get('/admin/supprimer_categorie',function(){
     return view('admin/supprimercat');
 });
@@ -85,6 +86,7 @@ Route::get('/admin/modifier_categorie',function(){
 
 Route::post('/admin/ajouter_categorie','CategorieController@addPost');
 Route::get('/admin/lister_categorie','CategorieController@getAllCategories');
+Route::get('/admin/lister_messages','MessageController@getAll');
 Route::get('/admin/edit_categorie/{categorieId}','CategorieController@editGet');
 Route::post('/admin/edit_categorie','CategorieController@editPost');
 Route::delete('/admin/delete_categorie/{categorieId}','CategorieController@delete');
