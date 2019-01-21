@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('/app2','ProduitController@getAllProductsAndCategoriesApp');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/index',function(){
     return view('index');
@@ -27,6 +27,7 @@ Route::get('/produits',function(){
 });
 */
 Route::get('/produits','ProduitController@getAllProductsAndCategories');
+
 
 Route::get('/panier',function(){
     return view('cart');

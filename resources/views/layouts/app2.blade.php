@@ -365,7 +365,7 @@
                 Categories
             </h4>
 
-            <ul>
+           <!-- <ul>
                 <li class="p-b-9">
                     <a href="#" class="s-text7">
                         Men
@@ -393,32 +393,45 @@
         </div>
 
         <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+        -->
+            <form method="get" action="{{action('ProduitController@searchCategorie')}}">
+                @if(count($categories) > 0)
+                    @foreach($categories as $categorie)
+                        <li class="p-t-4">
+                            <input type="submit" name="cat" class="s-text13 active1" value="{{$categorie->nom}}">
+
+
+                        </li>
+
+                    @endforeach
+                @endif
+            </form>
             <h4 class="s-text12 p-b-30">
-                Links
+                Liens
             </h4>
 
             <ul>
                 <li class="p-b-9">
                     <a href="#" class="s-text7">
-                        Search
+                        Produits
                     </a>
                 </li>
 
                 <li class="p-b-9">
                     <a href="#" class="s-text7">
-                        About Us
+                        Panier
                     </a>
                 </li>
 
                 <li class="p-b-9">
                     <a href="#" class="s-text7">
-                        Contact Us
+                        Savoir plus
                     </a>
                 </li>
 
                 <li class="p-b-9">
                     <a href="#" class="s-text7">
-                        Returns
+                        Contactez-nous
                     </a>
                 </li>
             </ul>
@@ -478,28 +491,7 @@
         </div>
     </div>
 
-    <div class="t-center p-l-15 p-r-15">
-        <a href="#">
-            <img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
-        </a>
 
-        <a href="#">
-            <img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
-        </a>
-
-        <a href="#">
-            <img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
-        </a>
-
-        <a href="#">
-            <img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
-        </a>
-
-        <a href="#">
-            <img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
-        </a>
-
-    </div>
 </footer>
 
 

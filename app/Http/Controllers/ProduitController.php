@@ -58,6 +58,13 @@ class ProduitController extends Controller
         $categories = $this->categorieRepository->getAll();
         return view('product')->with('produits', $produits)->with('categories', $categories);
     }
+    public function getAllProductsAndCategoriesApp()
+    {
+        $produits = $this->produitRepository->getAll();
+        $categories = $this->categorieRepository->getAll();
+        return view('layouts/app2')->with('categories', $categories);
+    }
+
 
     public function getAllProducts()
     {
@@ -180,7 +187,7 @@ class ProduitController extends Controller
              $user = \App\Produit::where ( 'categorie_id', $test)->get ();
 
              Log::info("YAAAT");
-             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);;
+             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
          }
        /*  else{
              $i=0;

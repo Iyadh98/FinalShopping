@@ -205,7 +205,7 @@
                     </div>
 
                 </br>
-                    <input type="submit" value="Continue to checkout" class="btn" style="background-color:#243E36 !important;">
+                    <input type="submit" value="Passer la commande" class="btn" style="background-color:#243E36 !important;">
             </div>
         </div>
      </div>
