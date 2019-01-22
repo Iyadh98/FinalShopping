@@ -10,7 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Produit;
-use App\Http\Repository\CategorieRepository;
+use App\Http\Repository\SousCategorieRepository;
 use App\Http\Repository\ImagesRepository;
 use App\Http\Repository\ProduitRepository;
 use App\Http\Repository\TypeRepository;
@@ -25,17 +25,17 @@ use App\Mail\SendMailable;
 class ProduitController extends Controller
 {
     protected $produitRepository;
-    protected $categorieRepository;
+    protected $sousCategorieRepository;
     protected $typeRepository;
     protected $imagesRepository;
 
 
     function __construct(ProduitRepository $produitRepository,
-                         CategorieRepository $categorieRepository,
+                         SousCategorieRepository $sousCategorieRepository,
                          TypeRepository $typeRepository, ImagesRepository $imagesRepository)
     {
         $this->produitRepository = $produitRepository;
-        $this->categorieRepository = $categorieRepository;
+        $this->sousCategorieRepository = $sousCategorieRepository;
         $this->typeRepository = $typeRepository;
         $this->imagesRepository=$imagesRepository;
     }
@@ -54,29 +54,29 @@ class ProduitController extends Controller
 
     public function addGet()
     {
-        $categories = $this->categorieRepository->getAll();
+        $sousCategories = $this->sousCategorieRepository->getAll();
         $types = $this->typeRepository->getAll();
         Log::info($types);
-        return view('admin/ajoutprod')->with('categories', $categories)->with('types', $types);
+        return view('admin/ajoutprod')->with('sousCategories', $sousCategories)->with('types', $types);
     }
 
-    public function getAllProductsAndCategories()
+    public function getAllProductsAndSousCategories()
     {
         $produits = $this->produitRepository->getAll();
-        $categories = $this->categorieRepository->getAll();
-        return view('product')->with('produits', $produits)->with('categories', $categories);
+        $sousCategories = $this->sousCategorieRepository->getAll();
+        return view('product')->with('produits', $produits)->with('sousCategories', $sousCategories);
     }
-    public function getAllProductsAndCategoriesApp()
+    public function getAllProductsAndSousCategoriesApp()
     {
         $produits = $this->produitRepository->getAll();
-        $categories = $this->categorieRepository->getAll();
-        return view('layouts/app2')->with('categories', $categories);
+        $sousCategories = $this->sousCategorieRepository->getAll();
+        return view('layouts/app2')->with('sousCategories', $sousCategories);
     }
 
 
     public function getAllProducts()
     {
-        $produits = $this->produitRepository->getAllWithCategoriesTypes();
+        $produits = $this->produitRepository->getAllWithSousCategoriesTypes();
         Log::info($produits);
         return view('admin/listeprod')->with('produits', $produits);
     }
@@ -103,14 +103,14 @@ class ProduitController extends Controller
 
     public function editGet($produitId)
     {
-        $categories=$this->categorieRepository->getAll();
+        $sousCategories=$this->sousCategorieRepository->getAll();
         $types=$this->typeRepository->getAll();
 
         if (!$produit = $this->produitRepository->getById($produitId)) {
             return response()->json(['error' => 'produit not found'], 404);
         }
 
-        return view('admin/editprod')->with('produit',$produit)->with('categories',$categories)->with('types',$types);
+        return view('admin/editprod')->with('produit',$produit)->with('sousCategories',$sousCategories)->with('types',$types);
     }
 
     public function editPost(Request $request)
@@ -163,25 +163,25 @@ class ProduitController extends Controller
 
     public function search(){
         $q = Input::get ( 'search' );
-        $categories = $this->categorieRepository->getAll();
+        $sousCategories = $this->sousCategorieRepository->getAll();
 
         $user = \App\Produit::where ( 'nom', 'LIKE', '%' . $q . '%' )->get ();
         if (count ( $user ) > 0)
-            return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
+            return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('sousCategories', $sousCategories);
         else
-            return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('categories', $categories)->withDetails ( $user );
+            return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('sousCategories', $sousCategories)->withDetails ( $user );
     }
 
 
-     public function searchCategorie(){
+     public function searchSousCategorie(){
          $q = Input::get ( 'cat' );
 
          if(isset($q)){
              Log::info($q);
              $produits = $this->produitRepository->getAll();
-             $categories = $this->categorieRepository->getAll();
+             $sousCategories = $this->sousCategorieRepository->getAll();
              $images=$this->imagesRepository->getAll();
-             $ba=\App\Categorie::where('nom',$q)->get();
+             $ba=\App\Sous_Categorie::where('nom',$q)->get();
              foreach($ba as $b){
                  $i=0;
                  Log::info($b);
@@ -193,10 +193,10 @@ class ProduitController extends Controller
                      break;
                  }
              }
-             $user = \App\Produit::where ( 'categorie_id', $test)->get ();
+             $user = \App\Produit::where ( 'sous_categorie_id', $test)->get ();
 
              Log::info("YAAAT");
-             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
+             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('sousCategories', $sousCategories);
          }
        /*  else{
              $i=0;
@@ -208,13 +208,13 @@ class ProduitController extends Controller
              Log::info($i);
          }
 
-          $categories = $this->categorieRepository->getAll();
+          $sousCategories = $this->sousCategorieRepository->getAll();
 
-          $user = \App\Produit::where ( 'categorie_id', 'LIKE', '%' . $q . '%' )->get ();
+          $user = \App\Produit::where ( 'sous_categorie_id', 'LIKE', '%' . $q . '%' )->get ();
           if (count ( $user ) > 0)
-              return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
+              return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('sousCategories', $sousCategories);
           else
-              return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('categories', $categories)->withDetails ( $user );
+              return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('sousCategories', $sousCategories)->withDetails ( $user );
     */
        }
     public function getAllProductsCheckout()

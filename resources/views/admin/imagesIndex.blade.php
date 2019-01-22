@@ -566,7 +566,7 @@
     </script>
     <script>
         jQuery(document).ready(function(){
-            jQuery('#select_categorie').select2({ width: '100%' });
+            jQuery('#select_sous_categorie').select2({ width: '100%' });
         });
     </script>
     <script>

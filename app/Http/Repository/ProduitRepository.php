@@ -23,7 +23,7 @@ class ProduitRepository
         $produit->description = $request->input('description');
         $produit->prix = $request->input('prix');
         $produit->points = $request->input('points');
-        $produit->categorie_id = $request->input('categorie');
+        $produit->sous_categorie_id = $request->input('sousCategorie');
         $produit->type_produit_id = $request->input('type');
         $imageName = $produit->nom .rand(). '.' .
             $request->file('image')->getClientOriginalExtension();
@@ -43,7 +43,7 @@ class ProduitRepository
         $produit->description = $request->input('description');
         $produit->prix = $request->input('prix');
         $produit->points = $request->input('points');
-        $produit->categorie_id = $request->input('categorie');
+        $produit->sous_categorie_id = $request->input('sousCategorie');
         $produit->type_produit_id = $request->input('type');
         if ($request->file('image')){
             $imageName = $produit->nom .rand(). '.' .
@@ -65,9 +65,9 @@ class ProduitRepository
         return Produit::all();
     }
 
-    public function getAllWithCategoriesTypes()
+    public function getAllWithSousCategoriesTypes()
     {
-        return Produit::with(['categorie','type'])->get();
+        return Produit::with(['sousCategorie','type'])->get();
     }
 
 
@@ -83,7 +83,7 @@ class ProduitRepository
 
 
 
-    public function getProduitsByCategorie($categorieId){
+    public function getProduitsBySousCategorie($sousCategorieId){
         return null;
 
     }

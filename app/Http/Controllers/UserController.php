@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Repository\CategorieRepository;
+use App\Http\Repository\SousCategorieRepository;
 use App\Http\Repository\UserRepository;
 use Illuminate\Http\Request;
 

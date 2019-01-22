@@ -20,19 +20,19 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong>Modifier la catégorie {{$categorie->nom}}</strong>
+                        <strong>Modifier la catégorie {{$sousCategorie->nom}}</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="{{ action('CategorieController@editPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{ action('SousCategorieController@editPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row form-group">
                             </div>
                             <div class="row form-group">
-                                <div class="col-12 col-md-9"><input type="text" id="id" name="id"  class="form-control" value="{{$categorie->categorie_id}}" style="visibility: hidden"></div>
+                                <div class="col-12 col-md-9"><input type="text" id="id" name="id"  class="form-control" value="{{$sousCategorie->sous_categorie_id}}" style="visibility: hidden"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nom de la catégorie</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="nom" name="nom"  class="form-control" value="{{$categorie->nom}}"></div>
+                                <div class="col-12 col-md-9"><input type="text" id="nom" name="nom"  class="form-control" value="{{$sousCategorie->nom}}"></div>
                             </div>
 
 
@@ -69,7 +69,7 @@
     </script>
     <script>
         jQuery(document).ready(function(){
-            jQuery('#select_categorie').select2({ width: '100%' });
+            jQuery('#select_sous_categorie').select2({ width: '100%' });
         });
     </script>
     <script>

@@ -56,12 +56,12 @@
                         </h4>
 
                         <ul class="p-b-54">
-                            @if(count($categories) > 0)
-                                @foreach($categories as $categorie)
+                            @if(count($sousCategories) > 0)
+                                @foreach($sousCategories as $sousCategorie)
 
                                     <li class="p-t-4">
                                         <a href="#" class="s-text13 active1">
-                                            {{$categorie->nom}}
+                                            {{$sousCategorie->nom}}
                                         </a>
                                     </li>
 

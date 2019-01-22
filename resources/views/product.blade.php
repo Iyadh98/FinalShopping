@@ -53,15 +53,15 @@
                     <div class="leftbar p-r-20 p-r-0-sm">
                         <!--  -->
                         <h4 class="m-text14 p-b-7">
-                            Categories
+                            Sous Categories
                         </h4>
 
                         <ul class="p-b-54">
-                            <form method="get" action="{{action('ProduitController@searchCategorie')}}">
-                            @if(count($categories) > 0)
-                                @foreach($categories as $categorie)
+                            <form method="get" action="{{action('ProduitController@searchSousCategorie')}}">
+                            @if(count($sousCategories) > 0)
+                                @foreach($sousCategories as $sousCategorie)
                                     <li class="p-t-4">
-                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$categorie->nom}}">
+                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}">
 
 
                                     </li>
@@ -217,8 +217,6 @@
                             @endforeach
                         @endif
                     </div>
-                    <a href="{{action('ProduitController@destroyCart')}}" class="btn btn-warning">Edit</a>
-                {{        Log::info("Test1")}}
                 <!-- Pagination -->
                     <div class="pagination flex-m flex-w p-t-26">
                         <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
