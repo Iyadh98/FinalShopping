@@ -20,4 +20,9 @@ class Sous_Categorie extends Model
     {
         return $this->hasMany('App\Produit');
     }
+
+    public function categorie()
+    {
+        return $this->belongsTo('App\Categorie','categorie_id','categorie_id');
+    }
 }
