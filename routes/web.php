@@ -41,11 +41,13 @@ Route::get('/contact',function(){
 Route::get('/profil',function(){
     return view('profile');
 });
-Route::get('/admin',function(){
-    return view('admin/index');
+Route::get('/admin','UserController@isAdm');
+/*Route::get('/admin/login',function(){
+    return view('admin/login');
 });
-Route::get('/admin/clients','UserController@getAll');
+Route::post('/admin/login','UserController@isAdm');*/
 
+Route::get('/admin/clients','UserController@getAll');
 
 Route::get('/admin/ajouter_produit','ProduitController@addGet');
 Route::post('/admin/ajouter_produit','ProduitController@addPost');
