@@ -1,4 +1,5 @@
 @extends('layouts.app1')
+
 @section('css_content')
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
@@ -16,40 +17,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
 @endsection
 
-@section('content')
+    @section('content')
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong>Modifier la catégorie {{$categorie->nom}}</strong>
+                        <strong>Ajouter une nouvelle sous categorie</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="{{ action('CategorieController@editPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{ action('SousCategorieController@addPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row form-group">
                             </div>
                             <div class="row form-group">
-                                <div class="col-12 col-md-9"><input type="text" id="id" name="id"  class="form-control" value="{{$categorie->categorie_id}}" style="visibility: hidden"></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nom de la sous categorie</label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="nom" name="nom"  class="form-control"></div>
                             </div>
+
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nom de la catégorie</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="nom" name="nom"  class="form-control" value="{{$categorie->nom}}"></div>
+                                <div class="col col-md-3"><label for="test-input" class=" form-control-label">Catégorie</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="categorie" id="select_categorie">
+                                        <option value="0" selected ="selected" disabled>Choisir une catégorie</option>
+                                        @if(count($categories) > 0)
+                                        @foreach($categories as $key => $categorie)
+                                        <option value="{{$categorie->categorie_id}}">
+                                            {{$categorie->nom}}
+                                        </option>
+                                        @endforeach
+                                        @endif
+                                    </select>
+                                </div>
                             </div>
+
 
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-dot-circle-o"></i> Submit
-                                </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Reset
-                                </button>
-                            </div>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>
+                    </div>
                         </form>
                     </div>
 
                 </div>
             </div>
-                @endsection
+            @endsection
 
 @section('scripts')
     <script src="{{URL::asset('assets/js/vendor/jquery-2.1.4.min.js')}}"></script>

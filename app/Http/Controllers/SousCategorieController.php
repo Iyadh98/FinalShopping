@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repository\CategorieRepository;
 use App\Sous_Categorie;
 use App\Http\Repository\SousCategorieRepository;
 use Illuminate\Http\Request;
@@ -16,11 +17,24 @@ use Illuminate\Support\Facades\Log;
 class SousCategorieController extends Controller
 {
     protected $sousCategorieRepository;
+    protected $categorieRepository;
 
-    function __construct(SousCategorieRepository $sousCategorieRepository)
+
+    function __construct(SousCategorieRepository $sousCategorieRepository,
+                         CategorieRepository $categorieRepository)
     {
         $this->sousCategorieRepository = $sousCategorieRepository;
+        $this->categorieRepository = $categorieRepository;
+
     }
+
+    public function addGet()
+    {
+        $categories = $this->categorieRepository->getAll();
+        return view('admin/ajoutsouscat')->with('categories', $categories);
+    }
+
+
     public function addPost(Request $request)
     {
         Log::info("Holaa");
@@ -34,18 +48,15 @@ class SousCategorieController extends Controller
     {
         $sousCategories = $this->sousCategorieRepository->getAll();
         Log::info($sousCategories);
-        return view('admin/listecat')->with('sousCategories',$sousCategories);
+        return view('admin/listesouscat')->with('sousCategories',$sousCategories);
     }
-
-
-
 
     public function editGet($sousCategorieId)
     {
         if (!$sousCategorie=$this->sousCategorieRepository->getById($sousCategorieId)) {
             return response()->json(['error' => 'sousCategorie not found'], 404);
         }
-        return view('admin/editcat')->with('sousCategorie',$sousCategorie);
+        return view('admin/editsouscat')->with('sousCategorie',$sousCategorie);
 }
 
     public function editPost(Request $request)

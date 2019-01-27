@@ -11,7 +11,8 @@ class Sous_Categorie extends Model
     public $timestamps = true;
 
     public $fillable = [
-        'nom'
+        'nom',
+        'categorie_id'
     ];
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];

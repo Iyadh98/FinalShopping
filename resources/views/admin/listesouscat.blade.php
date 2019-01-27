@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Liste des catégories</strong>
+                            <strong class="card-title">Liste des sous catégories</strong>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -32,17 +32,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if(count($categories) > 0)
-                                @foreach($categories as $key => $categorie)
+                                @if(count($sousCategories) > 0)
+                                @foreach($sousCategories as $key => $sousCategorie)
                                 <tr>
-                                    <td width="65%">{{$categorie->nom}}</td>
+                                    <td width="65%">{{$sousCategorie->nom}}</td>
                                     <td>
-                                        <a href="{{action('CategorieController@editGet', ['categorieId'=>$categorie->categorie_id])}}">
-                                                <button class="btn btn-success btn-sm">
+                                        <a href="{{action('SousCategorieController@editGet', ['sousCategorieId'=>$sousCategorie->sous_categorie_id])}}">
+                                            <button class="btn btn-success btn-sm">
                                                 <i class="fa fa-dot-circle-o"></i> Modifier
                                             </button>
                                         </a>
-                                        <a href="{{URL::to('/admin/deletecat/'.$categorie->categorie_id) }}">
+                                        <a href="{{URL::to('/admin/deletesouscat/'.$sousCategorie->sous_categorie_id) }}">
                                         <button  class="btn btn-danger btn-sm" >
                                             <i class="fa fa-ban"></i> Supprimer
                                         </button>

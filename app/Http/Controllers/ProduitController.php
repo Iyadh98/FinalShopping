@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Repository\CategorieRepository;
 use App\Produit;
 use App\Http\Repository\SousCategorieRepository;
 use App\Http\Repository\ImagesRepository;
@@ -26,16 +27,19 @@ class ProduitController extends Controller
 {
     protected $produitRepository;
     protected $sousCategorieRepository;
+    protected $categorieRepository;
     protected $typeRepository;
     protected $imagesRepository;
 
 
     function __construct(ProduitRepository $produitRepository,
                          SousCategorieRepository $sousCategorieRepository,
+                         CategorieRepository $categorieRepository,
                          TypeRepository $typeRepository, ImagesRepository $imagesRepository)
     {
         $this->produitRepository = $produitRepository;
         $this->sousCategorieRepository = $sousCategorieRepository;
+        $this->categorieRepository = $categorieRepository;
         $this->typeRepository = $typeRepository;
         $this->imagesRepository=$imagesRepository;
     }
@@ -44,20 +48,23 @@ class ProduitController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
+
+
+    public function addGet()
+    {
+        $categories = $this->categorieRepository->getAll();
+        $sousCategories = $this->sousCategorieRepository->getAll();
+        $types = $this->typeRepository->getAll();
+        Log::info($types);
+        return view('admin/ajoutprod')->with('categories', $categories)->with('sousCategories', $sousCategories)->with('types', $types);
+    }
+
     public function addPost(Request $request)
     {
         Log::info($request);
         $produit = $this->produitRepository->add($request);
         Log::info($produit);
         return redirect('admin');
-    }
-
-    public function addGet()
-    {
-        $sousCategories = $this->sousCategorieRepository->getAll();
-        $types = $this->typeRepository->getAll();
-        Log::info($types);
-        return view('admin/ajoutprod')->with('sousCategories', $sousCategories)->with('types', $types);
     }
 
     public function getAllProductsAndSousCategories()

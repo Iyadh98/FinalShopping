@@ -13,7 +13,7 @@ class CreateSousCategorieTable extends Migration
      */
     public function up()
     {
-        Schema::create('SousCategorie', function (Blueprint $table) {
+        Schema::create('Sous_Categorie', function (Blueprint $table) {
             $table->increments('sous_categorie_id');
             $table->String('nom');
             $table->integer('categorie_id')->unsigned();

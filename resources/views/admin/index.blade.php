@@ -82,13 +82,18 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_categorie')}}">Lister
-                                categories</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_categorie')}}">Ajouter
-                                categorie</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_categorie')}}">Lister categories</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_categorie')}}">Ajouter categorie</a></li>
+
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Sous categories</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/lister_sous_categorie')}}">Lister sous categories</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{url('/admin/ajouter_sous_categorie')}}">Ajouter sous categorie</a></li>
 
                     </ul>
                 </li>
