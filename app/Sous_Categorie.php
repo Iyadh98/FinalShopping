@@ -11,7 +11,8 @@ class Sous_Categorie extends Model
     public $timestamps = true;
 
     public $fillable = [
-        'nom'
+        'nom',
+        'categorie_id'
     ];
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
@@ -19,5 +20,10 @@ class Sous_Categorie extends Model
     public function produit()
     {
         return $this->hasMany('App\Produit');
+    }
+
+    public function categorie()
+    {
+        return $this->belongsTo('App\Categorie','categorie_id','categorie_id');
     }
 }

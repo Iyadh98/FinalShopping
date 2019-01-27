@@ -21,15 +21,15 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong>Ajouter une nouvelle sous categorie</strong>
+                        <strong>Ajouter une nouvelle categorie</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="{{ action('SousCategorieController@addPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="{{ action('CategorieController@addPost') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                             {{ csrf_field() }}
                             <div class="row form-group">
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nom de la sous categorie</label></div>
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nom de la categorie</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="nom" name="nom"  class="form-control"></div>
                             </div>
 

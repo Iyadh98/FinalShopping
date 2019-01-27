@@ -19,6 +19,7 @@ class SousCategorieRepository
     {
         $sousCategorie = new Sous_Categorie();
         $sousCategorie->nom = $request->input('nom');
+        $sousCategorie->categorie_id = $request->input('categorie');
 
         $sousCategorie->save();
         return $sousCategorie;

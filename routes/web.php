@@ -62,9 +62,6 @@ Route::delete('/admin/delete_produit/{produitId}','ProduitController@delete');
 
 
 
-
-
-
 Route::get('/admin/modifier_produit',function(){
     return view('admin/modifprod');
 });
@@ -73,17 +70,16 @@ Route::get('/admin/supprimer_produit',function(){
 });
 
 
-Route::get('/admin/ajouter_sous_categorie',function(){
-    return view('admin/ajoutcat');
-});
+
+Route::get('/admin/ajouter_sous_categorie','SousCategorieController@addGet');
 Route::post('/admin/ajouter_sous_categorie','SousCategorieController@addPost');
 Route::post('/contact','MessageController@addPost');
 Route::post('/index','SubscriberController@addPost');
 Route::get('/admin/supprimer_sous_categorie',function(){
-    return view('admin/supprimercat');
+    return view('admin/supprimersouscat');
 });
 Route::get('/admin/modifier_sous_categorie',function(){
-    return view('admin/modifiercat');
+    return view('admin/modifiersouscat');
 });
 
 
@@ -117,9 +113,14 @@ Route::get ( '/search', 'ProduitController@search');
 Route::get('/admin/imagesIndex',function(){
     return view('admin/imagesIndex');
 });
+
 Route::get('/admin/deletecat/{name}','SousCategorieController@delete');
 Route::get('/unsubscribe','SubscriberController@addGetUn');
 Route::get('/unsubscribe/{name}','SubscriberController@delete');
+
+Route::get('/admin/deletesouscat/{name}','SousCategorieController@delete');
+Route::get('/admin/deletecat/{name}','CategorieController@delete');
+
 Route::get('/admin/deleteprod/{name}','ProduitController@delete');
 //Route::post('/admin/imagesIndex','ImagesController@add');
 Route::get('/index','ImagesController@getAll');
@@ -142,4 +143,15 @@ Route::get('/searchSousCategorie','ProduitController@searchSousCategorie');
 //Route::get('/searchCategorie','ProduitController@searchCategorie');
 
 Route::get('/email','ProduitController@mail');
+
+
+
+Route::get('/admin/ajouter_categorie',function(){
+    return view('admin/ajoutcat');
+});
+Route::post('/admin/ajouter_categorie','CategorieController@addPost');
+Route::get('/admin/lister_categorie','CategorieController@getAllCategories');
+Route::get('/admin/edit_categorie/{categorieId}','CategorieController@editGet');
+Route::post('/admin/edit_categorie','CategorieController@editPost');
+
 
