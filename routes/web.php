@@ -78,6 +78,7 @@ Route::get('/admin/ajouter_sous_categorie',function(){
 });
 Route::post('/admin/ajouter_sous_categorie','SousCategorieController@addPost');
 Route::post('/contact','MessageController@addPost');
+Route::post('/index','SubscriberController@addPost');
 Route::get('/admin/supprimer_sous_categorie',function(){
     return view('admin/supprimercat');
 });
@@ -117,6 +118,8 @@ Route::get('/admin/imagesIndex',function(){
     return view('admin/imagesIndex');
 });
 Route::get('/admin/deletecat/{name}','SousCategorieController@delete');
+Route::get('/unsubscribe','SubscriberController@addGetUn');
+Route::get('/unsubscribe/{name}','SubscriberController@delete');
 Route::get('/admin/deleteprod/{name}','ProduitController@delete');
 //Route::post('/admin/imagesIndex','ImagesController@add');
 Route::get('/index','ImagesController@getAll');
