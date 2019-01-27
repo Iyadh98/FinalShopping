@@ -5,19 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Repository\ImagesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Http\Repository\CategorieRepository;
+use App\Http\Repository\SousCategorieRepository;
 use App\Http\Repository\ProduitRepository;
 
 class ImagesController extends Controller
 {    protected $imagesRepository;
     protected $produitRepository;
-    protected $categorieRepository;
+    protected $sousCategorieRepository;
 
-    function __construct(ImagesRepository $imagesRepository,ProduitRepository $produitRepository,CategorieRepository $categorieRepository)
+    function __construct(ImagesRepository $imagesRepository,ProduitRepository $produitRepository,SousCategorieRepository $sousCategorieRepository)
     {
         $this->imagesRepository = $imagesRepository;
         $this->produitRepository = $produitRepository;
-        $this->categorieRepository = $categorieRepository;
+        $this->sousCategorieRepository = $sousCategorieRepository;
     }
     public function add(Request $request)
     {
@@ -44,7 +44,7 @@ class ImagesController extends Controller
     public function getAllProd(){
         $images=$this->imagesRepository->getAll();
         $produits = $this->produitRepository->getAll();
-        $categories = $this->categorieRepository->getAll();
-        return view('product')->with('images',$images)->with('produits', $produits)->with('categories', $categories);
+        $sousCategories = $this->sousCategorieRepository->getAll();
+        return view('product')->with('images',$images)->with('produits', $produits)->with('sousCategories', $sousCategories);
     }
 }

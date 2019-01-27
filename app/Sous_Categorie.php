@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categorie extends Model
+class Sous_Categorie extends Model
 {
-    protected $table = 'Categorie';
-    protected $primaryKey = 'categorie_id';
+    protected $table = 'Sous_Categorie';
+    protected $primaryKey = 'sous_categorie_id';
     public $timestamps = true;
 
     public $fillable = [

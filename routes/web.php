@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/app2','ProduitController@getAllProductsAndCategoriesApp');
+Route::get('/app2','ProduitController@getAllProductsAndSousCategoriesApp');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/index',function(){
     return view('index');
@@ -26,7 +26,7 @@ Route::get('/produits',function(){
     return view('product');
 });
 */
-Route::get('/produits','ProduitController@getAllProductsAndCategories');
+Route::get('/produits','ProduitController@getAllProductsAndSousCategories');
 
 
 Route::get('/panier',function(){
@@ -73,25 +73,25 @@ Route::get('/admin/supprimer_produit',function(){
 });
 
 
-Route::get('/admin/ajouter_categorie',function(){
+Route::get('/admin/ajouter_sous_categorie',function(){
     return view('admin/ajoutcat');
 });
-Route::post('/admin/ajouter_categorie','CategorieController@addPost');
+Route::post('/admin/ajouter_sous_categorie','SousCategorieController@addPost');
 Route::post('/contact','MessageController@addPost');
-Route::get('/admin/supprimer_categorie',function(){
+Route::get('/admin/supprimer_sous_categorie',function(){
     return view('admin/supprimercat');
 });
-Route::get('/admin/modifier_categorie',function(){
+Route::get('/admin/modifier_sous_categorie',function(){
     return view('admin/modifiercat');
 });
 
 
-Route::post('/admin/ajouter_categorie','CategorieController@addPost');
-Route::get('/admin/lister_categorie','CategorieController@getAllCategories');
+Route::post('/admin/ajouter_sous_categorie','SousCategorieController@addPost');
+Route::get('/admin/lister_sous_categorie','SousCategorieController@getAllSousCategories');
 Route::get('/admin/lister_messages','MessageController@getAll');
-Route::get('/admin/edit_categorie/{categorieId}','CategorieController@editGet');
-Route::post('/admin/edit_categorie','CategorieController@editPost');
-Route::delete('/admin/delete_categorie/{categorieId}','CategorieController@delete');
+Route::get('/admin/edit_sous_categorie/{sousCategorieId}','SousCategorieController@editGet');
+Route::post('/admin/edit_sous_categorie','SousCategorieController@editPost');
+Route::delete('/admin/delete_sous_categorie/{sousCategorieId}','SousCategorieController@delete');
 
 
 
@@ -116,7 +116,7 @@ Route::get ( '/search', 'ProduitController@search');
 Route::get('/admin/imagesIndex',function(){
     return view('admin/imagesIndex');
 });
-Route::get('/admin/deletecat/{name}','CategorieController@delete');
+Route::get('/admin/deletecat/{name}','SousCategorieController@delete');
 Route::get('/admin/deleteprod/{name}','ProduitController@delete');
 //Route::post('/admin/imagesIndex','ImagesController@add');
 Route::get('/index','ImagesController@getAll');
@@ -133,7 +133,10 @@ Route::get('/admin/changerEtatLivree/{commandeId}','CommandeController@changerEt
 
 
 Route::get ( '/search', 'ProduitController@search');
-Route::get('/searchCategorie','ProduitController@searchCategorie');
+
+Route::get('/searchSousCategorie','ProduitController@searchSousCategorie');
+
+//Route::get('/searchCategorie','ProduitController@searchCategorie');
 
 Route::get('/email','ProduitController@mail');
 

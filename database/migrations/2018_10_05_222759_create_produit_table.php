@@ -21,10 +21,10 @@ class CreateProduitTable extends Migration
             $table->Integer('prix');
             $table->Integer('points');
             $table->String('image');
-            $table->integer('categorie_id')->unsigned();
-            $table->foreign('categorie_id')
-                ->references('categorie_id')
-                ->on('Categorie')
+            $table->integer('sous_categorie_id')->unsigned();
+            $table->foreign('sous_categorie_id')
+                ->references('sous_categorie_id')
+                ->on('Sous_Categorie')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 

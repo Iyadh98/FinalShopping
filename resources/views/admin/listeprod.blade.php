@@ -46,7 +46,7 @@
                         <td>{{$produit->description}}</td>
                         <td>{{$produit->prix}}</td>
                         <td>{{$produit->points}}</td>
-                        <td>{{$produit->categorie->nom}}</td>
+                        <td>{{$produit->sousCategorie->nom}}</td>
                         <td>{{$produit->type->nom}}</td>
                         <td>
                             <a href="{{action('ProduitController@editGet', ['produitId'=>$produit->produit_id])}}">

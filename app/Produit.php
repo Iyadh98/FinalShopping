@@ -15,7 +15,7 @@ class Produit extends Model
         'description',
         'prix',
         'points',
-        'categorie_id',
+        'sous_categorie_id',
         'type_produit_id',
         'image'
     ];
@@ -27,9 +27,9 @@ class Produit extends Model
         return $this->hasOne('App\Type_Produit','type_produit_id','type_produit_id');
     }
 
-    public function categorie()
+    public function sousCategorie()
     {
-        return $this->hasOne('App\Categorie','categorie_id','categorie_id');
+        return $this->hasOne('App\Sous_Categorie','sous_categorie_id','sous_categorie_id');
     }
 
     public function imageProduit()

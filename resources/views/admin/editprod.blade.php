@@ -50,11 +50,11 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="test-input" class=" form-control-label">Catégorie</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="categorie" id="select_categorie">
-                                        @if(count($categories) > 0)
-                                        @foreach($categories as $key => $categorie)
-                                        <option value="{{$categorie->categorie_id}}" @if ($produit->categorie_id==$categorie->categorie_id) selected @endif>
-                                            {{$categorie->nom}}
+                                    <select name="sousCategorie" id="select_sous_categorie">
+                                        @if(count($sousCategories) > 0)
+                                        @foreach($sousCategories as $key => $sousCategorie)
+                                        <option value="{{$sousCategorie->sous_categorie_id}}" @if ($produit->sous_categorie_id==$sousCategorie->sous_categorie_id) selected @endif>
+                                            {{$sousCategorie->nom}}
                                         </option>
                                         @endforeach
                                         @endif
@@ -118,7 +118,7 @@
     </script>
     <script>
         jQuery(document).ready(function(){
-            jQuery('#select_categorie').select2({ width: '100%' });
+            jQuery('#select_sous_categorie').select2({ width: '100%' });
         });
     </script>
     <script>

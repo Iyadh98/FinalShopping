@@ -56,12 +56,13 @@
                         </h4>
 
                         <ul class="p-b-54">
-                            <form method="get" action="{{action('ProduitController@searchCategorie')}}">
-                            @if(count($categories) > 0)
-                                @foreach($categories as $categorie)
+
+                            <form method="get" action="{{action('ProduitController@searchSousCategorie')}}">
+                                @if(count($sousCategories) > 0)
+                                @foreach($sousCategories as $sousCategorie)
 
                                     <li class="p-t-4">
-                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$categorie->nom}}" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'" style="background-color: #EEF5DF !important;">
+                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'" style="background-color: #EEF5DF !important;">
                                     </li>
 
                                 @endforeach
