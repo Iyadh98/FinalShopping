@@ -61,7 +61,7 @@
                             @if(count($categories) > 0)
                                 @foreach($categories as $categorie)
                                     <li class="p-t-4">
-                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$categorie->nom}}" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'" style="background-color: #EEF5DF !important;">
+                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$categorie->nom}}" onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'" style="background-color: #F0EFD5 !important;">
 
 
                                     </li>

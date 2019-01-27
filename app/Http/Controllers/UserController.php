@@ -13,6 +13,7 @@ use App\Http\Repository\CategorieRepository;
 use App\Http\Repository\UserRepository;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
     protected $userRepository;
@@ -58,5 +59,11 @@ class UserController extends Controller
         if (!$user = $this->userRepository->edit($user, $request))
             return response()->json(['error' => 'can\'t edit'], 401);
         return redirect('/profil');
+    }
+    public function isAdm(){
+        if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->isAdministrator())
+            return view('admin/index');
+        else
+            return "You have no access";
     }
 }
