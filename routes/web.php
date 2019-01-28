@@ -84,7 +84,7 @@ Route::get('/admin/modifier_sous_categorie',function(){
 
 
 Route::post('/admin/ajouter_sous_categorie','SousCategorieController@addPost');
-Route::get('/admin/lister_sous_categorie','SousCategorieController@getAllSousCategories');
+Route::get('/admin/lister_sous_categorie','SousCategorieController@getAllSousCategoriesWithCategories');
 Route::get('/admin/lister_messages','MessageController@getAll');
 Route::get('/admin/edit_sous_categorie/{sousCategorieId}','SousCategorieController@editGet');
 Route::post('/admin/edit_sous_categorie','SousCategorieController@editPost');

@@ -86,7 +86,7 @@ class ProduitController extends Controller
 
     public function getAllProducts()
     {
-        $produits = $this->produitRepository->getAllWithSousCategoriesTypes();
+        $produits = $this->produitRepository->getAllWithSousCategoriesTypesCategories();
         Log::info($produits);
         return view('admin/listeprod')->with('produits', $produits);
     }
@@ -189,7 +189,7 @@ class ProduitController extends Controller
          if(isset($q)){
              Log::info($q);
              $produits = $this->produitRepository->getAll();
-             $sousCategories = $this->sousCategorieRepository->getAll();
+             $categories = $this->categorieRepository->getAllWithSousCategories();
              $images=$this->imagesRepository->getAll();
              $ba=\App\Sous_Categorie::where('nom',$q)->get();
              foreach($ba as $b){
@@ -206,7 +206,7 @@ class ProduitController extends Controller
              $user = \App\Produit::where ( 'sous_categorie_id', $test)->get ();
 
              Log::info("YAAAT");
-             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('sousCategories', $sousCategories);
+             return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
          }
        /*  else{
              $i=0;

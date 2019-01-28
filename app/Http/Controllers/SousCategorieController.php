@@ -44,19 +44,22 @@ class SousCategorieController extends Controller
         return redirect('admin');
     }
 
-    public function getAllSousCategories()
+
+    public function getAllSousCategoriesWithCategories()
     {
-        $sousCategories = $this->sousCategorieRepository->getAll();
+        $sousCategories = $this->sousCategorieRepository->getAllWithCategories();
         Log::info($sousCategories);
         return view('admin/listesouscat')->with('sousCategories',$sousCategories);
     }
 
     public function editGet($sousCategorieId)
     {
+        $categories = $this->categorieRepository->getAll();
+
         if (!$sousCategorie=$this->sousCategorieRepository->getById($sousCategorieId)) {
             return response()->json(['error' => 'sousCategorie not found'], 404);
         }
-        return view('admin/editsouscat')->with('sousCategorie',$sousCategorie);
+        return view('admin/editsouscat')->with('sousCategorie',$sousCategorie)->with('categories', $categories);
 }
 
     public function editPost(Request $request)

@@ -52,21 +52,26 @@
                     <div class="leftbar p-r-20 p-r-0-sm">
                         <!--  -->
                         <h4 class="m-text14 p-b-7">
-                            Categories
+                            Sous Categories
                         </h4>
 
                         <ul class="p-b-54">
 
                             <form method="get" action="{{action('ProduitController@searchSousCategorie')}}">
-                                @if(count($sousCategories) > 0)
-                                @foreach($sousCategories as $sousCategorie)
-
-                                    <li class="p-t-4">
-                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'" style="background-color: #EEF5DF !important;">
-                                    </li>
-
+                                @if(count($categories) > 0)
+                                @foreach($categories as $categorie)
+                                @if(count($categorie->sousCategories) > 0)
+                                {{$categorie->nom}}
+                                @foreach($categorie->sousCategories as $sousCategorie)
+                                <li class="p-t-4">
+                                    <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}"
+                                           onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'"
+                                           style="background-color: #F0EFD5 !important;">
+                                </li>
                                 @endforeach
-                            @endif
+                                @endif
+                                @endforeach
+                                @endif
                             </form>
                         </ul>
 

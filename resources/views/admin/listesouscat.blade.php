@@ -27,7 +27,8 @@
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th width="65%">Nom</th>
+                                    <th>Nom</th>
+                                    <th>Catégorie</th>
                                     <th>Opérations</th>
                                 </tr>
                                 </thead>
@@ -35,7 +36,8 @@
                                 @if(count($sousCategories) > 0)
                                 @foreach($sousCategories as $key => $sousCategorie)
                                 <tr>
-                                    <td width="65%">{{$sousCategorie->nom}}</td>
+                                    <td>{{$sousCategorie->nom}}</td>
+                                    <td>{{$sousCategorie->categorie->nom}}</td>
                                     <td>
                                         <a href="{{action('SousCategorieController@editGet', ['sousCategorieId'=>$sousCategorie->sous_categorie_id])}}">
                                             <button class="btn btn-success btn-sm">

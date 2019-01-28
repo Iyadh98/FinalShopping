@@ -45,11 +45,19 @@ class SousCategorieRepository
     {
         $sousCategorie = $this->getById($request->input('id'));
         $sousCategorie->nom = $request->input('nom');
+        $sousCategorie->categorie_id = $request->input('categorie');
+
 
         $sousCategorie->update();
 
         $sousCategorie = $this->getById($sousCategorie->sous_categorie_id);
         return $sousCategorie;
+    }
+
+    public function getAllWithCategories()
+    {
+        return Sous_Categorie::with(['categorie'])->get();
+
     }
 
 }
