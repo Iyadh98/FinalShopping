@@ -71,14 +71,7 @@
                     </div>
                     <div class="col-12 col-md-9">
                         <select name="sousCategorie" id="select_sous_categorie">
-                            <option value="0" selected="selected" disabled>Choisir une sous catégorie</option>
-                            @if(count($sousCategories) > 0)
-                            @foreach($sousCategories as $key => $sousCategorie)
-                            <option value="{{$sousCategorie->sous_categorie_id}}">
-                                {{$sousCategorie->nom}}
-                            </option>
-                            @endforeach
-                            @endif
+                            <option value=""></option>
                         </select>
                     </div>
                 </div>
@@ -156,4 +149,18 @@
         jQuery('#select_type').select2({width: '100%'});
     });
 </script>
+
+<script>
+jQuery("#select_categorie").on('change',function(e){
+    jQuery("#select_sous_categorie").empty();
+    console.log(e);
+    var cat_id=e.target.value;
+    jQuery.get("/ajax-subcat?cat_id="+ cat_id,function(data){
+        jQuery.each(data,function(index,subcatObj){
+            jQuery("#select_sous_categorie").append('<option value="'+subcatObj.sous_categorie_id+'">'+subcatObj.nom+'</option>');
+        });
+    });
+});
+</script>
+
 @endsection

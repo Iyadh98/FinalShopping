@@ -154,4 +154,9 @@ Route::get('/admin/lister_categorie','CategorieController@getAllCategories');
 Route::get('/admin/edit_categorie/{categorieId}','CategorieController@editGet');
 Route::post('/admin/edit_categorie','CategorieController@editPost');
 
+Route::get('/ajax-subcat',function(){
+    $cat_id=\Illuminate\Support\Facades\Input::get('cat_id');
+    $subcategories= \App\Sous_Categorie::where('categorie_id','=',$cat_id)->get();
+    return Response::json($subcategories);
+});
 
