@@ -71,13 +71,16 @@ class ProduitController extends Controller
     {
         $produits = $this->produitRepository->getAll();
         $sousCategories = $this->sousCategorieRepository->getAll();
-        return view('product')->with('produits', $produits)->with('sousCategories', $sousCategories);
+        $categories = $this->categorieRepository->getAll();
+
+        return view('product')->with('produits', $produits)->with('categories', $categories)->with('sousCategories', $sousCategories);
     }
     public function getAllProductsAndSousCategoriesApp()
     {
         $produits = $this->produitRepository->getAll();
         $sousCategories = $this->sousCategorieRepository->getAll();
-        return view('layouts/app2')->with('sousCategories', $sousCategories);
+        $categories = $this->categorieRepository->getAll();
+        return view('layouts/app2')->with('categories', $categories)->with('sousCategories', $sousCategories);
     }
 
 
