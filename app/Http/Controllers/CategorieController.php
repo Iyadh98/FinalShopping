@@ -55,7 +55,7 @@ class CategorieController extends Controller
         }
         $this->categorieRepository->delete($categorie);
        */
-        Sous_Categorie::where('categorie_id', $id)->delete();
+        Categorie::where('categorie_id', $id)->delete();
         return redirect('admin');
     }
 }

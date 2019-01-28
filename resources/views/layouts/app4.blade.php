@@ -16,7 +16,7 @@
         <div class="wrap_header">
             <!-- Logo -->
             <a href="{{ url('/index') }}" class="logo">
-                <img src="images/icons/naturelogo.png" alt="IMG-LOGO">
+                <img src="images/icons/naturelogo.png" alt="IMG-LOGO" style="height:100px; margin-bottom:20px;>
             </a>
 
             <!-- Menu -->

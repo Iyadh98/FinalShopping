@@ -89,9 +89,9 @@
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
                         <div class="search-product pos-relative bo4 of-hidden">
-                            <form method="get" action="/search" role="search">
+                            <form method="get" action="/search" role="search" style="width:700px;">
                                 <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search"
-                                       placeholder="Search Products...">
+                                       placeholder="Chercher un produit...">
 
                                 <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
                                     <img src="images/search.png" alt="ICON" height="25" width="25">
@@ -222,10 +222,10 @@
                         @endif
                     </div>
                 <!-- Pagination -->
-                    <div class="pagination flex-m flex-w p-t-26">
+                   <!-- <div class="pagination flex-m flex-w p-t-26">
                         <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
                         <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

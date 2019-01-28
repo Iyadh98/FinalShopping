@@ -85,14 +85,34 @@
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
             color: rgb(0, 0, 0);
         }
+        label{
+            font-size: 1.5em;
+        }
+        .bout{
+            background-color: #AEA71A !important;
+            border-color: #AEA71A  !important;
+        }
+        .bout:hover{
+            background-color: black !important;
+        }
+        .bout1{
+            color: #AEA71A !important;
+        }
+        .bout1:hover{
+            color: black !important;
+        }
     </style>
     @endsection
 
 @section('content')
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="row justify-content-center" >
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header" style="font-size: 1.5em;">{{ __('Connexion') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -132,7 +152,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Se rappeler de moi') }}
                                     </label>
                                 </div>
                             </div>
@@ -140,15 +160,14 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn btn-primary bout">
+                                    {{ __('Se connecter') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                <a class="btn btn-link bout1" href="{{ route('password.request') }}">
+                                    {{ __('Mot de passe oublié?') }}
                                 </a>
-                                <a class="btn btn-link" href="{{ route('register') }}">
-                                    {{ __('Don\'t have an account? Register now') }}
+                                <a class="btn btn-link bout1" href="{{ route('register') }}">
+                                    {{ __('Inscrivez-vous maintenant!') }}
                                 </a>
                             </div>
                         </div>
@@ -158,6 +177,12 @@
         </div>
     </div>
 </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 @endsection
 
 @section('scripts')

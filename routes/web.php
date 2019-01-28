@@ -74,6 +74,7 @@ Route::get('/admin/supprimer_produit',function(){
 Route::get('/admin/ajouter_sous_categorie','SousCategorieController@addGet');
 Route::post('/admin/ajouter_sous_categorie','SousCategorieController@addPost');
 Route::post('/contact','MessageController@addPost');
+Route::post('/index','SubscriberController@addPost');
 Route::get('/admin/supprimer_sous_categorie',function(){
     return view('admin/supprimersouscat');
 });
@@ -112,8 +113,14 @@ Route::get ( '/search', 'ProduitController@search');
 Route::get('/admin/imagesIndex',function(){
     return view('admin/imagesIndex');
 });
+
+Route::get('/admin/deletecat/{name}','SousCategorieController@delete');
+Route::get('/unsubscribe','SubscriberController@addGetUn');
+Route::get('/unsubscribe/{name}','SubscriberController@delete');
+
 Route::get('/admin/deletesouscat/{name}','SousCategorieController@delete');
 Route::get('/admin/deletecat/{name}','CategorieController@delete');
+
 Route::get('/admin/deleteprod/{name}','ProduitController@delete');
 //Route::post('/admin/imagesIndex','ImagesController@add');
 Route::get('/index','ImagesController@getAll');
@@ -147,4 +154,9 @@ Route::get('/admin/lister_categorie','CategorieController@getAllCategories');
 Route::get('/admin/edit_categorie/{categorieId}','CategorieController@editGet');
 Route::post('/admin/edit_categorie','CategorieController@editPost');
 
+Route::get('/ajax-subcat',function(){
+    $cat_id=\Illuminate\Support\Facades\Input::get('cat_id');
+    $subcategories= \App\Sous_Categorie::where('categorie_id','=',$cat_id)->get();
+    return Response::json($subcategories);
+});
 

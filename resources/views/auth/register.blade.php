@@ -85,15 +85,30 @@
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px #4195fc;
             color: rgb(0, 0, 0);
         }
+        label{
+            font-size:1.5em;
+        }
+        .bout{
+            background-color: #AEA71A !important;
+            border-color: #AEA71A  !important;
+        }
+        .bout:hover{
+            background-color: black !important;
+        }
+
     </style>
 @endsection
 
 @section('content')
 <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header" style="font-size: 1.5em;">{{ __('Inscription') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -113,7 +128,7 @@
                             </div>
                         </div>
                             <div class="form-group row">
-                                <label for="prenom" class="col-md-4 col-form-label text-md-right">{{ __('prenom') }}</label>
+                                <label for="prenom" class="col-md-4 col-form-label text-md-right">{{ __('Prenom') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="prenom" type="text" class="form-control{{ $errors->has('prenom') ? ' is-invalid' : '' }}" name="prenom" value="{{ old('prenom') }}" required autofocus>
@@ -126,7 +141,7 @@
                                 </div>
                             </div>
                         <div class="form-group row">
-                            <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('telephone') }}</label>
+                            <label for="telephone" class="col-md-4 col-form-label text-md-right">{{ __('Telephone') }}</label>
 
                             <div class="col-md-6">
                                 <input id="telephone" type="text" class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" name="telephone" value="{{ old('telephone') }}" required autofocus>
@@ -139,7 +154,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="adresse" class="col-md-4 col-form-label text-md-right">{{ __('adresse') }}</label>
+                            <label for="adresse" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
 
                             <div class="col-md-6">
                                 <input id="adresse" type="text" class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}" name="adresse" value="{{ old('adresse') }}" required autofocus>
@@ -152,7 +167,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code_postal" class="col-md-4 col-form-label text-md-right">{{ __('code_postal') }}</label>
+                            <label for="code_postal" class="col-md-4 col-form-label text-md-right">{{ __('Code postal') }}</label>
 
                             <div class="col-md-6">
                                 <input id="code_postal" type="text" class="form-control{{ $errors->has('code_postal') ? ' is-invalid' : '' }}" name="code_postal" value="{{ old('code_postal') }}" required autofocus>
@@ -167,7 +182,7 @@
 
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adresse email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -181,7 +196,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -195,7 +210,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmer mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -204,8 +219,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-primary bout">
+                                    {{ __('S\'inscrire') }}
                                 </button>
                             </div>
                         </div>
@@ -215,6 +230,12 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 @endsection
 @section('scripts')
     <!--===============================================================================================-->
