@@ -52,7 +52,7 @@
                     <div class="leftbar p-r-20 p-r-0-sm">
                         <!--  -->
                         <h4 class="m-text14 p-b-7">
-                            Categories
+                            Sous Categories
                         </h4>
 
                         <ul class="p-b-54">
@@ -62,7 +62,7 @@
                                 @foreach($sousCategories as $sousCategorie)
 
                                     <li class="p-t-4">
-                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'" style="background-color: #EEF5DF !important;">
+                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}" onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'" style="background-color: #F0EFD5 !important;">
                                     </li>
 
                                 @endforeach

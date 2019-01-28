@@ -53,10 +53,12 @@ class SousCategorieController extends Controller
 
     public function editGet($sousCategorieId)
     {
+        $categories = $this->categorieRepository->getAll();
+
         if (!$sousCategorie=$this->sousCategorieRepository->getById($sousCategorieId)) {
             return response()->json(['error' => 'sousCategorie not found'], 404);
         }
-        return view('admin/editsouscat')->with('sousCategorie',$sousCategorie);
+        return view('admin/editsouscat')->with('sousCategorie',$sousCategorie)->with('categories', $categories);
 }
 
     public function editPost(Request $request)
