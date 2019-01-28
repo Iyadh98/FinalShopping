@@ -45,6 +45,8 @@ class SousCategorieRepository
     {
         $sousCategorie = $this->getById($request->input('id'));
         $sousCategorie->nom = $request->input('nom');
+        $sousCategorie->categorie_id = $request->input('categorie');
+
 
         $sousCategorie->update();
 

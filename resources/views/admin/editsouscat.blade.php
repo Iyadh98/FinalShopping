@@ -35,6 +35,23 @@
                                 <div class="col-12 col-md-9"><input type="text" id="nom" name="nom"  class="form-control" value="{{$sousCategorie->nom}}"></div>
                             </div>
 
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="test-input" class=" form-control-label">Catégorie</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="categorie" id="select_categorie">
+                                        <option value="0" selected ="selected" disabled>Choisir une catégorie</option>
+                                        @if(count($categories) > 0)
+                                        @foreach($categories as $key => $categorie)
+                                        <option value="{{$categorie->categorie_id}}" @if ($categorie->categorie_id==$sousCategorie->categorie_id) selected @endif>
+                                            {{$categorie->nom}}
+                                        </option>
+                                        @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
