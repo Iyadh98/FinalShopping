@@ -16,8 +16,8 @@ class Categorie extends Model
 
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public function SousCategorie()
+    public function SousCategories()
     {
-        return $this->hasMany('App\Sous_Categorie');
+        return $this->hasMany('App\Sous_Categorie','categorie_id');
     }
 }

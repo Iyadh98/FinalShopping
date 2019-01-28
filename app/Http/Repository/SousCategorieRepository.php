@@ -54,4 +54,10 @@ class SousCategorieRepository
         return $sousCategorie;
     }
 
+    public function getAllWithCategories()
+    {
+        return Sous_Categorie::with(['categorie'])->get();
+
+    }
+
 }

@@ -33,6 +33,7 @@
                         <th>Description</th>
                         <th>Prix</th>
                         <th>Points</th>
+                        <th>Sous catégorie</th>
                         <th>Catégorie</th>
                         <th>Type</th>
                         <th>Opérations</th>
@@ -47,6 +48,7 @@
                         <td>{{$produit->prix}}</td>
                         <td>{{$produit->points}}</td>
                         <td>{{$produit->sousCategorie->nom}}</td>
+                        <td>{{$produit->sousCategorie->categorie->nom}}</td>
                         <td>{{$produit->type->nom}}</td>
                         <td>
                             <a href="{{action('ProduitController@editGet', ['produitId'=>$produit->produit_id])}}">

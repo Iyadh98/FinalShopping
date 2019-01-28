@@ -87,4 +87,10 @@ class ProduitRepository
         return null;
 
     }
+
+    public function getAllWithSousCategoriesTypesCategories()
+    {
+        return Produit::with(['sousCategorie.categorie','type'])->get();
+
+    }
 }

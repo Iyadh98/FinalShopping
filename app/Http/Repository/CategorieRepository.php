@@ -30,6 +30,10 @@ class CategorieRepository
     }
 
 
+    public function getAllWithSousCategories()
+    {
+        return Categorie::with(['sousCategories'])->get();
+    }
 
     public function getById($categorieId)
     {

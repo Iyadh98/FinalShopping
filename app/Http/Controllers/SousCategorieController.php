@@ -44,9 +44,10 @@ class SousCategorieController extends Controller
         return redirect('admin');
     }
 
-    public function getAllSousCategories()
+
+    public function getAllSousCategoriesWithCategories()
     {
-        $sousCategories = $this->sousCategorieRepository->getAll();
+        $sousCategories = $this->sousCategorieRepository->getAllWithCategories();
         Log::info($sousCategories);
         return view('admin/listesouscat')->with('sousCategories',$sousCategories);
     }
