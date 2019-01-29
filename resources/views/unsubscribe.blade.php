@@ -1,6 +1,6 @@
 @extends('layouts.app2')
 @section('title')
-    Contact
+    Unsubscribe
 @endsection
 @section('css_content')
     <link rel="icon" type="image/png" href="{{URL::asset('images/icons/favicon.png')}}"/>
@@ -20,21 +20,29 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<style>
+.unsubscribe{
+    margin-top:50px;
+
+}
+    .email{
+        width: 20%;
+    }
+</style>
 @endsection
 
 @section('content')
-    <!-- Title Page -->
-    <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/heading-pages-06.jpg);">
-        <h2 class="l-text2 t-center">
-            Contact
-        </h2>
-    </section>
+<div class="container unsubscribe"  align="center">
+<form action="{{action('SubscriberController@addGetUn')}}" method="post">
+    {{csrf_field()}}
+    <label>Email: </label> <input type="email" name="email" class="email" placeholder="Veuillez entrer votre email">
 
-    <a href="{{URL::to('/unsubscribe/'.$sub->id) }}">
         <button  class="btn btn-danger btn-sm" >
             <i class="fa fa-ban"></i> Unsubscribe
         </button>
-    </a>
+
+</form>
+</div>
 @endsection
 
 
