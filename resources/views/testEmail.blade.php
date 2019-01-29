@@ -1,1 +1,1 @@
-Merci, {{$name}}, Votre commande est passée
+Merci, {{$name}}, Votre commande est passée.

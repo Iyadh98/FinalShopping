@@ -173,13 +173,12 @@ class ProduitController extends Controller
 
     public function search(){
         $q = Input::get ( 'search' );
-        $sousCategories = $this->sousCategorieRepository->getAll();
-
+        $categories = $this->categorieRepository->getAllWithSousCategories();
         $user = \App\Produit::where ( 'nom', 'LIKE', '%' . $q . '%' )->get ();
         if (count ( $user ) > 0)
-            return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('sousCategories', $sousCategories);
+            return view ( 'test' )->withDetails ( $user )->withQuery ( $q )->with('categories', $categories);
         else
-            return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('sousCategories', $sousCategories)->withDetails ( $user );
+            return view ( 'test' )->withMessage ( 'No Details found. Try to search again !' )->with('categories', $categories)->withDetails ( $user );
     }
 
 
