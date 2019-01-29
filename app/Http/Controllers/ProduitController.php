@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Lenius\Basket\Basket;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMailable;
+use App\Mail\SendMailCommandePassee;
 
 class ProduitController extends Controller
 {
@@ -233,7 +233,7 @@ class ProduitController extends Controller
 
     public function mail(){
         $name='Iyadh';
-        Mail::to('iyadhkhalfallah@ieee.org')->send(new SendMailable($name));
+        Mail::to('iyadhkhalfallah@ieee.org')->send(new SendMailCommandePassee($name));
         return 'Email was sent';
     }
 }

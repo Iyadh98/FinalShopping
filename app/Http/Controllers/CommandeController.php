@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Lenius\Basket\Facades\Basket;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMailable;
+use App\Mail\SendMailCommandePassee;
 
 
 class CommandeController
@@ -38,20 +38,21 @@ class CommandeController
     {
         Log::info("request checkout");
         Log::info($request);
-        $commande = $this->commandeRepository->add(
-            date("Y-m-d"),
-            Basket::total(false),
-            $request->input('adresse'),
-            $request->input('codePostal'),
-            Auth::user()->id,
-            Basket::contents());
+        $date = date("Y-m-d");
+        $total = Basket::total(false);
+        $adresse = $request->input('adresse');
+        $codePostal = $request->input('codePostal');
+        $user = Auth::user();
+        $contenu = Basket::contents();
+
+        $commande = $this->commandeRepository->add($date, $total, $adresse, $codePostal, $user->id, $contenu);
+        Mail::to($user->email)->send(new SendMailCommandePassee($date, $total, $adresse, $codePostal, $user, $contenu));
+
         Log::info("basket1");
         Log::info(Basket::contents());
         Log::info("basket2");
         Log::info(Basket::contents(true));
         Basket::destroy();
-        $name='Iyadh';
-        Mail::to('iyadhkhalfallah@ieee.org')->send(new SendMailable($name));
         return redirect('/index');
     }
 
@@ -97,7 +98,7 @@ class CommandeController
 
     public function changerEtatPrete($commandeId)
     {
-        if($commande = $this->commandeRepository->getById($commandeId)){
+        if ($commande = $this->commandeRepository->getById($commandeId)) {
             $this->commandeRepository->changerEtatPrete($commande);
         }
         return redirect('/admin/lister_commandes');
@@ -105,12 +106,12 @@ class CommandeController
 
     public function changerEtatLivree($commandeId)
     {
-        if($commande = $this->commandeRepository->getById($commandeId)){
+        if ($commande = $this->commandeRepository->getById($commandeId)) {
             $this->commandeRepository->changerEtatLivree($commande);
             $commande2 = $this->commandeRepository->getByIdWithUserAndProduitCommande($commandeId);
             Log::info($commande2);
-            $totalPoints= $this->commandeRepository->getTotalPoints($commande2->produitCommandes);
-            $this->userRepository->addPoints($commande2->user,$totalPoints);
+            $totalPoints = $this->commandeRepository->getTotalPoints($commande2->produitCommandes);
+            $this->userRepository->addPoints($commande2->user, $totalPoints);
         }
         return redirect('/admin/lister_commandes');
     }
