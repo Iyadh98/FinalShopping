@@ -33,7 +33,7 @@
 
 @section('content')
 <div class="container unsubscribe"  align="center">
-<form action="{{action('SubscriberController@addGetUn')}}" method="post">
+<form action="{{action('SubscriberController@delete')}}" method="post">
     {{csrf_field()}}
     <label>Email: </label> <input type="email" name="email" class="email" placeholder="Veuillez entrer votre email">
 

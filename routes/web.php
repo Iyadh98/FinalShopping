@@ -125,7 +125,7 @@ Route::get('/admin/deletecat/{name}','SousCategorieController@delete');
 Route::get('/unsubscribe',function (){
     return view('unsubscribe');
 });
-Route::post('/unsubscribe','SubscriberController@addGetUn');
+Route::post('/unsubscribe','SubscriberController@delete');
 //Route::get('/unsubscribe/{name}','SubscriberController@delete');
 
 Route::get('/admin/deletesouscat/{name}','SousCategorieController@delete');
@@ -169,4 +169,7 @@ Route::get('/ajax-subcat',function(){
     $subcategories= \App\Sous_Categorie::where('categorie_id','=',$cat_id)->get();
     return Response::json($subcategories);
 });
+Route::get('/admin/emailSubscriber/{id}','SubmessageController@editGetAdmin');
+Route::post('/admin/emailSubscriber','SubmessageController@editPost');
+Route::get('/submessage','SubmessageController@editGet');
 
