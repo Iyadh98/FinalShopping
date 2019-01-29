@@ -229,7 +229,7 @@ class ProduitController extends Controller
        }
     public function getAllProductsCheckout()
     {
-        $produits = $this->produitRepository->getAllWithCategoriesTypes();
+        $produits = $this->produitRepository->getAllWithSousCategoriesTypes();
         Log::info($produits);
         return view('checkout')->with('produits', $produits);
     }

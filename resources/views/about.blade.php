@@ -37,7 +37,7 @@ About
             <div class="col-md-8 p-b-30">
 
                 <p class="p-b-28">
-                    <h2 align="center">Nature Bio</h2>
+                    <h2 align="center" id="nous">Nature Bio</h2>
                 <br>
                 <br>
                     Boutique de produits Naturels, Bio et Artisanaux EXCLUSIVEMENT EN LIGNE. Et vous propose des produits de qualité, labellisés.
@@ -96,7 +96,7 @@ About
 
 
 
-               <h2 align="center">LIVRAISON</h2>
+               <h2 align="center" id="livraison">LIVRAISON</h2>
                 <br>
                 Les commandes sont livrées le lendemain de leur validation en ligne à l'adresse de livraison communiquée par le client sur le bon de commande.
                 <br>
@@ -124,7 +124,7 @@ About
                 Nous conseillons nos chers clients de se renseigner sur ces aspects auprès des autorités locales.
                 <br>
                 <br>
-                <h2 align="center">CONDITIONS GENERALES DE VENTE (CGV)</h2>
+                <h2 align="center" id="cgv">CONDITIONS GENERALES DE VENTE (CGV)</h2>
                 <br>
                 L'utilisation du Site www.naturebio.tn est régie par les termes et conditions apparaissant ci-dessous.
                 <br>
@@ -185,7 +185,7 @@ About
                 <br>
                 De plus, pour toutes commandes promotionnelles hors Tunisie, les frais de port et d’emballage, voire d’assurance ou de taxes, sont toujours dus dans leur intégralité (nous consulter préalablement pour savoir leur montant).
                 <br>
-                <h2>LE PAIEMENT</h2>
+                <h2 id="paiement">LE PAIEMENT</h2>
                 <br>
                 <br>
                 Le paiement s´effectuera immédiatement et en totalité par :

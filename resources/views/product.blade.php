@@ -26,7 +26,26 @@ Home
     .morelink {
         display: block;
     }
-
+    .modify{
+        background-color: #F0EFD5 !important;
+        color:black !important;
+        border-color: #F0EFD5;
+    }
+    .modify:focus {
+        background-color: #F0EFD5 !important;
+        color:black !important;
+        border-color:#F0EFD5 !important;
+        box-shadow: none !important;
+    }
+    .modify:hover{
+        background-color: #F0EFD5 !important;
+        color:black !important;
+        border-color: #F0EFD5;
+    }
+    .divChange{
+        background-color: #F0EFD5;
+        border-color: #F0EFD5;
+    }
 </style>
 
 @endsection
@@ -45,44 +64,6 @@ Home
 </section>
 @endforeach
 
-    <!-- Content page -->
-    <section class="bgwhite p-t-55 p-b-65">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                    <div class="leftbar p-r-20 p-r-0-sm">
-                        <!--  -->
-                        <h4 class="m-text14 p-b-7">
-                            Categories
-                        </h4>
-
-
-                            <form method="get" action="{{action('ProduitController@searchSousCategorie')}}">
-
-                                @if(count($categories) > 0)
-                                    @foreach($categories as $categorie)
-                                        <ul class="p-b-54">
-                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$categorie->nom}}" onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'" style="background-color: #F0EFD5 !important;">
-                            @if(count($sousCategories) > 0)
-                                @foreach($sousCategories as $sousCategorie)
-                                    <li class="p-t-4">
-
-
-
-
-                                        <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'" style="background-color: #EEF5DF !important;">
-
-
-                                    </li>
-
-                                @endforeach
-                            @endif
-                                        </ul>
-                                    @endforeach
-                                    @endif
-                            </form>
-
-
 
 <!-- Content page -->
 <section class="bgwhite p-t-55 p-b-65">
@@ -92,7 +73,7 @@ Home
                 <div class="leftbar p-r-20 p-r-0-sm">
                     <!--  -->
                     <h4 class="m-text14 p-b-7">
-                        Sous Categories
+                        Categories
                     </h4>
 
                     <ul class="p-b-54">
@@ -100,15 +81,25 @@ Home
                             @if(count($categories) > 0)
                             @foreach($categories as $categorie)
                             @if(count($categorie->sousCategories) > 0)
-                            {{$categorie->nom}}
-                            @foreach($categorie->sousCategories as $sousCategorie)
+                            <a class="btn btn-primary modify" data-toggle="collapse" href="#multiCollapseExample{{$categorie->categorie_id}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{$categorie->categorie_id}}">{{$categorie->nom}}  <img src="/images/icons/expand.png"></a>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="collapse multi-collapse" id="multiCollapseExample{{$categorie->categorie_id}}">
+                                                    <div class="card card-body divChange">
+                                        @foreach($categorie->sousCategories as $sousCategorie)
                             <li class="p-t-4">
                                 <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}"
                                        onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'"
                                        style="background-color: #F0EFD5 !important;">
                             </li>
                             @endforeach
-                            @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    @endif
+
                             @endforeach
                             @endif
                         </form>
@@ -118,9 +109,14 @@ Home
 
                     <!--  -->
                     <h4 class="m-text14 p-b-32">
-                        Filtres
+                        Informations
                     </h4>
-
+                    <ul>
+                        <li><a href="{{url('/about')}}#nous">Qui sommes-nous? <img src="/images/icons/expand.png"></a></li>
+                        <li><a href="{{url('/about')}}#paiement">Paiement <img src="/images/icons/expand.png"></a></li>
+                        <li><a href="{{url('/about')}}#livraison">Livraison <img src="/images/icons/expand.png"></a></li>
+                        <li><a href="{{url('/about')}}#cgv">CGV <img src="/images/icons/expand.png"></a></li>
+                    </ul>
 
                 </div>
             </div>
