@@ -69,4 +69,13 @@ class UserRepository
         return $user;
     }
 
+    public function retirerPointsCadeau($user)
+    {
+        if ($user->score >= 500){
+            $user->score -= 500;
+            $user->update();
+        }
+        return ($user);
+    }
+
 }

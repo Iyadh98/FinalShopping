@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Data Table</strong>
+                            <strong class="card-title">La liste des clients</strong>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -32,6 +32,8 @@
                                     <th>Prenom</th>
                                     <th>Email</th>
                                     <th>Adresse</th>
+                                    <th>Points</th>
+                                    <th>Opérations</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,6 +44,14 @@
                                     <td>{{$user->prenom}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->adresse}}</td>
+                                    <td>{{$user->score}}</td>
+                                    <td>
+                                        <a href="{{action('UserController@retirerPointsCadeau',$user->id)}}">
+                                            <button class="btn btn-success btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Récuperer le cadeau
+                                            </button>
+                                        </a>
+                                    </td>
                                 </tr>
 
                                     @endforeach

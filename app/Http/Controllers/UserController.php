@@ -66,4 +66,11 @@ class UserController extends Controller
         else
             return "You have no access";
     }
+
+    public function retirerPointsCadeau($userId){
+        if ($user = $this->userRepository->getById($userId)) {
+            $this->userRepository->retirerPointsCadeau($user);
+        }
+        return view('admin/index');
+    }
 }

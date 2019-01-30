@@ -2,6 +2,8 @@ Bonjour {{$user->nom}},
 
 Merci d'avoir passé une commande chez Naturebio!
 
+Votre commande a été passée le {{$date}} et sera livrée à l'adresse suivante: {{$adresse}} ,{{$codePostal}}
+
 <div class="container" style="background-color:white;">
     <h3 class="m-text20 p-b-24" align="center">Les détails de votre commande</h3>
     <table class="table-shopping-cart" >
@@ -10,17 +12,17 @@ Merci d'avoir passé une commande chez Naturebio!
         <col width="10">
         <col width="10">
         <tr class="table-head">
-            <th class="column-2">Produit</th>
-            <th class="column-3">Prix</th>
-            <th class="column-4">Quantité</th>
-            <th class="column-5">Total</th>
+            <th class="column-1">Produit</th>
+            <th class="column-2">Prix</th>
+            <th class="column-3">Quantité</th>
+            <th class="column-4">Total</th>
         </tr>
         @foreach($contenu as $produit)
         <tr class="table-row">
-            <td class="column-2">{{$produit->name}}</td>
-            <td class="column-3">{{$produit->price}}</td>
-            <td class="column-4">{{$produit->quantity}}</td>
-            <td class="column-5">{{$produit->price*$produit->quantity}}</td>
+            <td class="column-1">{{$produit->name}}</td>
+            <td class="column-2">{{$produit->price}}</td>
+            <td class="column-3">{{$produit->quantity}}</td>
+            <td class="column-4">{{$produit->price*$produit->quantity}}</td>
         </tr>
         @endforeach
     </table>

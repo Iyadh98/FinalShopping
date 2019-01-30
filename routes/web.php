@@ -48,6 +48,8 @@ Route::get('/admin','UserController@isAdm');
 Route::post('/admin/login','UserController@isAdm');*/
 
 Route::get('/admin/clients','UserController@getAll');
+Route::get('/admin/clients/cadeau/{userId}','UserController@retirerPointsCadeau');
+
 
 Route::get('/admin/ajouter_produit','ProduitController@addGet');
 Route::post('/admin/ajouter_produit','ProduitController@addPost');
