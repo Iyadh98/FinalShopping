@@ -26,22 +26,33 @@
         .morelink {
             display: block;
         }
+        .modify{
+            background-color: #F0EFD5 !important;
+            color:black !important;
+            border-color: #F0EFD5;
+        }
+        .modify:focus {
+            background-color: #F0EFD5 !important;
+            color:black !important;
+            border-color:#F0EFD5 !important;
+            box-shadow: none !important;
+        }
+        .modify:hover{
+            background-color: #F0EFD5 !important;
+            color:black !important;
+            border-color: #F0EFD5;
+        }
+        .divChange{
+            background-color: #F0EFD5;
+            border-color: #F0EFD5;
+        }
 
     </style>
 
 @endsection
 
 @section('content')
-    <!-- Title Page -->
-    <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m"
-             style="background-image: url(images/heading-pages-02.jpg);">
-        <h2 class="l-text2 t-center">
-            Women
-        </h2>
-        <p class="m-text13 t-center">
-            New Arrivals Women Collection 2018
-        </p>
-    </section>
+
 
 
     <!-- Content page -->
@@ -52,33 +63,51 @@
                     <div class="leftbar p-r-20 p-r-0-sm">
                         <!--  -->
                         <h4 class="m-text14 p-b-7">
-                            Sous Categories
+                            Categories
                         </h4>
 
                         <ul class="p-b-54">
-
                             <form method="get" action="{{action('ProduitController@searchSousCategorie')}}">
                                 @if(count($categories) > 0)
-                                @foreach($categories as $categorie)
-                                @if(count($categorie->sousCategories) > 0)
-                                {{$categorie->nom}}
-                                @foreach($categorie->sousCategories as $sousCategorie)
-                                <li class="p-t-4">
-                                    <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}"
-                                           onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'"
-                                           style="background-color: #F0EFD5 !important;">
-                                </li>
-                                @endforeach
-                                @endif
-                                @endforeach
+                                    @foreach($categories as $categorie)
+                                        @if(count($categorie->sousCategories) > 0)
+                                            <a class="btn btn-primary modify" data-toggle="collapse" href="#multiCollapseExample{{$categorie->categorie_id}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample{{$categorie->categorie_id}}">{{$categorie->nom}}  <img src="/images/icons/expand.png"></a>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="collapse multi-collapse" id="multiCollapseExample{{$categorie->categorie_id}}">
+                                                        <div class="card card-body divChange">
+                                                            @foreach($categorie->sousCategories as $sousCategorie)
+                                                                <li class="p-t-4">
+                                                                    <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}"
+                                                                           onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'"
+                                                                           style="background-color: #F0EFD5 !important;">
+                                                                </li>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        @endif
+
+                                    @endforeach
                                 @endif
                             </form>
+
                         </ul>
+
 
                         <!--  -->
                         <h4 class="m-text14 p-b-32">
-                            Filtres
+                            Informations
                         </h4>
+                        <ul>
+                            <li><a href="{{url('/about')}}#nous">Qui sommes-nous? <img src="/images/icons/expand.png"></a></li>
+                            <li><a href="{{url('/about')}}#paiement">Paiement <img src="/images/icons/expand.png"></a></li>
+                            <li><a href="{{url('/about')}}#livraison">Livraison <img src="/images/icons/expand.png"></a></li>
+                            <li><a href="{{url('/about')}}#cgv">CGV <img src="/images/icons/expand.png"></a></li>
+                        </ul>
+
                     </div>
                 </div>
 
@@ -88,7 +117,7 @@
                         <div class="search-product pos-relative bo4 of-hidden">
                             <form method="get" action="/search" role="search">
                                 <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search"
-                                       placeholder="Search Products...">
+                                       placeholder="Search Products..."  style="width:700px;">
 
                                 <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
                                     <img src="images/search.png" alt="ICON" height="25" width="25">
@@ -108,7 +137,7 @@
                                     <div class="block2">
                                         <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                             <img src="{{asset('images/produits/'.$produit->image)}}" alt="IMG-PRODUCT"
-                                                 style="width:250px; height:350px;">
+                                                 style="width:269.98px; height:359.97px;">
 
                                             <div class="block2-overlay trans-0-4">
                                                 <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -220,13 +249,8 @@
 
                         @endif
                     </div>
-                    <a href="{{action('ProduitController@destroyCart')}}" class="btn btn-warning">Edit</a>
-                {{        Log::info("Test1")}}
                 <!-- Pagination -->
-                    <div class="pagination flex-m flex-w p-t-26">
-                        <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-                        <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-                    </div>
+
                 </div>
             </div>
         </div>
