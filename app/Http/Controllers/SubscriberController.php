@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Mail\SendMailSubscribers;
+use Illuminate\Support\Facades\Log;
 use App\Subscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 
 class SubscriberController extends Controller
 {
@@ -12,15 +15,18 @@ class SubscriberController extends Controller
         $subscriber = new Subscriber();
         $subscriber->email = $request->input('email');
         $subscriber->save();
-        return redirect('index');
+        return redirect()->back();
     }
-    public function addGetUn(){
-        $sub=Subscriber::all();
-        return view('unsubscribe')->with('sub',$sub);
-    }
-    public function delete($id){
+    public function delete(){
+        $email=Input::get('email');
+        $subscriber=Subscriber::where('email','=',$email)->first();
 
-        Subscriber::where('id', $id)->delete();
-        return redirect('index');
+        Log::info($subscriber);
+        if ($subscriber==true) {
+            Subscriber::where('id',$subscriber->id )->delete();
+            return view('unsubscribe');
+        }
+        else return "doesnt exist";
     }
+
 }
