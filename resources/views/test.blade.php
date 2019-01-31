@@ -1,9 +1,6 @@
 @extends('layouts.app2')
-@section('title')
-    Home
-@endsection
 @section('css_content')
-    <link rel="icon" type="image/png" href="{{URL::asset('images/icons/favicon.png')}}"/>
+    <link rel="icon" type="image/png" href="{{URL::asset('images/icons/leaf.png')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/themify/themify-icons.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
@@ -27,24 +24,24 @@
             display: block;
         }
         .modify{
-            background-color: #F0EFD5 !important;
+            background-color: white !important;
             color:black !important;
-            border-color: #F0EFD5;
+            border-color: white;
         }
         .modify:focus {
-            background-color: #F0EFD5 !important;
+            background-color: white !important;
             color:black !important;
-            border-color:#F0EFD5 !important;
+            border-color:white !important;
             box-shadow: none !important;
         }
         .modify:hover{
-            background-color: #F0EFD5 !important;
+            background-color: white !important;
             color:black !important;
-            border-color: #F0EFD5;
+            border-color: white;
         }
         .divChange{
-            background-color: #F0EFD5;
-            border-color: #F0EFD5;
+            background-color: white;
+            border-color: white;
         }
 
     </style>
@@ -80,7 +77,7 @@
                                                                 <li class="p-t-4">
                                                                     <input type="submit" name="cat" class="s-text13 active1" value="{{$sousCategorie->nom}}"
                                                                            onmouseover="this.style.color='#AEA71A'" onmouseout="this.style.color='black'"
-                                                                           style="background-color: #F0EFD5 !important;">
+                                                                           style="background-color: white !important;">
                                                                 </li>
                                                             @endforeach
                                                         </div>

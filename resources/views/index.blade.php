@@ -1,7 +1,4 @@
 @extends('layouts.app2')
-@section('title')
-    Home
-@endsection
 @section('css_content')
     <link rel="icon" type="image/png" href="{{URL::asset('images/icons/leaf.png')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -102,7 +99,7 @@
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                        <a href="{{url('/produits')}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
                             {{$image->descImage1}}
                         </a>
                     </div>
@@ -114,7 +111,7 @@
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                        <a href="{{url('/produits')}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
                             {{$image->descImage2}}
                         </a>
                     </div>
@@ -128,7 +125,7 @@
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                        <a href="{{url('/produits')}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
                             {{$image->descImage3}}
                         </a>
                     </div>
@@ -140,7 +137,7 @@
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                        <a href="{{url('/produits')}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
                             {{$image->descImage4}}
                         </a>
                     </div>
@@ -154,7 +151,7 @@
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                        <a href="{{url('/produits')}}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
                             {{$image->descImage5}}
                         </a>
                     </div>
@@ -166,11 +163,11 @@
                     <img src="{{asset('images/produits/'.$image->image6)}}" style="width:370px; height:338.84px;" alt="IMG">
 
                     <div class="block2-content sizefull ab-t-l flex-col-c-m">
-                        <h4 class="m-text4 t-center w-size3 p-b-8">
+                        <h4 class="m-text4 t-center w-size3 p-b-8" style="color:white;">
                             Inscrivez-vous maintenant!
                         </h4>
 
-                        <p class="t-center w-size4">
+                        <p class="t-center w-size4" style="color:whitesmoke;">
                             Inscrivez-vous et bénéficiez de remises très intéressantes
                         </p>
 
@@ -219,11 +216,11 @@
                 <div class="hov-img-zoom pos-relative">
                     <img src="{{asset('images/produits/'.$image->image11)}}" style="width:570px; height:426.7px;" alt="IMG-BANNER">
 
-                    <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+                    <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15" style="color:white;">
                         {{$image->descImage11}}
 
-                        <a href="#" class="s-text4 hov2 p-t-20 ">
-                            View Collection
+                        <a href="{{url('/produits')}}" class="s-text4 hov2 p-t-20 " style="color:white;">
+                            Voir la collection
                         </a>
                     </div>
                 </div>
@@ -236,15 +233,15 @@
                     <div class="ab-t-l sizefull flex-col-c-b p-l-15 p-r-15 p-b-20">
                         <div class="t-center">
                             <a href="product-detail.html" class="dis-block s-text3 p-b-5">
-                                Gafas sol Hawkers one
+                                Collier
                             </a>
 
                             <span class="block2-oldprice m-text7 p-r-5">
-									$29.50
+									50TND
 								</span>
 
                             <span class="block2-newprice m-text8">
-									$15.90
+									30TND
 								</span>
                         </div>
 
@@ -260,7 +257,7 @@
 <section class="instagram p-t-20">
     <div class="sec-title p-b-52 p-l-15 p-r-15">
         <h3 class="m-text5 t-center">
-            <i class="fab fa-instagram"></i> Siguenos en Instagram
+            <i class="fab fa-instagram"></i> Plus de produits
         </h3>
     </div>
 
@@ -269,20 +266,14 @@
         <div class="block4 wrap-pic-w">
             <img src="{{asset('images/produits/'.$image->image13)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
-            <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
+            <a href="{{url('/produits')}}" class="block4-overlay sizefull ab-t-l trans-0-4">
+
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
                       {{$image->descImage13}}
                     </p>
 
-                    <span class="s-text9">
-							Photo by @nancyward
-						</span>
                 </div>
             </a>
         </div>
@@ -291,20 +282,14 @@
         <div class="block4 wrap-pic-w">
             <img src="{{asset('images/produits/'.$image->image14)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
-            <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
+            <a href="{{url('/produits')}}" class="block4-overlay sizefull ab-t-l trans-0-4">
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
                         {{$image->descImage14}}
                     </p>
 
-                    <span class="s-text9">
-							Photo by @nancyward
-						</span>
+
                 </div>
             </a>
         </div>
@@ -313,20 +298,16 @@
         <div class="block4 wrap-pic-w">
             <img src="{{asset('images/produits/'.$image->image15)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
-            <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
+            <a href="{{url('/produits')}}" class="block4-overlay sizefull ab-t-l trans-0-4">
+
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
                        {{$image->descImage15}}
                     </p>
 
-                    <span class="s-text9">
-							Photo by @nancyward
-						</span>
+
+
                 </div>
             </a>
         </div>
@@ -335,20 +316,14 @@
         <div class="block4 wrap-pic-w">
             <img src="{{asset('images/produits/'.$image->image16)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
-            <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
+            <a href="{{url('/produits')}}" class="block4-overlay sizefull ab-t-l trans-0-4">
+
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
                       {{$image->descImage16}}
                     </p>
 
-                    <span class="s-text9">
-							Photo by @nancyward
-						</span>
                 </div>
             </a>
         </div>
@@ -357,20 +332,14 @@
         <div class="block4 wrap-pic-w">
             <img src="{{asset('images/produits/'.$image->image17)}}" style="width:269.8px; height:269.8px;" alt="IMG-INSTAGRAM">
 
-            <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
+            <a href="{{url('/produits')}}" class="block4-overlay sizefull ab-t-l trans-0-4">
+
 
                 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
                     <p class="s-text10 m-b-15 h-size1 of-hidden">
                          {{$image->descImage17}}
                     </p>
 
-                    <span class="s-text9">
-							Photo by @nancyward
-						</span>
                 </div>
             </a>
         </div>

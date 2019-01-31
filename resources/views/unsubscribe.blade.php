@@ -1,9 +1,6 @@
 @extends('layouts.app2')
-@section('title')
-    Unsubscribe
-@endsection
 @section('css_content')
-    <link rel="icon" type="image/png" href="{{URL::asset('images/icons/favicon.png')}}"/>
+    <link rel="icon" type="image/png" href="{{URL::asset('images/icons/leaf.png')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/themify/themify-icons.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">

@@ -22,7 +22,7 @@
         <form action="{{action('SubmessageController@editPost')}}" method="post" id="mail">
             {{csrf_field()}}
             <input type="text" id="id" name="id" value="{{$submessage->id}}" style="visibility: hidden">
-        <textarea cols="70" rows="20" name="message" form="mail"></textarea>
+        <textarea cols="70" rows="20" name="message" form="mail" style="white-space: pre-line; white-space: pre-wrap;"></textarea>
         <input type="submit" value="Envoyer">
         </form>
     </div>

@@ -162,38 +162,6 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="message">
                             <p class="red">You have 4 Mails</p>
-                            <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jonathan Smith</span>
-                                    <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                            <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jack Sanders</span>
-                                    <span class="time float-right">5 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
-                            <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Cheryl Wheeler</span>
-                                    <span class="time float-right">10 minutes ago</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                            <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Rachel Santos</span>
-                                    <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
                         </div>
                     </div>
                     <a href="{{url('/index')}}">Preview page</a>
@@ -279,71 +247,12 @@
         </div>
 
 
-        <div class="col-xl-3 col-lg-6">
-            <section class="card">
-                <div class="twt-feed blue-bg">
-                    <div class="corner-ribon black-ribon">
-                        <i class="fa fa-twitter"></i>
-                    </div>
-                    <div class="fa fa-twitter wtt-mark"></div>
-
-                    <div class="media">
-                        <a href="#">
-                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt=""
-                                 src="images/admin.jpg">
-                        </a>
-                        <div class="media-body">
-                            <h2 class="text-white display-6">Admin Name</h2>
-                            <p class="text-light">Admin position</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
 
 
-        <div class="col-xl-3 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Total Profit</div>
-                            <div class="stat-digit">1,012</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
-        <div class="col-xl-3 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">New Customer</div>
-                            <div class="stat-digit">961</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-xl-3 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Active Projects</div>
-                            <div class="stat-digit">770</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div> <!-- .content -->
 </div><!-- /#right-panel -->
 

@@ -101,7 +101,7 @@ a {
   font-weight: 400;
 	font-size: 15px;
 	line-height: 1.7;
-	color: white;
+	color: black;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
@@ -1821,6 +1821,7 @@ li.sale-noti > a {
   background-color: rgba(0,0,0,0.9);
   visibility: hidden;
   opacity: 0;
+    width: 269.8px !important;
 }
 
 .block4-overlay:hover {

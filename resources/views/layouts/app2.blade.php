@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:Basket="http://www.w3.org/1999/xhtml">
 <head>
-    <title>@yield('title')</title>
+    <title>Naturebio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 @yield('css_content')
@@ -349,37 +349,7 @@
             </div>
         </div>
 
-        <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-            <h4 class="s-text12 p-b-30">
-                Sous Categories
-            </h4>
 
-            <ul>
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Men
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Women
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Dresses
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Sunglasses
-                    </a>
-                </li>
-            </ul>
-        </div>
 
         <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 
