@@ -12,13 +12,10 @@ class TypeTableSeeder extends Seeder
      */
     public function run()
     {     $type1=new Type_Produit();
-        $type1->nom='gold';
+        $type1->nom='produit';
         $type1->save();
         $type2=new Type_Produit();
-        $type2->nom='silver';
+        $type2->nom='cadeau';
         $type2->save();
-        $type3=new Type_Produit();
-        $type3->nom='bronze';
-        $type3->save();
     }
 }

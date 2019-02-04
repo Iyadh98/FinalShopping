@@ -97,7 +97,7 @@
                             @foreach(Basket::contents() as $produit)
                             <li class="header-cart-item">
                                 <div class="header-cart-item-img">
-                                    <img src="images/item-cart-01.jpg" alt="IMG">
+                                    <img src="{{asset('/images/produits/'.$produits->find($produit->id)->image)}}" alt="IMG">
                                 </div>
 
                                 <div class="header-cart-item-txt">
@@ -123,27 +123,11 @@
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
                                 <a href="{{url('/panier')}}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                    View Cart
+                                    Voir le panier
                                 </a>
                             </div>
 
-                            <div class="header-cart-wrapbtn">
-                                <!-- Button -->
-                                <a @if ( Basket::totalItems() == 0)
-                                   href="#"
-                                   class="flex-c-m size1 bg5 bo-rad-20 hov1 s-text2 trans-0-4"
-                                   @else
-                                    @auth
-                                   href="{{url('/checkout')}}"
-                                   @endauth
-                                   @guest
-                                   href="{{url('/login')}}"
-                                   @endguest
-                                   class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4"
-                                   @endif>
-                                    Check Out
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                 </div>

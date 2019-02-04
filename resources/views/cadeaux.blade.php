@@ -6,15 +6,17 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/elegant-font/html-css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/animate/animate.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/css-hamburgers/hamburgers.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/animsition/css/animsition.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/select2/select2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/animsition/css/animsition.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/select2/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/daterangepicker/daterangepicker.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/slick/slick.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/lightbox2/css/lightbox.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/lightbox2/css/lightbox.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/main.css')}}">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <style>
         .morecontent span {
             display: none;
@@ -43,13 +45,21 @@
             background-color: white;
             border-color: white;
         }
-
     </style>
-
 @endsection
 
 @section('content')
-
+    @foreach($images as $image)
+        <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m"
+                 style="background-image: url({{asset('images/produits/'.$image->image1)}});">
+            <h2 class="l-text2 t-center">
+                Produits
+            </h2>
+            <p class="m-text13 t-center">
+                {{$image->descImage7}}
+            </p>
+        </section>
+    @endforeach
 
 
     <!-- Content page -->
@@ -118,27 +128,26 @@
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
                         <div class="search-product pos-relative bo4 of-hidden">
-                            <form method="get" action="/search" role="search">
+                            <form method="get" action="/search" role="search" style="width:700px;">
                                 <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search"
-                                       placeholder="Search Products..."  style="width:700px;">
+                                       placeholder="Chercher un produit...">
 
                                 <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
                                     <img src="images/search.png" alt="ICON" height="25" width="25">
                                 </button>
                             </form>
                         </div>
-
                     </div>
 
                     <!-- Product -->
                     <div class="row">
-                        @if(count($details) > 0)
-                            @foreach($details as $produit)
+                        @if(count($produits) > 0)
+                            @foreach($produits as $produit)
                                 <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                                     <!-- Block2 -->
 
                                     <div class="block2">
-                                        <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                        <div class="block2-img wrap-pic-w of-hidden pos-relative" style="border-radius: 20px;">
                                             <img src="{{asset('images/produits/'.$produit->image)}}" alt="IMG-PRODUCT"
                                                  style="width:269.98px; height:359.97px;">
 
@@ -165,7 +174,11 @@
                                                                 data-target="#myModal{{$produit->produit_id}}">
                                                             Ajouter au panier
                                                         </button>
-
+                                                        <a href="{{url('/Details/'.$produit->produit_id)}}">
+                                                            <button>
+                                                                Details
+                                                            </button>
+                                                        </a>
 
                                                     </div>
                                                 </div>
@@ -180,19 +193,16 @@
                                             </a>
 
                                             <span class="block2-price m-text6 p-r-5">
-										{{$produit->prix}} DNT
+										{{$produit->points}} points
 									</span>
                                         </div>
                                     </div>
                                 </div>
 
 
-
                                 <div class="modal fade" id="myModal{{$produit->produit_id}}" role="dialog"
                                      style="margin-top:150px;">
                                     <div class="modal-dialog">
-
-
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title"><b>{{$produit->nom}}</b></h4>
@@ -208,14 +218,17 @@
                                                             </p>
                                                             <br>
                                                             Prix: <p>{{$produit->prix}} TND</p>
+                                                            <br>
+                                                            Points: <p>{{$produit->points}}</p>
                                                             <form method="get"
                                                                   action="{{action('ProduitController@addCart', ['id'=>$produit->produit_id,'nom'=>$produit->nom, 'prix'=>$produit->prix])}}">
 
                                                                 <br>
-                                                                <div><label for="quantite" class=" form-control-label">Quantité:</label>
+                                                                <div><label for="quantite"
+                                                                            class=" form-control-label">Quantité:</label>
                                                                 </div>
                                                                 <div><input type="number" name="quant" value="1"
-                                                                            class="input-group form-control" width="10" ></div>
+                                                                            class="input-group form-control" width="10"></div>
 
 
                                                                 <button type="submit" style="margin-left:100px;"
@@ -226,7 +239,8 @@
                                                             </form>
                                                         </td>
                                                         <td>
-                                                            <img src="{{asset('images/produits/'.$produit->image)}}" alt="IMG-PRODUCT"
+                                                            <img src="{{asset('images/produits/'.$produit->image)}}"
+                                                                 alt="IMG-PRODUCT"
                                                                  style="width:150px; height:150px; float:right;">
                                                         </td>
                                                     </tr>
@@ -245,137 +259,48 @@
                                 </div>
 
 
-
-
-
                             @endforeach
-
                         @endif
                     </div>
-                <!-- Pagination -->
-
+                    <!-- Pagination -->
+                    <!-- <div class="pagination flex-m flex-w p-t-26">
+                         <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
+                         <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+                     </div>-->
                 </div>
             </div>
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </section>
 
-
-
-
-
-
-
-
 @endsection
+
 
 @section('scripts')
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{URL::asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script type="text/javascript" src="{{URL::asset('vendor/animsition/js/animsition.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendor/animsition/js/animsition.min.js')}}"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{URL::asset('vendor/bootstrap/js/popper.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script type="text/javascript" src="{{URL::asset('vendor/select2/select2.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('vendor/select2/select2.min.js')}}"></script>
     <script type="text/javascript">
         $(".selection-1").select2({
             minimumResultsForSearch: 20,
             dropdownParent: $('#dropDownSelect1')
         });
-    </script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{URL::asset('vendor/daterangepicker/moment.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{URL::asset('vendor/slick/slick.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/slick-custom.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{URL::asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
 
-
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{URL::asset('vendor/noui/nouislider.js')}}"></script>
-    <script type="text/javascript">
-        /*[ No ui ]
-        ===========================================================*/
-        var filterBar = document.getElementById('filter-bar');
-
-        noUiSlider.create(filterBar, {
-            start: [50, 200],
-            connect: true,
-            range: {
-                'min': 50,
-                'max': 200
-            }
-        });
-
-        var skipValues = [
-            document.getElementById('value-lower'),
-            document.getElementById('value-upper')
-        ];
-
-        filterBar.noUiSlider.on('update', function (values, handle) {
-            skipValues[handle].innerHTML = Math.round(values[handle]);
+        $(".selection-2").select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $('#dropDownSelect2')
         });
     </script>
+    <!--===============================================================================================-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+    <script src="{{URL::asset('js/map-custom.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{URL::asset('js/main.js')}}"></script>
-    <script>
-        $(document).ready(function () {
-            // Configure/customize these variables.
-            var showChar = 100;  // How many characters are shown by default
-            var ellipsestext = "...";
-            var moretext = "Show more >";
-            var lesstext = "Show less";
-
-
-            $('.more').each(function () {
-                var content = $(this).html();
-
-                if (content.length > showChar) {
-
-                    var c = content.substr(0, showChar);
-                    var h = content.substr(showChar, content.length - showChar);
-
-                    var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
-                    $(this).html(html);
-                }
-
-            });
-
-            $(".morelink").click(function () {
-                if ($(this).hasClass("less")) {
-                    $(this).removeClass("less");
-                    $(this).html(moretext);
-                } else {
-                    $(this).addClass("less");
-                    $(this).html(lesstext);
-                }
-                $(this).parent().prev().toggle();
-                $(this).prev().toggle();
-                return false;
-            });
-        });
-    </script>
-
-
 @endsection

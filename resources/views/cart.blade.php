@@ -43,7 +43,7 @@
                         <tr class="table-row">
                             <td class="column-1">
                                 <div class="cart-img-product b-rad-4 o-f-hidden">
-                                    <img src="images/item-10.jpg" alt="IMG-PRODUCT">
+                                    <img src="{{asset('/images/produits/'.$produits->find($produit->id)->image)}}" alt="IMG-PRODUCT">
                                 </div>
                             </td>
                             <td class="column-2">{{$produit->name}}</td>
@@ -73,18 +73,6 @@
             </div>
             </form>
             <br class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
-                <div class="flex-w flex-m w-full-sm" style="margin-left:280px;">
-                    <div class="size11 bo4 m-r-10">
-                        <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code" placeholder="Coupon Code">
-                    </div>
-
-                    <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-                        <!-- Button -->
-                        <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                            Apply coupon
-                        </button>
-                    </div>
-                </div>
 
                     <a href="{{action('ProduitController@destroyCart')}}"><div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
                         <!-- Button -->
@@ -100,82 +88,39 @@
             <!-- Total -->
             <div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
                 <h5 class="m-text20 p-b-24">
-                    Cart Totals
+                    Total du panier
                 </h5>
 
                 <!--  -->
                 <div class="flex-w flex-sb-m p-b-12">
 					<span class="s-text18 w-size19 w-full-sm">
-						Subtotal:
+						Total
 					</span>
 
                     <span class="m-text21 w-size20 w-full-sm">
-						{{Basket::total(false)}}
+						{{Basket::total(false)}} TND
 					</span>
                 </div>
 
                 <!--  -->
-                <div class="flex-w flex-sb bo10 p-t-15 p-b-20">
-					<span class="s-text18 w-size19 w-full-sm">
-						Shipping:
-					</span>
 
-                    <div class="w-size20 w-full-sm">
-                        <p class="s-text8 p-b-23">
-                            There are no shipping methods available. Please double check your address, or contact us if you need any help.
-                        </p>
 
-                        <span class="s-text19">
-							Calculate Shipping
-						</span>
 
-                        <div class="rs2-select2 rs3-select2 rs4-select2 bo4 of-hidden w-size21 m-t-8 m-b-12">
-                            <select class="selection-2" name="country">
-                                <option>Select a country...</option>
-                                <option>US</option>
-                                <option>UK</option>
-                                <option>Japan</option>
-                            </select>
-                        </div>
-
-                        <div class="size13 bo4 m-b-12">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="state" placeholder="State /  country">
-                        </div>
-
-                        <div class="size13 bo4 m-b-22">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="postcode" placeholder="Postcode / Zip">
-                        </div>
-
-                        <div class="size14 trans-0-4 m-b-10">
-                            <!-- Button -->
-                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                Update Totals
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!--  -->
-                <div class="flex-w flex-sb-m p-t-26 p-b-30">
-					<span class="m-text22 w-size19 w-full-sm">
-						Total:
-					</span>
-
-                    <span class="m-text21 w-size20 w-full-sm">
-						$39.00
-					</span>
-                </div>
                 <div class="size15 trans-0-4">
                     <!-- Button -->
-                    <a @auth
+                    <a @if ( Basket::totalItems() == 0)
+                       href="#"
+                       class="flex-c-m size1 bg5 bo-rad-20 hov1 s-text2 trans-0-4"
+                       @else
+                       @auth
                        href="{{url('/checkout')}}"
                        @endauth
                        @guest
                        href="{{url('/login')}}"
                        @endguest
-                       class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                        Check Out
+                       class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4"
+                            @endif>
+                        Passer la commande
                     </a>
                 </div>
             </div>

@@ -29,9 +29,7 @@ Route::get('/produits',function(){
 Route::get('/produits','ProduitController@getAllProductsAndSousCategories');
 
 
-Route::get('/panier',function(){
-    return view('cart');
-});
+Route::get('/panier','ProduitController@getCart');
 Route::get('/about',function(){
     return view('about');
 });
@@ -175,3 +173,5 @@ Route::get('/admin/emailSubscriber/{id}','SubmessageController@editGetAdmin');
 Route::post('/admin/emailSubscriber','SubmessageController@editPost');
 Route::get('/submessage','SubmessageController@editGet');
 
+Route::get('/Details/{id}','ProduitController@getDetails');
+Route::get('/cadeaux','ProduitController@getCadeau');

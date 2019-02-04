@@ -162,5 +162,13 @@ jQuery("#select_categorie").on('change',function(e){
     });
 });
 </script>
+    <script>
+        function addNewLines() {
+            text=document.getElementById("description").value;
+            text=text.replace(/  /g,"[sp] [sp]");
+            text=text.replace(/\n/g,"[nl]");
+            document.getElementById("Msg")
+        }
+    </script>
 
 @endsection

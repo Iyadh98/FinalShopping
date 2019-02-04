@@ -236,7 +236,7 @@
                                 Collier
                             </a>
 
-                            <span class="block2-oldprice m-text7 p-r-5">
+                            <span class="block2-oldprice m-text7 p-r-5" style="color: white;">
 									50TND
 								</span>
 

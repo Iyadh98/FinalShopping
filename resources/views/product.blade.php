@@ -102,8 +102,6 @@
                         </form>
 
                     </ul>
-
-
                     <!--  -->
                     <h4 class="m-text14 p-b-32">
                         Informations
@@ -113,6 +111,13 @@
                         <li><a href="{{url('/about')}}#paiement">Paiement <img src="/images/icons/expand.png"></a></li>
                         <li><a href="{{url('/about')}}#livraison">Livraison <img src="/images/icons/expand.png"></a></li>
                         <li><a href="{{url('/about')}}#cgv">CGV <img src="/images/icons/expand.png"></a></li>
+                    </ul>
+                    <h4 class="m-text14 p-b-32">
+                        Cadeaux
+                    </h4>
+                    <ul>
+                        <li><a href="{{url('/cadeaux')}}">Tous les cadeaux <img src="/images/icons/expand.png"></a></li>
+
                     </ul>
 
                 </div>
@@ -141,7 +146,7 @@
                         <!-- Block2 -->
 
                         <div class="block2">
-                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative" style="border-radius: 20px;">
                                 <img src="{{asset('images/produits/'.$produit->image)}}" alt="IMG-PRODUCT"
                                      style="width:269.98px; height:359.97px;">
 
@@ -168,7 +173,11 @@
                                                     data-target="#myModal{{$produit->produit_id}}">
                                                 Ajouter au panier
                                             </button>
-
+                                            <a href="{{url('/Details/'.$produit->produit_id)}}">
+                                                <button>
+                                                    Details
+                                                </button>
+                                            </a>
 
                                         </div>
                                     </div>

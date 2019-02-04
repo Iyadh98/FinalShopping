@@ -15,6 +15,7 @@ use App\Http\Repository\SousCategorieRepository;
 use App\Http\Repository\ImagesRepository;
 use App\Http\Repository\ProduitRepository;
 use App\Http\Repository\TypeRepository;
+use App\Type_Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -69,7 +70,7 @@ class ProduitController extends Controller
 
     public function getAllProductsAndSousCategories()
     {
-        $produits = $this->produitRepository->getAll();
+        $produits =$this->produitRepository->getAll();
         $sousCategories = $this->sousCategorieRepository->getAll();
         $categories = $this->categorieRepository->getAll();
 
@@ -80,7 +81,8 @@ class ProduitController extends Controller
         $produits = $this->produitRepository->getAll();
         $sousCategories = $this->sousCategorieRepository->getAll();
         $categories = $this->categorieRepository->getAll();
-        return view('layouts/app2')->with('categories', $categories)->with('sousCategories', $sousCategories);
+
+        return view('layouts/app2')->with('categories', $categories)->with('sousCategories', $sousCategories)->with('produits',$produits);
     }
 
 
@@ -237,5 +239,25 @@ class ProduitController extends Controller
         $name='Iyadh';
         Mail::to('iyadhkhalfallah@ieee.org')->send(new SendMailCommandePassee($name));
         return 'Email was sent';
+    }
+    public function getDetails($id){
+        $produit=Produit::where('produit_id',$id)->get();
+        return view('productDetails')->with('produit',$produit);
+    }
+    public function getCadeau(){
+        $type=Type_Produit::where('nom','cadeau')->get();
+        $id=0;
+        foreach($type as $tp){
+            $id=$tp->type_produit_id;
+        }
+        $images=$this->imagesRepository->getAll();
+        $categories=$this->categorieRepository->getAll();
+        $produits=Produit::where('type_produit_id',$id)->get();
+        return view('cadeaux')->with('produits',$produits)->with('images',$images)->with('categories',$categories);
+    }
+    public function getCart(){
+        $produits =$this->produitRepository->getAll();
+        return view('cart')->with('produits',$produits);
+
     }
 }
