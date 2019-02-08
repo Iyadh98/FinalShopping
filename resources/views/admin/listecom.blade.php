@@ -81,6 +81,11 @@
                                     <i class="fa fa-dot-circle-o"></i> Livrée
                                 </button>
                             </a>
+                            <a href="{{action('CommandeController@changerEtatAnnulee',$commande->commande_id)}}">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa fa-dot-circle-o"></i> Annulée
+                                </button>
+                            </a>
                             @endif
 
                             <div class="modal fade" id="myModal{{$commande->commande_id}}" role="dialog">

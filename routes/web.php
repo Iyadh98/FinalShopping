@@ -144,6 +144,8 @@ Route::get('/admin/lister_commandes_annulees','CommandeController@getCommandesAn
 Route::get('/admin/lister_commandes_livrees','CommandeController@getCommandesLivreesWithUsers');
 Route::get('/admin/changerEtatPrete/{commandeId}','CommandeController@changerEtatPrete');
 Route::get('/admin/changerEtatLivree/{commandeId}','CommandeController@changerEtatLivree');
+Route::get('/admin/changerEtatAnnulee/{commandeId}','CommandeController@changerEtatAnnulee');
+Route::get('/admin/changerEtatAnnuleeClient/{commandeId}','CommandeController@changerEtatAnnuleeClient');
 
 
 Route::get ( '/search', 'ProduitController@search');

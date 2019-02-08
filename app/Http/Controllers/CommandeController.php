@@ -104,6 +104,22 @@ class CommandeController
         return redirect('/admin/lister_commandes');
     }
 
+    public function changerEtatAnnulee($commandeId)
+    {
+        if ($commande = $this->commandeRepository->getById($commandeId)) {
+            $this->commandeRepository->changerEtatAnnulee($commande);
+        }
+        return redirect('/admin/lister_commandes');
+    }
+
+    public function changerEtatAnnuleeClient($commandeId)
+    {
+        if ($commande = $this->commandeRepository->getById($commandeId)) {
+            $this->commandeRepository->changerEtatAnnulee($commande);
+        }
+        return redirect('/profil');
+    }
+
     public function changerEtatLivree($commandeId)
     {
         if ($commande = $this->commandeRepository->getById($commandeId)) {

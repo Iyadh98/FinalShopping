@@ -341,6 +341,7 @@
                                 <th>Date commande</th>
                                 <th>Montant</th>
                                 <th>Etat</th>
+                                <th>Opération</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -357,12 +358,6 @@
                                 <td>{{$commande->date}}</td>
                                 <td>{{$commande->montant}}</td>
                                 <td>
-                                    <button type="button"
-                                            class="btn btn-success btn-sm"
-                                            data-toggle="modal"
-                                            data-target="#myModal{{$commande->commande_id}}">
-                                        <i class="fa fa-dot-circle-o"></i> Détails
-                                    </button>
                                     @if($commande->etat==1)
                                     Commande en cours
                                     @elseif ($commande->etat==2)
@@ -371,6 +366,23 @@
                                     Commande livrée
                                     @else
                                     Commande annulée
+                                    @endif
+
+                                </td>
+                                <td>
+                                    <button type="button"
+                                            class="btn btn-success btn-sm"
+                                            data-toggle="modal"
+                                            data-target="#myModal{{$commande->commande_id}}">
+                                        <i class="fa fa-dot-circle-o"></i> Détails
+                                    </button>
+
+                                    @if (($commande->etat == 1) || ($commande->etat == 2))
+                                    <a href="{{action('CommandeController@changerEtatAnnuleeClient',$commande->commande_id)}}">
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Annuler
+                                        </button>
+                                    </a>
                                     @endif
 
                                     <div class="modal fade" id="myModal{{$commande->commande_id}}" role="dialog">
@@ -421,7 +433,6 @@
 
                                         </div>
                                     </div>
-
 
                                 </td>
 
