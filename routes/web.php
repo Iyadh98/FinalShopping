@@ -33,6 +33,9 @@ Route::get('/panier','ProduitController@getCart');
 Route::get('/about',function(){
     return view('about');
 });
+Route::get('/kk',function(){
+    return view('kk');
+});
 Route::get('/contact',function(){
     return view('contact');
 });

@@ -173,12 +173,6 @@
                                                     data-target="#myModal{{$produit->produit_id}}">
                                                 Ajouter au panier
                                             </button>
-                                            <a href="{{url('/Details/'.$produit->produit_id)}}">
-                                                <button>
-                                                    Details
-                                                </button>
-                                            </a>
-
                                         </div>
                                     </div>
 
@@ -212,8 +206,8 @@
                                     <table>
                                         <tr>
 
-                                            <td> Description: <p><span
-                                                        class="more">{{$produit->description}} </span>
+                                            <td> Description: <p id="det"><span
+                                                        class="more">{{$produit->description}}</span>
                                                 </p>
                                                 <br>
                                                 Prix: <p>{{$produit->prix}} TND</p>
@@ -248,6 +242,12 @@
 
 
                                 <div class="modal-footer">
+                                    <a href="{{url('/Details/'.$produit->produit_id)}}">
+                                    <button style="margin-right:180px; height:30px; width:70%;"
+                                            class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                        Details
+                                    </button>
+                                    </a>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">
                                         Close
                                     </button>
@@ -368,5 +368,15 @@
     });
 </script>
 
+<script>function truncateText(selector, maxLength) {
+        var element = document.getElementById(selector),
+            truncated = element.innerText;
 
+        if (truncated.length > maxLength) {
+            truncated = truncated.substr(0,maxLength) + '... Cliquer sur details pour plus de details';
+        }
+        return truncated;
+    }
+
+    document.getElementById('det').innerText = truncateText('det', 10);</script>
 @endsection
