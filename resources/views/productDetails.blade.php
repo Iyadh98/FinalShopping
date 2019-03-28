@@ -28,19 +28,81 @@
         .testing{
             word-wrap: break-word;
         }
+        .imageProd,.descProd{
+            display: inline-block;
+        }
+        .descProd{
+
+
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+
+            opacity: 1;
+
+        }
     </style>
 @endsection
 
 @section('content')
 
+
+
+
+
+
+    <!-- Page Content -->
+    <div class="container">
     @if(count($produit)>0)
         @foreach($produit as $pr)
-            <img src="{{asset('images/produits/'.$pr->image)}}" alt="IMG-PRODUCT"
-                 style="width:269.98px; height:359.97px;">
-            <h2>Description</h2>
-            <p class="testing">{{$pr->description}}</p>
-    @endforeach
+
+        <h1 class="my-4">{{$pr->nom}}
+        </h1>
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-fluid" src="{{asset('images/produits/'.$pr->image)}}" alt="" style="width:750px;height: 500px;">
+            </div>
+
+            <div class="col-md-4">
+                <h3 class="my-3">Description</h3>
+                <p class="testing">{{$pr->description}}</p>
+                <h3 class="my-3">Prix</h3>
+                <p>{{$pr->prix}}TND</p>
+                <form method="get"
+                      action="{{action('ProduitController@addCart', ['id'=>$pr->produit_id,'nom'=>$pr->nom, 'prix'=>$pr->prix])}}">
+
+                    <br>
+                    <div><label for="quantite"
+                                class=" form-control-label">Quantité:</label>
+                    </div>
+                    <div><input type="number" name="quant" value="1"
+                                class="input-group form-control" width="10"></div>
+
+
+                    <button type="submit" style="margin-left:100px;"
+                            class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                        Ajouter au panier
+                    </button>
+
+                </form>
+            </div>
+
+
+        </div>
+        <!-- /.row -->
+
+            @endforeach
         @endif
+
+    </div>
+    <!-- /.container -->
+
+
+
+
 
 @endsection
 

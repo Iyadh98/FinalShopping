@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/main.css')}}">
 
 
+
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 @endsection
@@ -89,6 +91,57 @@
 <!-- Banner -->
 <section class="banner bgwhite p-t-40 p-b-40">
     <div class="container">
+
+
+<h1 align="center">Articles en promo</h1>
+        <br>
+        <div class="wrap-slick1">
+            <div class="slick1">
+                <div class="item-slick1 item1-slick1" >
+                    <div class="row">
+                    <div class="col-sm-4">
+                    <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                    </div>
+                    <div class="col-sm-4 ">
+                    <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                    </div>
+                        <div class="col-sm-4">
+                            <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-slick1 item2-slick1">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                        </div>
+                        <div class="col-sm-4 ">
+                            <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-slick1 item3-slick1">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                        </div>
+                        <div class="col-sm-4 ">
+                            <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="col-sm-12" src="https://thumbs.dreamstime.com/x/afro-american-woman-juggling-objects-beautiful-multiple-over-air-60663715.jpg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
                 <!-- block1 -->

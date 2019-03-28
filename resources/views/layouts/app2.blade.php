@@ -95,9 +95,10 @@
                     <div class="header-cart header-dropdown">
                         <ul class="header-cart-wrapitem">
                             @foreach(Basket::contents() as $produit)
+
                             <li class="header-cart-item">
                                 <div class="header-cart-item-img">
-                                    <img src="{{asset('/images/produits/'.$produits->find($produit->id)->image)}}" alt="IMG">
+
                                 </div>
 
                                 <div class="header-cart-item-txt">

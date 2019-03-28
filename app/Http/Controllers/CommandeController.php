@@ -8,9 +8,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Repository\CommandeRepository;
 use App\Http\Repository\ProduitCommandeRepository;
 use App\Http\Repository\UserRepository;
+use App\Type_Produit;
+use App\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -53,7 +56,7 @@ class CommandeController
         Log::info("basket2");
         Log::info(Basket::contents(true));
         Basket::destroy();
-        return redirect('/index');
+        return redirect('/');
     }
 
     public function addGet()
@@ -121,13 +124,25 @@ class CommandeController
     }
 
     public function changerEtatLivree($commandeId)
-    {
+    { $i=0;
         if ($commande = $this->commandeRepository->getById($commandeId)) {
             $this->commandeRepository->changerEtatLivree($commande);
             $commande2 = $this->commandeRepository->getByIdWithUserAndProduitCommande($commandeId);
             Log::info($commande2);
             $totalPoints = $this->commandeRepository->getTotalPoints($commande2->produitCommandes);
+            $prodCommande=$this->produitCommandeRepository->getAllProduitCommandeByCommandeWithproduit($commandeId);
+            foreach($prodCommande as $pc){
+                $prd=Produit::find($pc->produit_id);
+                $type=Type_Produit::find($prd->type_produit_id);
+                if($type->nom=="cadeau"){
+                    $i++;
+                }
+            }
+            if($i==0)
             $this->userRepository->addPoints($commande2->user, $totalPoints);
+            else {
+                $this->userRepository->removePoints($commande2->user, $totalPoints);
+            }
         }
         return redirect('/admin/lister_commandes');
     }

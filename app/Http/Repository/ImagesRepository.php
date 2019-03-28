@@ -208,78 +208,97 @@ function add(Request $request){
     $image=$this->getById($request->input('id'));
     Log::info("This is the id:");
     Log::info($image);
+    /*        if ($request->file('image')){
+            $imageName = $produit->nom .rand(). '.' .
+                $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(
+                base_path() . '/public/images/produits', $imageName
+            );
+            $produit->image=$imageName;
+        }*/
         $image->Desc1image1Caroussel=$request->input('Desc1image1Caroussel');
         $image->Desc2image1Caroussel=$request->input('Desc2image1Caroussel');
-        $imageName1= 'imageIndex'.rand(). '.' .
-            $request->file('image1Caroussel')->getClientOriginalExtension();
-        $request->file('image1Caroussel')->move(
-            base_path() . '/public/images/produits', $imageName1
-        );
-        $image->image1Caroussel=$imageName1;
-
+        if ($request->file('image1Caroussel')) {
+            $imageName1 = 'imageIndex' . rand() . '.' .
+                $request->file('image1Caroussel')->getClientOriginalExtension();
+            $request->file('image1Caroussel')->move(
+                base_path() . '/public/images/produits', $imageName1
+            );
+            $image->image1Caroussel = $imageName1;
+        }
         $image->Desc1image2Caroussel=$request->input('Desc1image2Caroussel');
         $image->Desc2image2Caroussel=$request->input('Desc2image2Caroussel');
-        $imageName2= 'imageIndex'.rand(). '.' .
-            $request->file('image2Caroussel')->getClientOriginalExtension();
-        $request->file('image2Caroussel')->move(
-            base_path() . '/public/images/produits', $imageName2
-        );
-        $image->image2Caroussel=$imageName2;
+        if ($request->file('image2Caroussel')) {
+            $imageName2 = 'imageIndex' . rand() . '.' .
+                $request->file('image2Caroussel')->getClientOriginalExtension();
+            $request->file('image2Caroussel')->move(
+                base_path() . '/public/images/produits', $imageName2
+            );
+            $image->image2Caroussel = $imageName2;
+        }
         $image->Desc1image3Caroussel=$request->input('Desc1image3Caroussel');
         $image->Desc2image3Caroussel=$request->input('Desc2image3Caroussel');
-        $imageName3= 'imageIndex'.rand(). '.' .
-            $request->file('image3Caroussel')->getClientOriginalExtension();
-        $request->file('image3Caroussel')->move(
-            base_path() . '/public/images/produits', $imageName3
-        );
-        $image->image3Caroussel=$imageName3;
-
-        $imageName4= 'imageIndexbr'.rand(). '.' .
-            $request->file('image1')->getClientOriginalExtension();
-        $request->file('image1')->move(
-            base_path() . '/public/images/produits', $imageName4
-        );
-        $image->image1=$imageName4;
+        if ($request->file('image3Caroussel')) {
+            $imageName3 = 'imageIndex' . rand() . '.' .
+                $request->file('image3Caroussel')->getClientOriginalExtension();
+            $request->file('image3Caroussel')->move(
+                base_path() . '/public/images/produits', $imageName3
+            );
+            $image->image3Caroussel = $imageName3;
+        }
+        if ($request->file('image1')) {
+            $imageName4 = 'imageIndexbr' . rand() . '.' .
+                $request->file('image1')->getClientOriginalExtension();
+            $request->file('image1')->move(
+                base_path() . '/public/images/produits', $imageName4
+            );
+            $image->image1 = $imageName4;
+        }
         $image->descImage1=$request->input('descImage1');
-
-        $imageName5= 'imageIndex'.rand(). '.' .
-            $request->file('image2')->getClientOriginalExtension();
-        $request->file('image2')->move(
-            base_path() . '/public/images/produits', $imageName5
-        );
-        $image->image2=$imageName5;
+        if ($request->file('image2')) {
+            $imageName5 = 'imageIndex' . rand() . '.' .
+                $request->file('image2')->getClientOriginalExtension();
+            $request->file('image2')->move(
+                base_path() . '/public/images/produits', $imageName5
+            );
+            $image->image2 = $imageName5;
+        }
         $image->descImage2=$request->input('descImage2');
-
-        $imageName6= 'imageIndex'.rand(). '.' .
-            $request->file('image3')->getClientOriginalExtension();
-        $request->file('image3')->move(
-            base_path() . '/public/images/produits', $imageName6
-        );
-        $image->image3=$imageName6;
+        if ($request->file('image3')) {
+            $imageName6 = 'imageIndex' . rand() . '.' .
+                $request->file('image3')->getClientOriginalExtension();
+            $request->file('image3')->move(
+                base_path() . '/public/images/produits', $imageName6
+            );
+            $image->image3 = $imageName6;
+        }
         $image->descImage3=$request->input('descImage3');
-
-        $imageName7= 'imageIndex'.rand(). '.' .
-            $request->file('image4')->getClientOriginalExtension();
-        $request->file('image4')->move(
-            base_path() . '/public/images/produits', $imageName7
-        );
-        $image->image4=$imageName7;
+        if ($request->file('image4')) {
+            $imageName7 = 'imageIndex' . rand() . '.' .
+                $request->file('image4')->getClientOriginalExtension();
+            $request->file('image4')->move(
+                base_path() . '/public/images/produits', $imageName7
+            );
+            $image->image4 = $imageName7;
+        }
         $image->descImage4=$request->input('descImage4');
-
-        $imageName8= 'imageIndex'.rand(). '.' .
-            $request->file('image5')->getClientOriginalExtension();
-        $request->file('image5')->move(
-            base_path() . '/public/images/produits', $imageName8
-        );
-        $image->image5=$imageName8;
+        if ($request->file('image5')) {
+            $imageName8 = 'imageIndex' . rand() . '.' .
+                $request->file('image5')->getClientOriginalExtension();
+            $request->file('image5')->move(
+                base_path() . '/public/images/produits', $imageName8
+            );
+            $image->image5 = $imageName8;
+        }
         $image->descImage5=$request->input('descImage5');
-
-        $imageName9= 'imageIndex'.rand(). '.' .
-            $request->file('image6')->getClientOriginalExtension();
-        $request->file('image6')->move(
-            base_path() . '/public/images/produits', $imageName9
-        );
-        $image->image6=$imageName9;
+        if ($request->file('image6')) {
+            $imageName9 = 'imageIndex' . rand() . '.' .
+                $request->file('image6')->getClientOriginalExtension();
+            $request->file('image6')->move(
+                base_path() . '/public/images/produits', $imageName9
+            );
+            $image->image6 = $imageName9;
+        }
         $image->descImage6=$request->input('descImage6');
 
        /* $imageName10= 'imageIndex'.rand(). '.' .
@@ -315,67 +334,73 @@ function add(Request $request){
         $image->image10=$imageName13;
         $image->descImage10=$request->input('descImage10');
 */
-
-        $imageName14= 'imageIndex'.rand(). '.' .
-            $request->file('image11')->getClientOriginalExtension();
-        $request->file('image11')->move(
-            base_path() . '/public/images/produits', $imageName14
-        );
-        $image->image11=$imageName14;
+        if ($request->file('image11')) {
+            $imageName14 = 'imageIndex' . rand() . '.' .
+                $request->file('image11')->getClientOriginalExtension();
+            $request->file('image11')->move(
+                base_path() . '/public/images/produits', $imageName14
+            );
+            $image->image11 = $imageName14;
+        }
         $image->descImage11=$request->input('descImage11');
 
-
-        $imageName15= 'imageIndex'.rand(). '.' .
-            $request->file('image12')->getClientOriginalExtension();
-        $request->file('image12')->move(
-            base_path() . '/public/images/produits', $imageName15
-        );
-        $image->image12=$imageName15;
+        if ($request->file('image12')) {
+            $imageName15 = 'imageIndex' . rand() . '.' .
+                $request->file('image12')->getClientOriginalExtension();
+            $request->file('image12')->move(
+                base_path() . '/public/images/produits', $imageName15
+            );
+            $image->image12 = $imageName15;
+        }
         $image->descImage12=$request->input('descImage12');
 
-
-        $imageName16= 'imageIndex'.rand(). '.' .
-            $request->file('image13')->getClientOriginalExtension();
-        $request->file('image13')->move(
-            base_path() . '/public/images/produits', $imageName16
-        );
-        $image->image13=$imageName16;
+        if ($request->file('image13')) {
+            $imageName16 = 'imageIndex' . rand() . '.' .
+                $request->file('image13')->getClientOriginalExtension();
+            $request->file('image13')->move(
+                base_path() . '/public/images/produits', $imageName16
+            );
+            $image->image13 = $imageName16;
+        }
         $image->descImage13=$request->input('descImage13');
 
-
-        $imageName17= 'imageIndex'.rand(). '.' .
-            $request->file('image14')->getClientOriginalExtension();
-        $request->file('image14')->move(
-            base_path() . '/public/images/produits', $imageName17
-        );
-        $image->image14=$imageName17;
+        if ($request->file('image14')) {
+            $imageName17 = 'imageIndex' . rand() . '.' .
+                $request->file('image14')->getClientOriginalExtension();
+            $request->file('image14')->move(
+                base_path() . '/public/images/produits', $imageName17
+            );
+            $image->image14 = $imageName17;
+        }
         $image->descImage14=$request->input('descImage14');
 
-
-        $imageName18= 'imageIndex'.rand(). '.' .
-            $request->file('image15')->getClientOriginalExtension();
-        $request->file('image15')->move(
-            base_path() . '/public/images/produits', $imageName18
-        );
-        $image->image15=$imageName18;
+        if ($request->file('image15')) {
+            $imageName18 = 'imageIndex' . rand() . '.' .
+                $request->file('image15')->getClientOriginalExtension();
+            $request->file('image15')->move(
+                base_path() . '/public/images/produits', $imageName18
+            );
+            $image->image15 = $imageName18;
+        }
         $image->descImage15=$request->input('descImage15');
-
-
-        $imageName19= 'imageIndex'.rand(). '.' .
-            $request->file('image16')->getClientOriginalExtension();
-        $request->file('image16')->move(
-            base_path() . '/public/images/produits', $imageName19
-        );
-        $image->image16=$imageName19;
+        if ($request->file('image16')) {
+            $imageName19 = 'imageIndex' . rand() . '.' .
+                $request->file('image16')->getClientOriginalExtension();
+            $request->file('image16')->move(
+                base_path() . '/public/images/produits', $imageName19
+            );
+            $image->image16 = $imageName19;
+        }
         $image->descImage16=$request->input('descImage16');
 
-
-        $imageName20= 'imageIndex'.rand(). '.' .
-            $request->file('image17')->getClientOriginalExtension();
-        $request->file('image17')->move(
-            base_path() . '/public/images/produits', $imageName20
-        );
-        $image->image17=$imageName20;
+        if ($request->file('image17')) {
+            $imageName20 = 'imageIndex' . rand() . '.' .
+                $request->file('image17')->getClientOriginalExtension();
+            $request->file('image17')->move(
+                base_path() . '/public/images/produits', $imageName20
+            );
+            $image->image17 = $imageName20;
+        }
         $image->descImage17=$request->input('descImage17');
         $image->update();
         $image = $this->getById($image->id_table);

@@ -99,6 +99,7 @@
 
                             @endforeach
                             @endif
+                                <a class="btn btn-primary modify" href="{{url('/cadeaux')}}">Cadeaux  <img src="/images/icons/expand.png"></a>
                         </form>
 
                     </ul>
@@ -213,8 +214,7 @@
                                                 Prix: <p>{{$produit->prix}} TND</p>
                                                 <br>
                                                 Points: <p>{{$produit->points}}</p>
-                                                <form method="get"
-                                                      action="{{action('ProduitController@addCart', ['id'=>$produit->produit_id,'nom'=>$produit->nom, 'prix'=>$produit->prix])}}">
+                                                <form method="get" action="{{action('ProduitController@addCart', ['id'=>$produit->produit_id,'nom'=>$produit->nom, 'prix'=>$produit->prix])}}">
 
                                                     <br>
                                                     <div><label for="quantite"

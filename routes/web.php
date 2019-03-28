@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Auth::routes();
 Route::get('/app2','ProduitController@getAllProductsAndSousCategoriesApp');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/index',function(){
+Route::get('/',function(){
     return view('index');
 });
 /*
@@ -77,7 +77,7 @@ Route::get('/admin/supprimer_produit',function(){
 Route::get('/admin/ajouter_sous_categorie','SousCategorieController@addGet');
 Route::post('/admin/ajouter_sous_categorie','SousCategorieController@addPost');
 Route::post('/contact','MessageController@addPost');
-Route::post('/index','SubscriberController@addPost');
+Route::post('/','SubscriberController@addPost');
 Route::post('/produits','SubscriberController@addPost');
 Route::post('/panier','SubscriberController@addPost');
 Route::post('/about','SubscriberController@addPost');
@@ -103,6 +103,7 @@ Route::delete('/admin/delete_sous_categorie/{sousCategorieId}','SousCategorieCon
 
 
 Route::get('/produits/{id}/{nom}/{prix}', 'ProduitController@addCart');
+Route::get('/Details/{id}/{nom}/{prix}', 'ProduitController@addCartDetails');
 Route::get('/produits/supp','ProduitController@destroyCart');
 Route::post('/panier','ProduitController@updateCart');
 
@@ -136,7 +137,7 @@ Route::get('/admin/deletecat/{name}','CategorieController@delete');
 
 Route::get('/admin/deleteprod/{name}','ProduitController@delete');
 //Route::post('/admin/imagesIndex','ImagesController@add');
-Route::get('/index','ImagesController@getAll');
+Route::get('/','ImagesController@getAll');
 Route::get('/admin/imagesIndex/{image}','ImagesController@editGet');
 Route::post('/admin/imagesIndex','ImagesController@editPost');
 Route::get('/produits','ImagesController@getAllProd');

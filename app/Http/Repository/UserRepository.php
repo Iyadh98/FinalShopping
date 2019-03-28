@@ -68,6 +68,12 @@ class UserRepository
         $user->update();
         return $user;
     }
+    public function removePoints($user, $totalPoints)
+    {
+        $user->score -= $totalPoints;
+        $user->update();
+        return $user;
+    }
 
     public function retirerPointsCadeau($user)
     {

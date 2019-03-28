@@ -164,7 +164,7 @@
                             <p class="red">You have 4 Mails</p>
                         </div>
                     </div>
-                    <a href="{{url('/index')}}">Preview page</a>
+                    <a href="{{url('/')}}">Preview page</a>
                 </div>
             </div>
 

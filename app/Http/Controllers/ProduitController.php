@@ -156,6 +156,18 @@ class ProduitController extends Controller
         ));
     return redirect('/produits');
     }
+    public function addCartDetails($produit_id,$nom_produit,$prix_produit){
+        Log::info("TestWHAAAT");
+        \Lenius\Basket\Facades\Basket::insert(array(
+            'id'       => $produit_id,
+            'name'     => $nom_produit,
+            'price'    => $prix_produit,
+            'quantity' => Input::get('quant'),
+            'tax'      => 0,
+            'weight' => 0
+        ));
+        return redirect('/Details/'.$produit_id);
+    }
 
     public function destroyCart(){
         \Lenius\Basket\Facades\Basket::destroy();
