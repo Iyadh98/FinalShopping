@@ -143,6 +143,7 @@
                 <div class="row">
                     @if(count($produits) > 0)
                     @foreach($produits as $produit)
+                    @if($produit->type->nom == 'produit')
                     <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                         <!-- Block2 -->
 
@@ -257,7 +258,7 @@
                         </div>
                     </div>
 
-
+                    @endif
                     @endforeach
                     @endif
                 </div>

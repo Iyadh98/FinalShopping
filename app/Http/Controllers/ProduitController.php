@@ -144,7 +144,7 @@ class ProduitController extends Controller
 
 
     }
-    public function addCart($produit_id,$nom_produit,$prix_produit){
+    public function addCart($produit_id,$nom_produit,$prix_produit, Request $request){
         Log::info("TestWHAAAT");
         \Lenius\Basket\Facades\Basket::insert(array(
             'id'       => $produit_id,
@@ -154,7 +154,37 @@ class ProduitController extends Controller
             'tax'      => 0,
             'weight' => 0
         ));
+        if(\Illuminate\Support\Facades\Auth::user()) {
+            if (!$request->session()->has('user_score')) {
+                $request->session()->put('user_score', \Illuminate\Support\Facades\Auth::user()->score);
+            }
+        }
     return redirect('/produits');
+    }
+
+    public function addGiftCart($cadeau_id,$nom_cadeau,$points_cadeau, Request $request){
+        if(\Illuminate\Support\Facades\Auth::user()) {
+            if (!$request->session()->has('user_score')) {
+                $request->session()->put('user_score', \Illuminate\Support\Facades\Auth::user()->score);
+            }
+            if (($nouveau=($request->session()->get('user_score') - ($points_cadeau * Input::get('quant'))))>=0){
+                \Lenius\Basket\Facades\Basket::insert(array(
+                    'id'       => $cadeau_id,
+                    'name'     => $nom_cadeau,
+                    'price'    => 0,
+                    'quantity' => Input::get('quant'),
+                    'tax'      => 0,
+                    'weight' => 0
+                ));
+                $request->session()->put('user_score', $nouveau);
+            }
+            else
+            {
+                return response()->json(['error' => "Vous n'avez pas assez de points"], 403);
+            }
+        }
+
+        return redirect('/cadeaux');
     }
     public function addCartDetails($produit_id,$nom_produit,$prix_produit){
         Log::info("TestWHAAAT");

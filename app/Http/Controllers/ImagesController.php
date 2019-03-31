@@ -43,7 +43,7 @@ class ImagesController extends Controller
     }
     public function getAllProd(){
         $images=$this->imagesRepository->getAll();
-        $produits = $this->produitRepository->getAll();
+        $produits = $this->produitRepository->getAllWithSousCategoriesTypes();
         $categories = $this->categorieRepository->getAllWithSousCategories();
         log::info($categories);
         return view('product')->with('images',$images)->with('produits', $produits)->with('categories', $categories);

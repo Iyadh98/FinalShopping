@@ -220,8 +220,9 @@
                                                             Prix: <p>{{$produit->prix}} TND</p>
                                                             <br>
                                                             Points: <p>{{$produit->points}}</p>
+                                                            @auth
                                                             <form method="get"
-                                                                  action="{{action('ProduitController@addCart', ['id'=>$produit->produit_id,'nom'=>$produit->nom, 'prix'=>$produit->prix])}}">
+                                                                  action="{{action('ProduitController@addGiftCart', ['id'=>$produit->produit_id,'nom'=>$produit->nom, 'points'=>$produit->points])}}">
 
                                                                 <br>
                                                                 <div><label for="quantite"
@@ -237,6 +238,7 @@
                                                                 </button>
 
                                                             </form>
+                                                            @endauth
                                                         </td>
                                                         <td>
                                                             <img src="{{asset('images/produits/'.$produit->image)}}"
@@ -244,6 +246,9 @@
                                                                  style="width:150px; height:150px; float:right;">
                                                         </td>
                                                     </tr>
+                                                    @guest
+                                                    <tr><td colspan="2"><b>Connectez-vous pour commander vos cadeaux</b></td></tr>
+                                                    @endguest
                                                 </table>
                                             </div>
 

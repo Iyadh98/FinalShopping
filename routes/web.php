@@ -107,6 +107,8 @@ Route::get('/Details/{id}/{nom}/{prix}', 'ProduitController@addCartDetails');
 Route::get('/produits/supp','ProduitController@destroyCart');
 Route::post('/panier','ProduitController@updateCart');
 
+Route::get('/cadeaux/{id}/{nom}/{points}', 'ProduitController@addGiftCart');
+
 
 Route::get('/checkout','CommandeController@addGet');
 Route::post('/checkout','CommandeController@addPost');
